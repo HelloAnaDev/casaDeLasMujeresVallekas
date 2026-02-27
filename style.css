@@ -1,0 +1,61 @@
+.cabecera {
+    background-color: #e8d9e8;
+    border-bottom: 2px solid #c4b1ca;
+
+}
+
+    .cabecera nav a.boton {
+        background-color: #f0e9f4;
+        color: #241a22;
+        flex: 1;
+        padding: 1px;
+        margin: 60px 1px;
+        border-radius: 40px;
+        border: 2px solid #c4b1ca;
+        transition: 0.2s;
+    }
+
+        .cabecera nav a.boton:hover {
+            transform: scale(1.05);
+            box-shadow: 2px 2px 4px #241a22;
+         }
+         
+    .cabecera a{
+        text-decoration: none;
+        color: #42254b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+/*ACTIVAR PARA VER BORDES         outline: 1px solid red; */
+        flex: 1;
+        text-align: center;
+    }
+        .cabecera a:hover {
+            background-color: #42254b;
+            color: #f0e9f4;
+        }
+
+    .cabecera nav{
+        display: flex;
+        justify-content: center;
+        gap: 0px;
+        text-transform: uppercase;
+        font-family: "poppins", sans-serif;
+            }
+
+#logoHorizontal {
+    max-width: 550px;
+    height: auto;
+}
+
+#contenedorLogo {
+    padding: 0;
+    flex: 0;
+}
+.boton {
+    background-color: transparent;
+    text-align: center;
+    font-family: "poppins";
+    
+}
