@@ -1,10 +1,90 @@
+/* _________________________________________ */
+/* ↓ Estilos de base para todo el proyecto ↓ */
+/* _________________________________________ */
+body {
+    padding-top: 90px;
+    margin: 0;
+    height: 10000px;
+    background-color: #ffffff;
+}
+
 .cabecera {
     background-color: #e8d9e8;
     border-bottom: 2px solid #c4b1ca;
-
+    width: 100%;
+    text-transform: uppercase;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    transition: top 0.3s ease-in-out;
 }
 
-    .cabecera nav a.boton {
+.cabecera.oculta {
+    top: -100%;
+}
+
+.boton {
+    background-color: transparent;
+    text-align: center;
+    font-family: "poppins", sans-serif;
+
+}
+/* _________________________________________ */
+/* ↑ Estilos de base para todo el proyecto ↑ */
+/* _________________________________________ */
+
+
+
+
+
+
+
+/* _________________________________________ */
+/* ↓ Estilos cabecera solo escritorio ↓ */
+/* _________________________________________ */
+@media (min-width:1327px) {
+    #btnMenu, #contenedorLogoMovil, #btnOcultar {
+        display: none;
+    }
+
+    .cabecera nav{
+        display: flex;
+        justify-content: center;
+        gap: 0px;
+        text-transform: uppercase;
+        font-family: "poppins", sans-serif;
+    }
+
+    .cabecera nav a.boton:hover {
+        transform: scale(1.05);
+        box-shadow: 2px 2px 4px #241a22;
+    }
+         
+    .cabecera a{
+        text-decoration: none;
+        color: #42254b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        flex: 1;
+        text-align: center;
+    }
+    .cabecera a:hover {
+        background-color: #42254b;
+        color: #f0e9f4;
+        }
+    #logoHorizontal {
+        max-width: 550px;
+        height: auto;
+    }
+
+        #contenedorLogo {
+        padding: 0;
+        flex: 0;
+        }
+        .cabecera nav a.boton {
         background-color: #f0e9f4;
         color: #241a22;
         flex: 1;
@@ -15,11 +95,85 @@
         transition: 0.2s;
     }
 
-        .cabecera nav a.boton:hover {
-            transform: scale(1.05);
-            box-shadow: 2px 2px 4px #241a22;
-         }
-         
+    #contenedorLogo:hover{
+        background-color: transparent;
+    }
+}
+
+/* _________________________________________ */
+/* ↑ Estilos cabecera solo escritorio ↑ */
+/* _________________________________________ */
+
+
+
+
+
+
+
+/* _________________________________________ */
+/* ↓ Estilos cabecera solo móvil ↓ */
+/* _________________________________________ */
+@media (max-width:1326px) {
+
+    #btnOcultar {
+        background: #42254b;
+        color: #e8d9e8;
+        border: none;
+        padding: 20px;
+        margin: 0;
+        width: 100%;
+        font-family: "poppins", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+    }
+
+    #menuLateral{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 40%;
+        height: 100vh;
+        background-color: #f0e9f4;
+        display: flex;
+        flex-direction: column;
+        transition: 0.4s ease;
+        z-index: 100;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        font-family: "poppins", sans-serif;
+    }
+
+    #menuLateral.activo{
+        right: 0;
+    }
+
+    .cabecera {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+     }
+
+    #logoMovil{
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+
+    #btnMenu {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 32px;
+        color:#42254b;
+        padding: 30px;
+
+        }
+
+    #contenedorLogo {
+        display: none;
+    }
+
     .cabecera a{
         text-decoration: none;
         color: #42254b;
@@ -27,35 +181,22 @@
         align-items: center;
         justify-content: center;
         padding: 30px 20px;
-/*ACTIVAR PARA VER BORDES         outline: 1px solid red; */
         flex: 1;
         text-align: center;
     }
-        .cabecera a:hover {
-            background-color: #42254b;
-            color: #f0e9f4;
+
+    .cabecera a:hover {
+        background-color: #42254b;
+        color: #f0e9f4;
         }
 
-    .cabecera nav{
-        display: flex;
-        justify-content: center;
-        gap: 0px;
-        text-transform: uppercase;
-        font-family: "poppins", sans-serif;
-            }
+    #contenedorLogoMovil:hover{
+        background-color: transparent;
+    }
+}
+/* _________________________________________ */
+/* ↑ Estilos cabecera solo móvil ↑ */
+/* _________________________________________ */
 
-#logoHorizontal {
-    max-width: 550px;
-    height: auto;
-}
 
-#contenedorLogo {
-    padding: 0;
-    flex: 0;
-}
-.boton {
-    background-color: transparent;
-    text-align: center;
-    font-family: "poppins";
-    
-}
+
