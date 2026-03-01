@@ -1,11 +1,13 @@
 /* _________________________________________ */
 /* ↓ Estilos de base para todo el proyecto ↓ */
 /* _________________________________________ */
+
 body {
-    padding-top: 90px;
+    padding-top: 180px;
     margin: 0;
     height: 10000px;
     background-color: #ffffff;
+    font-family: "poppins", sans-serif;
 }
 
 .cabecera {
@@ -30,6 +32,149 @@ body {
     font-family: "poppins", sans-serif;
 
 }
+/* TO DO: ARREGLAR LETRA DE H4 */
+h4 {
+    font-family: 'Italianno', cursive;
+    font-size: 50px;
+    text-align: center;
+    color: #42254b;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: #42254b;
+}
+
+
+.bannerPortada {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-image: url('images/paisaje.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    min-height: 40vh;
+}
+
+.bannerPortada::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 1; 
+ }
+
+ .botonBase {
+    display: inline-block;
+    background-color: #42254b;
+    color: #f0e9f4;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+ 
+ }
+
+ .botonBase:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 16px #241a22; 
+ }
+
+.textoBanner {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.frase {
+    font-size: 60px;
+    padding: 0 0;
+}
+
+.divTitulo {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content:center ;
+    gap: 30px;
+}
+
+.tarjetasHacemos{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 15px;
+    border: 1px solid #42254b ;
+    border-radius: 30px;
+    width: 30%;
+    transition: transform 0.3s ease;
+    box-shadow: 0.3s ease;
+}
+
+.tarjetasHacemos img {
+    height: 100px;
+    width: auto;
+}
+
+.tarjetasHacemos a{
+    text-decoration: none;
+}
+
+ .tarjetasHacemos:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 16px #241a22; 
+ }
+
+ .tarjetasHacemosa:active{
+    color:inherit;
+ }
+/* .imagenConTexto {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 80%;
+    max-width: 1200px;
+    height: 300px;
+    margin: 0 auto;
+}
+.imagenDeTexto ,.textoDeImagen {
+    border: red solid 1px;
+    text-align: center;
+}
+
+.imagenDeTexto img {
+    width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+} */
+
+/* .tarjetaInformacion {
+    width: 50%;
+    height: auto;
+    text-align: justify;
+    margin: 30px auto;
+    background-color:#f0e9f4;
+} */
+
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */

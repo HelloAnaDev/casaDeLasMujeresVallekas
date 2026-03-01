@@ -16,8 +16,10 @@ let ubicacionPrincipal = window.scrollY;
         let desplazamientoActual = window.scrollY;
         if (menuLateral.classList.contains('activo')){
             return;
-        }
-        if (ubicacionPrincipal>=desplazamientoActual){
+        } if (window.innerWidth >= 1327) {
+        cabecera.classList.remove('oculta');
+        return; 
+        } if (ubicacionPrincipal>=desplazamientoActual){
             cabecera.classList.remove('oculta');
         } else {
             cabecera.classList.add('oculta');
