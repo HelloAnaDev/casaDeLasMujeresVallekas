@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 /* _________________________________________ */
 /* ↓ Estilos de base para todo el proyecto ↓ */
 /* _________________________________________ */
@@ -5,9 +9,11 @@
 body {
     padding-top: 180px;
     margin: 0;
-    height: 10000px;
+/* TO DO: borrar a final de proyecto, solo lo tenemos para probar scroll durante las pruebas */
+    height: 5000px;
     background-color: #ffffff;
     font-family: "poppins", sans-serif;
+    overflow-x: hidden;
 }
 
 .cabecera {
@@ -141,31 +147,84 @@ h2 {
     box-shadow: 5px 5px 16px #241a22; 
  }
 
- .tarjetasHacemosa:active{
+ .tarjetasHacemos a:active{
     color:inherit;
  }
-/* .imagenConTexto {
-    
+ .claseImagenConTexto {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 50px;
     width: 80%;
     max-width: 1200px;
-    height: 300px;
+    height: auto;
     margin: 0 auto;
+    padding: 50px;
 }
 .imagenDeTexto ,.textoDeImagen {
-    border: red solid 1px;
-    text-align: center;
+    text-align: justify;
 }
 
 .imagenDeTexto img {
-    width: 300px;
+    width: 400px;
     height: auto;
     display: block;
     border-radius: 10px;
-} */
+}
+
+p {
+    margin-bottom: 1rem ;
+}
+
+.tarjetasEquipo img {
+    height: 350px;
+    width: auto;
+    border-radius: 30px;
+}
+
+.tarjetasEquipo {
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.contenedorValores {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.contenedorValores h2{
+    margin-bottom: -0.2rem;
+    margin-top: -1.5rem;
+    text-align: center;
+}
+
+.filaHorizontalValor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inverso {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.columnaNumero {
+    font-size: 8rem;
+    font-weight: 900;
+    color:#c4b1ca;
+    line-height:0.1;
+    flex-shrink: 0;
+}
+
+.columnaTexto {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 
 /* .tarjetaInformacion {
     width: 50%;
@@ -345,3 +404,42 @@ h2 {
 
 
 
+/* _________________________________________ */
+/* ↓ Estilos generales para Móvil y Tablet ↓
+Habra que comprobar, de momento es el tamaño para los valñ */
+/* _________________________________________ */
+@media (max-width: 983px) {
+    .claseImagenConTexto{
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        width: 90%;
+    }
+
+    .imagenDeTexto img {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .divTitulo {
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+    .filaHorizontalValor, .filaHorizontalValor.inverso {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .columnaNumero {
+        font-size: 4.5rem;
+    }
+    
+
+
+}
+
+/* _________________________________________ */
+/* ↑ Estilos generales para Móvil y Tablet  ↑ */
+/* _________________________________________ */
