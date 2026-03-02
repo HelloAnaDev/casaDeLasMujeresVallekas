@@ -9,8 +9,6 @@
 body {
     padding-top: 180px;
     margin: 0;
-/* TO DO: borrar a final de proyecto, solo lo tenemos para probar scroll durante las pruebas */
-    height: 5000px;
     background-color: #ffffff;
     font-family: "poppins", sans-serif;
     overflow-x: hidden;
@@ -46,6 +44,30 @@ h4 {
     color: #42254b;
 }
 
+h5 {
+    font-size: 1rem;
+}
+
+#legal {
+    padding: 2rem 12rem;
+}
+
+#legal ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #241a22;
+    text-decoration:none ;
+}
+
+#legal a{
+    color: #241a22; ;
+}
+
+#legal h2{
+    font-size: 2rem ;
+}
+
 h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 50px;
@@ -53,7 +75,11 @@ h2 {
     color: #42254b;
 }
 
-
+.pieCreditos a{
+    color: #241a22;
+    text-decoration: none;
+    text-transform: uppercase;
+}
 .bannerPortada {
     position: relative;
     width: 100%;
@@ -226,6 +252,91 @@ p {
     line-height: 1.6;
 }
 
+.redesVecinales {
+    text-align: center;
+    width:60%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.piePagina {
+    background-color:#e8d9e8;
+    border-top: #c4b1ca 2px solid;
+    margin: 3rem auto 0 auto;
+    padding-top:2rem;
+}
+.espaciadoExtra{
+    margin-top: 1.5rem;
+}
+
+.pieColumnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+.columnaLogo {
+    text-align: center;
+}
+
+.columnaLogo img{
+    width: 100%;
+    max-width: 17rem;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.tituloPie {
+    font-weight: bold;
+    color: #42254b;
+
+}
+
+.columnaEnlaces {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.columnaEnlaces ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.columnaEnlaces a{
+  text-decoration: none;
+    transition: color 0.3s ease;
+    color: #241a22;
+}
+
+.columnaEnlaces a:hover {
+    color: #c4b1ca;
+}
+
+.pieCreditos {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top:#c4b1ca 2px solid;
+    background-color: #f0e9f4;
+    
+}
+
+.pieCreditos p{
+    margin: 0.5rem 0;
+}
+
+
+
 /* .tarjetaInformacion {
     width: 50%;
     height: auto;
@@ -284,11 +395,12 @@ p {
         height: auto;
     }
 
-        #contenedorLogo {
+    #contenedorLogo {
         padding: 0;
         flex: 0;
         }
-        .cabecera nav a.boton {
+
+     .cabecera nav a.boton {
         background-color: #f0e9f4;
         color: #241a22;
         flex: 1;
@@ -409,7 +521,7 @@ p {
 Habra que comprobar, de momento es el tamaño para los valñ */
 /* _________________________________________ */
 @media (max-width: 983px) {
-    .claseImagenConTexto{
+    .claseImagenConTexto {
         flex-direction: column;
         padding: 20px;
         gap: 20px;
@@ -435,8 +547,10 @@ Habra que comprobar, de momento es el tamaño para los valñ */
     .columnaNumero {
         font-size: 4.5rem;
     }
-    
 
+.pieColumnas{
+
+}
 
 }
 
