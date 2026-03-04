@@ -335,15 +335,144 @@ p {
     margin: 0.5rem 0;
 }
 
+.contenedorContacto {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
 
+#columnaIzquierdaRedes {
+    flex: 1; 
+    padding: 1.5rem;
+    text-align: right;
+}
 
-/* .tarjetaInformacion {
-    width: 50%;
-    height: auto;
-    text-align: justify;
-    margin: 30px auto;
-    background-color:#f0e9f4;
-} */
+#columnaDerechaFormularioContacto {
+    flex: 2; 
+    border-left: #c4b1ca 2px solid;
+    padding: 1.5rem 1.5rem 1.5rem 5rem;
+}
+
+#columnaIzquierdaRedes ul{
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+#columnaIzquierdaRedes a{
+    text-decoration: none;
+    color: #42254b;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+#columnaIzquierdaRedes a:hover {
+    color: #c4b1ca; 
+}
+
+.formularioMensaje{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formularioMensaje label {
+    font-weight: bold;
+    color: #42254b;
+    margin-bottom: -5px;
+}
+
+.formularioMensaje input[type="text"],.formularioMensaje input[type="email"],.formularioMensaje input[type="tel"],
+.formularioMensaje select,.formularioMensaje textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e8d9e8;
+    border-radius: 8px;
+    font-family: "poppins", sans-serif;
+    font-size: 1rem;
+    color: #241a22;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.formularioMensaje input:focus, .formularioMensaje select:focus, .formularioMensaje textarea:focus {
+    outline: none;
+    border-color: #c4b1ca;
+}
+
+.formularioMensaje textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.notaContacto {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.btnEnvio {
+    background-color: #42254b;
+    color: #f0e9f4;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btnEnvio:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 16px rgba(36, 26, 34, 0.5); 
+}
+
+.formularioMensaje fieldset.grupoRadios {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formularioMensaje legend {
+    font-weight: bold;
+    color: #42254b;
+    margin-bottom: 10px;
+}
+
+.formularioMensaje .opcionRadio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.formularioMensaje input[type="radio"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.formularioMensaje .opcionRadio label {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #241a22;
+    cursor: pointer;
+}
+
+.formularioMensaje span{
+    font-weight: normal;
+}
 
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
@@ -548,11 +677,14 @@ Habra que comprobar, de momento es el tamaño para los valñ */
         font-size: 4.5rem;
     }
 
-.pieColumnas{
+    .contenedorContacto{
+        flex-direction: column;
+        gap: 2rem;
+
 
 }
 
-}
+
 
 /* _________________________________________ */
 /* ↑ Estilos generales para Móvil y Tablet  ↑ */
