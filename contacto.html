@@ -12,6 +12,7 @@
 
 </head>
 <body>
+
 <header class="cabecera">
     <a href="index.html"  id="contenedorLogoMovil">
         <img src="images/logoHorizontal.png" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos.">
@@ -21,18 +22,17 @@
 
     <nav id="menuLateral">
         <button id="btnOcultar" aria-label="Ocultar menú">✖ Ocultar menu</button>   
-        <a href="#">Inicio</a>
-        <a href="#">Quiénes somos</a>
-        <a href="#">Agenda y actividades</a>
+        <a href="index.html">Inicio</a>
+        <a href="quienesSomos.html">Quiénes somos</a>
+        <a href="agendaActividades.html">Agenda y actividades</a>
     
         <a href="index.html" id="contenedorLogo"><img src="images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos."></a>
     
-        <a href="#">Colabora</a>
-        <a href="#">Contacto y redes</a>
-        <a href="#" class="boton">Área privada</a>
+        <a href="colabora.html">Colabora</a>
+        <a class="seccionActual" href="contacto.html">Contacto</a>
+        <a href="userContrasena.html" class="boton">Área privada</a>
     </nav> 
 </header>
-
 <main>
 <div class="contenedorContacto">
     <div id="columnaIzquierdaRedes">
@@ -46,7 +46,8 @@
     </div>
 
     <div id="columnaDerechaFormularioContacto">
-        <form action="#" method="post" class="formularioMensaje">
+        <div id="mensajeNotificacion" class="oculto"></div>
+        <form action="backend/procesarContacto.php" method="post" class="formularioMensaje">
             <label for="nombre">Nombre y apellidos</label>
             <input name="nombre" type="text" id="nombre" placeholder="María García Romero">
 
@@ -83,9 +84,12 @@
 
             <div class="checkbox">
                 <input type="checkbox" id="politica" name="politica" required>
-                <label for="politica" class="labelInline">He leído y acepto la política de privacidad. Puedes leerla <a href="legal.html">aquí</a>. En resumen, significa que no vamos a compartir tus datos con nadie ni utilizar tus datos de contacto con otros fines más que resolver tu consulta, ¡puedes estar tranquila!.</label>
+                <label for="politica" class="labelInline">He leído y acepto <a href="legal.html">la política de privacidad</a>.<br>En resumen, esta política significa que no vamos a compartir tus datos con nadie, ni utilizarlos con otro fin más que resolver tu consulta. ¡Puedes estar tranquila!.</label>
             </div>
-            
+    <div class="campoOculto" aria-hidden="true">
+    <label for="sitioWeb">Campo de verificación para no humanos.</label>
+    <input type="text" id="sitioWeb" name="sitioWeb" tabindex="-1" autocomplete="off">
+</div>
             <button type="submit" class="btnEnvio">Enviar mensaje</button>
         </form>    
     </div>

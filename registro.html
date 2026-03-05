@@ -21,59 +21,50 @@
 
     <nav id="menuLateral">
         <button id="btnOcultar" aria-label="Ocultar menú">✖ Ocultar menu</button>   
-        <a  class="seccionActual" href="index.html">Inicio</a>
+        <a href="index.html">Inicio</a>
         <a href="quienesSomos.html">Quiénes somos</a>
         <a href="agendaActividades.html">Agenda y actividades</a>
     
         <a href="index.html" id="contenedorLogo"><img src="images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos."></a>
     
         <a href="colabora.html">Colabora</a>
-        <a href="contacto.html">Contacto y redes</a>
+        <a href="contacto.html">Contacto</a>
         <a href="userContrasena.html" class="boton">Área privada</a>
     </nav> 
-    </header>
-    
-<div class="bannerPortada">
-    <div class="textoBanner">
-    <h1 class="frase">Si sobreviví, fue gracias a la red que tejí.</h1>
-    <a href="#" class="botonBase">Participa</a>
-    </div>
+</header>
+
+<main>
+
+
+    <div id="contenedorRegistro">
+        <div id="mensajeNotificacion" class="oculto"></div>
+        <form action="backend/procesarRegistro.php" method="post" class="formularioMensaje">
+            <label for="nombreUser">Nombre</label>
+            <input name="nombreUser" type="text" id="nombreUser" placeholder="María"required>
+            <label for="apellidoUser">Apellidos</label>
+            <input name="apellidoUser" type="text" id="apellidoUser" placeholder="García Romero"required>
+            <label for="correoUser">Correo electrónico</label>
+            <input type="email" id="correoUser" name="correoUser" placeholder="ejemplo@correo.com">
+            <label for="telefonoUser">Teléfono</label>
+            <input type="tel" id="telefonoUser" name="telefonoUser" placeholder="600 000 000"required>
+            <label for="contrasenaUser">Contraseña</label>
+            <input type="password" id="contrasenaUser" name="contrasenaUser"required>
+            <label for="password_repeat">Repite tu contraseña</label>
+            <input type="password" id="password_repeat" name="password_repeat"required>            
+
+            <div class="checkbox">
+                <input type="checkbox" id="politica" name="politica" required>
+                <label for="politica" class="labelInline"required>He leído y acepto <a href="legal.html">la política de privacidad</a>.<br>En resumen, esta política significa que no vamos a compartir tus datos con nadie, ni utilizarlos con otro fin más que poder enviarte información de las actividades y talleres, pero nada de publicidad e información inutil y pesada. ¡Puedes estar tranquila!.</label>
+            </div>
+    <div class="campoOculto" aria-hidden="true">
+    <label for="sitioWeb2">Campo de verificación para no humanos.</label>
+    <input type="text" id="sitioWeb" name="sitioWeb2" tabindex="-1" autocomplete="off">
 </div>
-
-<h2>¿Qué hacemos?</h2>
-
-<div class="divTitulo">
-    
-    <div class="tarjetasHacemos">
-        <a href="#">
-        <h3 class="tituloHacemos">Acogedoras</h3>
-        <img src="images/iconos/acogedoras.png" alt="Icono personas abrazadas">
-        <p>¿Necesitas ayuda, apoyo o acompañamiento?</p></div></a>
-        
-    <div class="tarjetasHacemos">
-        <a href="#">
-        <h3 class="tituloHacemos">Asamblea</h3>
-        <img src="images/iconos/asamblea.png" alt="Icono mujeres hablando">
-        <p>Participa en la asamblea de la casa.</p></div></a>
-
-    <div class="tarjetasHacemos">
-        <a href="#">
-        <h3 class="tituloHacemos">Actividades</h3>
-        <img src="images/iconos/actividades.png" alt="Icono con un libro abierto, un brazo fuerte y un bocadillo de diálogo">
-        <p>Acompañanos en talleres, actividades, agrupaciones...</p></div></a>
-
+            <button type="submit" class="btnEnvio">Aceptar</button>
+        </form>    
     </div>
 
- <div class="tarjetaInformacion">
-    <p>Este es un espacio abierto y gestionado por y para las mujeres del barrio.La Casa de las Mujeres de Vallekas nace como un punto de encuentro, apoyo mutuo y resistencia. Construimos una red donde la diversidad, el feminismo y la solidaridad vecinal son nuestros pilares.</p>
-<ul>¿Qué encontrarás aquí?
-    <li><strong>Formarte y empoderarte:</strong> Talleres, charlas y actividades para nuestro crecimiento personal y colectivo.</li>
-    <li><strong>Sentirte acompañada:</strong>  Espacios de escucha y asesoramiento ante cualquier necesidad..</li>
-    <li><strong>Hacer comunidad:</strong> Participación activa en la vida del barrio para transformar nuestra realidad desde la base.</li>
-</ul>
-<p>En Vallekas, ninguna mujer camina sola. <strong>Pasa, ponte cómoda: esta también es tu casa.</strong> </p>
-</div> 
-
+</main>
 
 <footer class="piePagina">
     <div class="pieColumnas">
@@ -115,7 +106,7 @@
 
     <div class="pieCreditos">
         <p>2026 &copy; Casa de las Mujeres Vallekas</p>
-        <p>Desarrollado por <a  target="_blank" rel="noopener noreferrer">Hello.ana.dev</a></p>
+        <p>Desarrollado por <a href="#" target="_blank" rel="noopener noreferrer">Hello.ana.dev</a></p>
     </div>
 </footer>
 <script src="interaccion.js"></script>

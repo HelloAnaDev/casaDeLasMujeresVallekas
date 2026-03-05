@@ -7,7 +7,7 @@
 /* _________________________________________ */
 
 body {
-    padding-top: 180px;
+    /* padding-top: 180px; */
     margin: 0;
     background-color: #ffffff;
     font-family: "poppins", sans-serif;
@@ -19,7 +19,7 @@ body {
     border-bottom: 2px solid #c4b1ca;
     width: 100%;
     text-transform: uppercase;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 2000;
@@ -36,6 +36,8 @@ body {
     font-family: "poppins", sans-serif;
 
 }
+
+
 /* TO DO: ARREGLAR LETRA DE H4 */
 h4 {
     font-family: 'Italianno', cursive;
@@ -48,8 +50,12 @@ h5 {
     font-size: 1rem;
 }
 
+.seccionActual{
+    font-weight: 800;
+}
+
 #legal {
-    padding: 2rem 12rem;
+    padding: 2rem 4rem;
 }
 
 #legal ul{
@@ -83,7 +89,6 @@ h2 {
 .bannerPortada {
     position: relative;
     width: 100%;
-    height: auto;
     background-image: url('images/paisaje.png');
     background-size: cover;
     background-position: center;
@@ -94,6 +99,8 @@ h2 {
     text-align: center;
     color: white;
     min-height: 40vh;
+    margin-top: 0;
+    /* font-family: "Instrument+Serif"; */
 }
 
 .bannerPortada::after {
@@ -166,6 +173,7 @@ h2 {
 
 .tarjetasHacemos a{
     text-decoration: none;
+    color: inherit;
 }
 
  .tarjetasHacemos:hover {
@@ -351,7 +359,7 @@ p {
     text-align: right;
 }
 
-#columnaDerechaFormularioContacto {
+#columnaDerechaFormularioContacto , #contenedorRegistro {
     flex: 2; 
     border-left: #c4b1ca 2px solid;
     padding: 1.5rem 1.5rem 1.5rem 5rem;
@@ -473,6 +481,63 @@ p {
 .formularioMensaje span{
     font-weight: normal;
 }
+
+.campoOculto {
+    display: none;
+}
+
+#mensajeNotificacion {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#mensajeNotificacion.oculto {
+    display: none;
+}
+
+#mensajeNotificacion.exito {
+    display: block;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#mensajeNotificacion.error {
+    display: block;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+#userContrasena {
+    padding: 2rem;
+    border: #c4b1ca 2px solid;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin: 3rem auto;
+    box-shadow: 0 4px 12px rgba(196, 177, 202, 0.4);
+    transform: translateY(-2px);
+}
+
+#userContrasena label {
+    margin-bottom: 0.5rem; 
+    font-weight: bold;
+    color: #555;
+}
+
+#userContrasena input {
+    padding: 0.8rem;
+    border: 2px solid #c4b1ca;
+    border-radius: 10px;
+    display: block;
+}
+
 
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
@@ -684,7 +749,11 @@ Habra que comprobar, de momento es el tamaño para los valñ */
 
 }
 
-
+.tarjetasHacemos {
+        width: 90%; 
+        max-width: 400px;
+    }
+}
 
 /* _________________________________________ */
 /* ↑ Estilos generales para Móvil y Tablet  ↑ */
