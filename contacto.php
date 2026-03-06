@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa de las mujeres Vallekas</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Fuentes obtenidas de Google Fonts, Poppins + Instrument serif -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Italianno&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<?php 
+$pagina = 'contacto';
+include 'header.php';
+?>
 
-</head>
-<body>
-
-<header class="cabecera">
-    <a href="index.php"  id="contenedorLogoMovil">
-        <img src="images/logoHorizontal.png" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos.">
-    </a>   
-
-    <button id="btnMenu" class="menuToggle" aria-label="Abrir menú">☰</button>
-
-    <nav id="menuLateral">
-        <button id="btnOcultar" aria-label="Ocultar menú">✖ Ocultar menu</button>   
-        <a href="index.php">Inicio</a>
-        <a href="quienesSomos.php">Quiénes somos</a>
-        <a href="agendaActividades.php">Agenda y actividades</a>
-    
-        <a href="index.php" id="contenedorLogo"><img src="images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos."></a>
-    
-        <a href="colabora.php">Colabora</a>
-        <a class="seccionActual" href="contacto.php">Contacto</a>
-        <a href="login.php" class="boton">Área privada</a>
-    </nav> 
-</header>
 <main>
 <div class="contenedorContacto">
     <div id="columnaIzquierdaRedes">
@@ -96,49 +66,8 @@
 </div>
 </main>
 
-<footer class="piePagina">
-    <div class="pieColumnas">
-        
-        <div class="columnaLogo">
-            <a href="index.php">
-                <img src="images/logoVector.png" alt="Logotipo de la Casa de las Mujeres de Vallekas">
-            </a>
-        </div>
+<?php include 'footer.php'; ?>
 
-        <div class="columnaEnlaces">
-            <span class="tituloPie">SÍGUENOS</span>
-            <ul>
-                <li><a href="https://www.instagram.com/casademujeresvk/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
-                <li><a href="https://www.facebook.com/p/Casa-de-las-Mujeres-de-Vallekas-100067144956203/?locale=es_LA" rel="noopener noreferrer" target="_blank">Facebook</a></li>
-            </ul>
-        </div>
-
-        <div class="columnaEnlaces">
-            <span class="tituloPie">CONTACTO</span>
-            <ul>
-                <li><a href="https://wa.me/34653539212">653 53 92 12</a></li>
-                <li><a href="mailto:casademujeresvk@gmail.com">casademujeresvk@gmail.com</a></li>
-            </ul>
-            <span class="tituloPie espaciadoExtra">ENCUENTRANOS EN</span>
-            <ul>  
-                <li><a href="https://maps.app.goo.gl/9rxrcuWJwi8xCzYb8" rel="noopener noreferrer" target="_blank">Calle Diligencia, 10 (entrada por calle Volver a Empezar) <br> 28038, Puente de Vallecas. Madrid.</a></li>
-            </ul>
-        </div>
-        <div class="columnaEnlaces">
-            <ul>
-                <li><a href="legal.php">Aviso legal</a></li>                
-                <li><a href="legal.php">Política de Privacidad</a></li>
-                <li><a href="legal.php">Política de cookies</a></li>
-                <li><a href="legal.php">Términos y condiciones</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="pieCreditos">
-        <p>2026 &copy; Casa de las Mujeres Vallekas</p>
-        <p>Desarrollado por <a href="#" target="_blank" rel="noopener noreferrer">Hello.ana.dev</a></p>
-    </div>
-</footer>
 <script src="interaccion.js"></script>
 </body>
 </html>

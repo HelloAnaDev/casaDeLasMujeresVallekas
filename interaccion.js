@@ -1,5 +1,3 @@
-//js
-
 const btnMenu = document.getElementById('btnMenu');
 const menuLateral = document.getElementById('menuLateral');
 const cabecera = document.querySelector('.cabecera');
