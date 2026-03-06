@@ -13,7 +13,7 @@
 </head>
 <body>
 <header class="cabecera">
-    <a href="index.html"  id="contenedorLogoMovil">
+    <a href="index.php"  id="contenedorLogoMovil">
         <img src="images/logoHorizontal.png" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos.">
     </a>   
 
@@ -21,15 +21,15 @@
 
     <nav id="menuLateral">
         <button id="btnOcultar" aria-label="Ocultar menú">✖ Ocultar menu</button>   
-        <a href="index.html">Inicio</a>
-        <a href="quienesSomos.html">Quiénes somos</a>
-        <a href="agendaActividades.html">Agenda y actividades</a>
+        <a href="index.php">Inicio</a>
+        <a href="quienesSomos.php">Quiénes somos</a>
+        <a href="agendaActividades.php">Agenda y actividades</a>
     
-        <a href="index.html" id="contenedorLogo"><img src="images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos."></a>
+        <a href="index.php" id="contenedorLogo"><img src="images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos."></a>
     
-        <a href="colabora.html">Colabora</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="userContrasena.html" class="boton">Área privada</a>
+        <a href="colabora.php">Colabora</a>
+        <a href="contacto.php">Contacto</a>
+        <a href="login.php" class="boton">Área privada</a>
     </nav> 
 </header>
 
@@ -54,7 +54,7 @@
 
             <div class="checkbox">
                 <input type="checkbox" id="politica" name="politica" required>
-                <label for="politica" class="labelInline"required>He leído y acepto <a href="legal.html">la política de privacidad</a>.<br>En resumen, esta política significa que no vamos a compartir tus datos con nadie, ni utilizarlos con otro fin más que poder enviarte información de las actividades y talleres, pero nada de publicidad e información inutil y pesada. ¡Puedes estar tranquila!.</label>
+                <label for="politica" class="labelInline"required>He leído y acepto <a href="legal.php">la política de privacidad</a>.<br>En resumen, esta política significa que no vamos a compartir tus datos con nadie, ni utilizarlos con otro fin más que poder enviarte información de las actividades y talleres, pero nada de publicidad e información inutil y pesada. ¡Puedes estar tranquila!.</label>
             </div>
     <div class="campoOculto" aria-hidden="true">
     <label for="sitioWeb2">Campo de verificación para no humanos.</label>
@@ -70,7 +70,7 @@
     <div class="pieColumnas">
         
         <div class="columnaLogo">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="images/logoVector.png" alt="Logotipo de la Casa de las Mujeres de Vallekas">
             </a>
         </div>
@@ -96,10 +96,10 @@
         </div>
         <div class="columnaEnlaces">
             <ul>
-                <li><a href="legal.html">Aviso legal</a></li>                
-                <li><a href="legal.html">Política de Privacidad</a></li>
-                <li><a href="legal.html">Política de cookies</a></li>
-                <li><a href="legal.html">Términos y condiciones</a></li>
+                <li><a href="legal.php">Aviso legal</a></li>                
+                <li><a href="legal.php">Política de Privacidad</a></li>
+                <li><a href="legal.php">Política de cookies</a></li>
+                <li><a href="legal.php">Términos y condiciones</a></li>
             </ul>
         </div>
     </div>
