@@ -29,38 +29,48 @@ bntOcultar.addEventListener('click',() =>{
 })
 
 const formContacto = document.querySelector('.formularioMensaje');
-const radiosMedio = document.querySelectorAll('input[name="medioPreferido"]');
-const inputEmail = document.getElementById('correo');
-const inputTelefono = document.getElementById('telefono');
 
-function actualizarObligatorios () {
-    const seleccionado= document.querySelector('input[name="medioPreferido"]:checked').value;
-    if (seleccionado==='email'){
-        inputEmail.required=true;
-        inputTelefono.required=false;
-    } else {
-        inputTelefono.required = true;
-        inputEmail.required = false;
+if (formContacto) { 
+    const radiosMedio = document.querySelectorAll('input[name="medioPreferido"]');
+
+    function actualizarObligatorios() {
+
+        const inputEmail = document.getElementById('email');
+        const inputTelefono = document.getElementById('telefono');
+        const radioSeleccionado = document.querySelector('input[name="medioPreferido"]:checked');
+
+
+        if (!inputEmail || !inputTelefono || !radioSeleccionado) return;
+
+        if (radioSeleccionado.value === 'email') {
+            inputEmail.required = true;
+            inputTelefono.required = false;
+        } else {
+            inputTelefono.required = true;
+            inputEmail.required = false;
+        }
     }
-}
 
-radiosMedio.forEach(radio => {
-    radio.addEventListener('change', actualizarObligatorios)
-})
+    radiosMedio.forEach(radio => {
+        radio.addEventListener('change', actualizarObligatorios);
+    });
 
-actualizarObligatorios();
+    actualizarObligatorios();
+} 
 
-
-const parametrosURL = new URLSearchParams(window.location.search);
-const estadoEnvio = parametrosURL.get('status');
 const cajaNotificacion = document.getElementById('mensajeNotificacion');
 
-if (estadoEnvio === 'success') {
-    cajaNotificacion.textContent = "¡Tu mensaje se ha enviado correctamente! Nos pondremos en contacto contigo pronto.";
-    cajaNotificacion.classList.remove('oculto');
-    cajaNotificacion.classList.add('exito');
-} else if (estadoEnvio === 'error') {
-    cajaNotificacion.textContent = "Ha ocurrido un error al enviar el mensaje. Por favor, inténtalo de nuevo, y si sigue dando error, contáctanos por teléfono, email o redes sociales para hacernos llegar tu consulta. Disculpa las molestias";
-    cajaNotificacion.classList.remove('oculto');
-    cajaNotificacion.classList.add('error');
+if (cajaNotificacion) {
+    const parametrosURL = new URLSearchParams(window.location.search);
+    const estadoEnvio = parametrosURL.get('status');
+
+    if (estadoEnvio === 'success') {
+        cajaNotificacion.textContent = "¡Tu mensaje se ha enviado correctamente! Nos pondremos en contacto contigo pronto.";
+        cajaNotificacion.classList.remove('oculto');
+        cajaNotificacion.classList.add('exito');
+    } else if (estadoEnvio === 'error') {
+        cajaNotificacion.textContent = "Ha ocurrido un error al enviar el mensaje. Por favor, inténtalo de nuevo, y si sigue dando error, contáctanos por teléfono, email o redes sociales para hacernos llegar tu consulta. Disculpa las molestias";
+        cajaNotificacion.classList.remove('oculto');
+        cajaNotificacion.classList.add('error');
+    }
 }

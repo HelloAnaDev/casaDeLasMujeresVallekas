@@ -43,8 +43,8 @@ include 'header.php';
 
             <p id="notaContacto">No estás obligada a rellenar todos los campos de contacto, sin embargo, ¡recuerda poner tu medio preferido para que te podamos hacer llegar la respuesta a tu consulta!</p>
 
-            <label for="correo">Correo electrónico</label>
-            <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com">
 
             <label for="telefono">Teléfono</label>
             <input type="tel" id="telefono" name="telefono" placeholder="600 000 000">
@@ -54,7 +54,7 @@ include 'header.php';
 
             <div class="checkbox">
                 <input type="checkbox" id="politica" name="politica" required>
-                <label for="politica" class="labelInline">He leído y acepto <a href="legal.php">la política de privacidad</a>.<br>En resumen, esta política significa que no vamos a compartir tus datos con nadie, ni utilizarlos con otro fin más que resolver tu consulta. ¡Puedes estar tranquila!.</label>
+                <label for="politica" class="labelInline">He leído y acepto <a href="legal.php" rel="noopener noreferrer" target="_blank">la política de privacidad</a>.<br>En resumen, esta política significa que no vamos a compartir tus datos con nadie, ni utilizarlos con otro fin más que resolver tu consulta. ¡Puedes estar tranquila!.</label>
             </div>
     <div class="campoOculto" aria-hidden="true">
     <label for="sitioWeb">Campo de verificación para no humanos.</label>

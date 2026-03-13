@@ -1,4 +1,7 @@
 <?php
+
+// base de datos
+
 $host = "localhost";
 $db_name = "casamujeresvallekas"; 
 $username = "root";
@@ -10,4 +13,22 @@ try {
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
-?>
+
+// phpmailer
+
+define ('SMTP_HOST', 'smtp.gmail.com');
+define ('SMTP_USER', 'ananevadodeoyarbide@gmail.com');
+define ('SMTP_PASS', 'iycnzgjhuxphusjb');
+define ('SMTP_PORT', 587);
+define ('SMTP_FROM', 'ananevadodeoyarbide@gmail.com');
+define ('SMTP_NAME', 'Web Casa de las mujeres Vallekas');
+
+
+
+
+
+
+
+
+
+?> 

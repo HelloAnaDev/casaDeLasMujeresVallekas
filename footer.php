@@ -28,10 +28,11 @@
         </div>
         <div class="columnaEnlaces">
             <ul>
-                <li><a href="legal.php">Aviso legal</a></li>                
-                <li><a href="legal.php">Política de Privacidad</a></li>
-                <li><a href="legal.php">Política de cookies</a></li>
-                <li><a href="legal.php">Términos y condiciones</a></li>
+                <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Aviso legal</a></li>                
+                <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Política de Privacidad</a></li>
+                <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Política de cookies</a></li>
+                <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Términos y condiciones</a></li>
+                <li><a href="login.php">Acceso área privada</a></li>
             </ul>
         </div>
     </div>

@@ -12,10 +12,39 @@
 
 </head>
 <body>
-<header class="cabecera">
-    <a href="index.php"  id="contenedorLogoMovil">
-        <img src="images/logoHorizontal.png" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos.">
-    </a>   
+<aside class="sidebarAdmin">
+    <div class="sidebarTitulo">
+        <img src="images/logoVector.png" id="sidebarLogo" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
+        <h2>Panel de administración</h2>
+</div>   
+
+<nav class="sidebarNav">
+    <ul>
+        <li> <a href="inicio.php">Inicio</a></li>
+        <li> <a href="agenda.php">Gestión de agenda</a></li>
+        <li> <a href="reservas.php">Control de reservas</a></li>
+    </ul>
+</nav>
+
+<div class="sidebarUser">
+    <!-- avatar con su foto -->
+    <img src="" alt="">
+    <p>Hola, [$nombreAdmin¨]</p>
+        <div class="userActions">
+            <a href="perfil.php" class="btnUser">Mi perfil</a>
+            <a href="logout.php" class="btnUser btnLogout">Cerrar sesión</a>
+        </div>
+</div>
+</aside>
+
+
+
+
+
+
+
+
+
 
     <button id="btnMenu" class="menuToggle" aria-label="Abrir menú">☰</button>
 
@@ -44,17 +73,17 @@
         
         href="quienesSomos.php">Quiénes somos</a>
 
-<!-- EVnatana  -->
+<!-- Agenda y actividades -->
  
         <a 
         
         <?php
-        if ($pagina==='casaEnMarcha') {
+        if ($pagina==='agendaActividades') {
             echo 'class="seccionActual"';
         }
         ?>
 
-        href="casaEnMarcha.php">La casa en marcha</a>
+        href="agendaActividades.php">Agenda y actividades</a>
 
 <!-- Inicio -->
  
@@ -92,17 +121,13 @@
         
         href="contacto.php">Contacto</a>
 
-<!-- Encuentranos -->
+<!-- Area privada, login -->
  
         <a
         
+        href="login.php" class="boton         
         <?php
-        if ($pagina==='encuentranos') {
-            echo 'class="seccionActual"';
-        }
-        ?>
-        
-        href="encuentranos.php">Encuéntranos</a>
-
+        if ($pagina==='login') {
+            echo "seccionActual" ;}?>">Área privada</a>
     </nav> 
-</header>
+</aside>

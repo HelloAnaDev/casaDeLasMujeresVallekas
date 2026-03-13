@@ -7,15 +7,15 @@ include 'header.php';
 <h2>Nuestra historia</h2>
 <div class="claseImagenConTexto">
     <div class="imagenDeTexto">
-        <img src="images/abrazo.png" alt="Por rellenar.">
+        <img src="images/logo.png" alt="Por rellenar.">
     </div>
 
     <div class="textoDeImagen">
         <p id="frasesResalto">Las mujeres del barrio de Vallekas tenían una necesidad: Un espacio de referencia suyo, en su barrio, que fuese hecho por y para ellas. Con esto en mente, en marzo de 2018 aparecieron las primeras miembros de este proyecto, cuya primera meta fue crear una asociación, ubicarla en un espacio físico, y comenzar a desarrollar actividades que nutrieran a las mujeres del barrio. Y lo consiguieron.</p> <p> El 14 de febrero de 2019, "La casa de las mujeres Vallekas" nació como asociación registrada,empezando su labor con algunas actividades, y un año después, el 7 de febrero del 2020, el hogar físico de La casa de las mujeres Vallekas abría sus puertas. </p> <p> Desde entonces y hasta ahora, ha sido un espacio autogestionado, abierto a todas las mujeres que necesiten una mano amiga, hablar, aprender, o que quieran ser aquellas que prestan su ayuda.</p>
     </div>
 </div>
-<h2>Equipo</h2>
-<div class="divTitulo">
+<!-- <h2>Equipo</h2> -->
+<!-- <div class="divTitulo">
     
     <div class="tarjetasEquipo">
         <img src="images/equipo/1.png" alt="retrato de..">
@@ -32,7 +32,7 @@ include 'header.php';
         <h3 class="tituloEquipo">María</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum enim quis gravida pulvinar.</p></div></a>
 
-    </div>
+    </div> -->
 
 <section class="contenedorValores">
     <h2>Valores</h2>
