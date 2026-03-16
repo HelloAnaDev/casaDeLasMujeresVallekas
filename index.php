@@ -32,7 +32,7 @@ include 'header.php';
     </div>
 </div> 
 
-<h2>Calendario</h2>
+<h2 id="tituloDeCalendario" >Calendario</h2>
 
  <div class="tarjetaInformacion">
     <p>Nuestro calendario subraya los aniversarios e hitos históricos protagonizados por mujeres que, pese a su relevancia, han sido invisibilizados. ¡Echa un vistazo y recupera nuestra historia!</p>

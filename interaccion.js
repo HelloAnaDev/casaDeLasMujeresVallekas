@@ -120,12 +120,13 @@ if (cuadriculaCalendario && fechaActualTitulo) {
                     
                     casillaDia.classList.add("conHito", hitoEncontrado.categoria);
                     contenidoHito = `<span class="tituloHitoMini">${hitoEncontrado.titulo || "Hito"}</span>`;
-                    
-                    casillaDia.addEventListener("click", () => {
+ 
+                        casillaDia.addEventListener("click", () => {
                         document.getElementById("tituloDetalle").textContent = hitoEncontrado.titulo;
                         document.getElementById("cuerpoDetalle").textContent = hitoEncontrado.descripcion;
-                        document.getElementById("detalleHito").scrollIntoView({ behavior: 'smooth' });
+                        document.getElementById("tituloDeCalendario").scrollIntoView({ behavior: 'smooth', block: 'start' });
                     });
+
                 }
             }
             casillaDia.innerHTML = `<strong>${i}</strong> ${contenidoHito}`;
