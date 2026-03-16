@@ -7,7 +7,6 @@
 /* _________________________________________ */
 
 body {
-    /* padding-top: 180px; */
     margin: 0;
     background-color: #ffffff;
     font-family: "poppins", sans-serif;
@@ -35,15 +34,6 @@ body {
     text-align: center;
     font-family: "poppins", sans-serif;
 
-}
-
-
-/* TO DO: ARREGLAR LETRA DE H4 */
-h4 {
-    font-family: 'Italianno', cursive;
-    font-size: 50px;
-    text-align: center;
-    color: #42254b;
 }
 
 h5 {
@@ -100,7 +90,6 @@ h2 {
     color: white;
     min-height: 40vh;
     margin-top: 0;
-    /* font-family: "Instrument+Serif"; */
 }
 
 .bannerPortada::after {
@@ -138,11 +127,11 @@ h2 {
 }
 
 .frase {
-    font-size: 60px;
+    font-size: 3rem;
     padding: 0 0;
 }
 
-/* .divTitulo {
+.divTitulo {
     width: 90%;
     height: auto;
     text-align: center;
@@ -151,7 +140,13 @@ h2 {
     flex-direction: row;
     justify-content:center ;
     gap: 30px;
-} */
+}
+
+.tarjetaInformacion {
+    margin: 4% ;
+    padding: 0 8%;
+    text-align: center;
+}
 
 .tarjetasHacemos{
     display: flex;
@@ -162,28 +157,14 @@ h2 {
     border: 1px solid #42254b ;
     border-radius: 30px;
     width: 30%;
-    transition: transform 0.3s ease;
-    box-shadow: 0.3s ease;
+    margin: 20px;
 }
 
 .tarjetasHacemos img {
-    height: 100px;
+    height: 110px;
     width: auto;
 }
 
-.tarjetasHacemos a{
-    text-decoration: none;
-    color: inherit;
-}
-
- .tarjetasHacemos:hover {
-    transform: scale(1.05);
-    box-shadow: 5px 5px 16px #241a22; 
- }
-
- .tarjetasHacemos a:active{
-    color:inherit;
- }
  .claseImagenConTexto {
     display: flex;
     justify-content: center;
@@ -550,6 +531,250 @@ p {
 .btn-crear:hover {
     background-color: #333;
 }
+
+.colaboracion {
+    height: 300px;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    padding-top: 0;
+        margin-bottom: 250px;
+}
+
+.colaboracion label {
+    display: block; 
+    margin: 0;
+    padding: 0;
+}
+
+.colaboracion input{
+    display: none;
+}
+
+.colaboracion button{
+    background-color: #a68aad;
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.colaboracion button:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 16px rgba(36, 26, 34, 0.5); 
+}
+
+.tituloTab {
+    color: rgb(77, 38, 78);
+    height: 45px;
+    width: auto;
+    background: #ffffff;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: #666 solid 1px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+input:checked + label .tituloTab {
+    background-color: #42254b;
+    color: white;
+    font-weight: 700;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+input:checked + label .contenidoTab {
+    opacity: 1;
+    z-index: 1;    
+}
+
+.contenidoTab {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: white;
+    color: #000;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border-top-left-radius: 0px;
+    border:#666 solid 1px; 
+    opacity: 0;
+    z-index: 0;
+    transition: 0.25s;
+    margin-top: -10px;
+}
+
+
+#calendario {
+    margin: 40px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.controlesCalendario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.controlesCalendario button {
+    background-color: #42254b;
+    color: #f0e9f4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.controlesCalendario button:hover {
+    background-color: #c4b1ca;
+    color: #42254b;
+}
+
+#fechaActual {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #42254b;
+}
+
+
+.filtrarCalendario {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.filtrarCalendario select {
+    padding: 8px;
+    border: 2px solid #e8d9e8;
+    border-radius: 8px;
+    font-family: "poppins", sans-serif;
+    color: #42254b;
+}
+
+
+
+#cuadriculaCalendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 8px;
+    background-color: #f0e9f4; 
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.diaCalendario {
+    background-color: #ffffff;
+    border: 1px solid #e8d9e8;
+    padding: 8px;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    transition: 0.2s;
+}
+
+.diaCalendario strong {
+    font-size: 1.1rem;
+    color: #42254b;
+}
+
+.diaCalendario.conHito {
+    background-color: #fcfaff;
+    border: 2px solid #c4b1ca;
+    cursor: pointer;
+}
+
+.diaCalendario.conHito:hover {
+    filter: brightness(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tituloHitoMini {
+    display: block;
+    width: 100%;
+    font-size: 0.7rem;
+    color: #42254b;
+    margin-top: 5px;
+    text-align: left;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+
+#detalleHito {
+    background-color: #ffffff;
+    border-left: 6px solid #42254b;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(66, 37, 75, 0.1);
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#tituloDetalle {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    text-align: left; 
+}
+
+#cuerpoDetalle {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+
+.diaCalendario:empty {
+    background-color: transparent;
+    border: none;
+}
+
+.diaCalendario.revolucion {
+    border-color: #8a2be2;
+    background-color: #f3e5f5;
+}
+
+.diaCalendario.revolucion .tituloHitoMini { color: #4b0082; }
+
+
+.diaCalendario.inventos {
+    border-color: #00bcd4;
+    background-color: #e0f7fa;
+}
+
+.diaCalendario.inventos .tituloHitoMini { 
+    color: #006064; 
+}
+
+.diaCalendario.aniversarios {
+    border-color: #ff9800;
+    background-color: #fff3e0;
+}
+
+.diaCalendario.aniversarios .tituloHitoMini {
+     color: #e65100;
+}
+
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */
@@ -764,8 +989,44 @@ Habra que comprobar, de momento es el tamaño para los valñ */
         width: 90%; 
         max-width: 400px;
     }
+
 }
 
+@media (max-width: 768px) {
+    
+    #calendario, #cuadriculaCalendario {
+        margin: 10px 0 !important;
+        width: 100% !important;
+        padding: 5px;
+    }
+
+    .diaCalendario {
+        min-height: 50px;
+        padding: 2px;
+        font-size: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .tituloHitoMini {
+        font-size: 0; 
+        width: 80%;
+        height: 4px;
+        background-color: #42254b; 
+        border-radius: 2px;
+        margin: 2px auto 0 auto;
+    }
+
+    #fechaActual {
+        font-size: 1.1rem;
+    }
+
+    .controlesCalendario button {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+}
 /* _________________________________________ */
 /* ↑ Estilos generales para Móvil y Tablet  ↑ */
 /* _________________________________________ */

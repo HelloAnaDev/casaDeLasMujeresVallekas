@@ -6,47 +6,69 @@ include 'header.php';
 <div class="bannerPortada">
     <div class="textoBanner">
     <h1 class="frase">Si sobreviví, fue gracias a la red que tejí.</h1>
-    <a href="#" class="botonBase">Participa</a>
+    <!-- <a href="#" class="botonBase">Participa</a> -->
     </div>
 </div>
 
-<h2>¿Qué hacemos?</h2>
+ <div class="tarjetaInformacion">
+    <p>Este es un espacio abierto y gestionado por y para las mujeres del barrio. La Casa de las Mujeres de Vallekas nace como un punto de encuentro, apoyo mutuo y resistencia. Construimos una red donde la diversidad, el feminismo y la solidaridad vecinal son nuestros pilares.</p>
+<p>En Vallekas, ninguna mujer camina sola. <strong>Pasa, ponte cómoda: esta también es tu casa.</strong> </p>
 
 <div class="divTitulo">
-    
     <div class="tarjetasHacemos">
-        <a href="#">
         <h3 class="tituloHacemos">Acogedoras</h3>
         <img src="images/iconos/acogedoras.png" alt="Icono personas abrazadas">
-        <p>¿Necesitas ayuda, apoyo o acompañamiento?</p></div></a>
+        <p>Ayudamos, acompañamos y apoyamos a cualquier mujer que lo necesite. Ofrecemos espacios de escucha y asesoramiento ante cualquier necesidad.</p></div>
         
     <div class="tarjetasHacemos">
-        <a href="#">
-        <h3 class="tituloHacemos">Asamblea</h3>
-        <img src="images/iconos/asamblea.png" alt="Icono mujeres hablando">
-        <p>Participa en la asamblea de la casa.</p></div></a>
+        <h3 class="tituloHacemos">Activismo</h3>
+        <img src="images/iconos/activismo.png" alt="Icono mujer protestando con una pancarta, en la que aparece dibujado un altavoz">
+        <p>Participamos activamente en los movimientos justos y reivindicativos que como mujeres nos importan y en la vida del barrio para transformar nuestra realidad desde la base.</p></div>
 
     <div class="tarjetasHacemos">
-        <a href="#">
         <h3 class="tituloHacemos">Actividades</h3>
         <img src="images/iconos/actividades.png" alt="Icono con un libro abierto, un brazo fuerte y un bocadillo de diálogo">
-        <p>Acompañanos en talleres, actividades, agrupaciones...</p></div></a>
-
+        <p> Talleres, charlas y actividades para nuestro bienestar, ocio, empoderamiento y crecimiento personal y colectivo.</div>
     </div>
+</div> 
+
+<h2>Calendario</h2>
 
  <div class="tarjetaInformacion">
-    <p>Este es un espacio abierto y gestionado por y para las mujeres del barrio.La Casa de las Mujeres de Vallekas nace como un punto de encuentro, apoyo mutuo y resistencia. Construimos una red donde la diversidad, el feminismo y la solidaridad vecinal son nuestros pilares.</p>
-<ul>¿Qué encontrarás aquí?
-    <li><strong>Formarte y empoderarte:</strong> Talleres, charlas y actividades para nuestro crecimiento personal y colectivo.</li>
-    <li><strong>Sentirte acompañada:</strong>  Espacios de escucha y asesoramiento ante cualquier necesidad..</li>
-    <li><strong>Hacer comunidad:</strong> Participación activa en la vida del barrio para transformar nuestra realidad desde la base.</li>
-</ul>
-<p>En Vallekas, ninguna mujer camina sola. <strong>Pasa, ponte cómoda: esta también es tu casa.</strong> </p>
-</div> 
+    <p>Nuestro calendario subraya los aniversarios e hitos históricos protagonizados por mujeres que, pese a su relevancia, han sido invisibilizados. ¡Echa un vistazo y recupera nuestra historia!</p>
+ </div> 
+<div id="detalleHito" class="detalle-oculto">
+    <h4 id="tituloDetalle">Lo que no se nombra, no existe. Aquí les devolvemos su nombre.</h4>
+    <p id="cuerpoDetalle">Haz click en un día destacado para conocer su historia.</p>
+</div>
+ <!-- CALENDARIO -->
+
+ <section id="calendario">
+    <header class="controlesCalendario">
+        <button id="btnAnterior">Anterior</button>
+
+        <h3 id="fechaActual"></h3>
+
+        <button id="btnSiguiente">Siguiente</button>
+    </header>
+
+    <div class="filtrarCalendario">
+        <label for="filtroCategoria">Filtrar por: </label>
+        <select id="filtroCategoria">
+            <option value="todas">Todas</option>
+            <option value="inventos">Inventos</option>
+            <option value="revolucion">Revolución</option>
+            <option value="aniversarios">Aniversarios</option>
+        </select> </div>
+
+        <div id="cuadriculaCalendario" class="cuadricula"></div>
+
+ </section>
 
 
 <?php include 'footer.php'; ?>
 
+<script src="datosCalendario.js"></script>
 <script src="interaccion.js"></script>
 </body>
 </html>

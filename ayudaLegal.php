@@ -1,5 +1,5 @@
 <?php 
-$pagina = 'plantilla';
+$pagina = 'ayudaLegal';
 include 'header.php'; 
 ?>
 

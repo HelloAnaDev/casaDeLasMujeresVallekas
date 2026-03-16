@@ -92,17 +92,17 @@
         
         href="contacto.php">Contacto</a>
 
-<!-- Encuentranos -->
+<!-- Ayuda Legal -->
  
         <a
         
         <?php
-        if ($pagina==='encuentranos') {
+        if ($pagina==='ayudaLegal') {
             echo 'class="seccionActual"';
         }
         ?>
         
-        href="encuentranos.php">Encuéntranos</a>
+        href="ayudaLegal.php">Ayuda Legal</a>
 
     </nav> 
 </header>
