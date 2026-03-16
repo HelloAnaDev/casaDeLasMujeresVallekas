@@ -60,9 +60,18 @@ include 'header.php';
             <option value="revolucion">Revolución</option>
             <option value="aniversarios">Aniversarios</option>
         </select> </div>
+    <div class="cabeceraDias">
+    <div>L</div>
+    <div>M</div>
+    <div>X</div>
+    <div>J</div>
+    <div>V</div>
+    <div>S</div>
+    <div>D</div>
+</div>
 
-        <div id="cuadriculaCalendario" class="cuadricula"></div>
-
+    <div id="cuadriculaCalendario" class="cuadricula"></div>
+    <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, ¡aquí cabemos todas!. </p>
  </section>
 
 

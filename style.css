@@ -774,6 +774,24 @@ input:checked + label .contenidoTab {
 .diaCalendario.aniversarios .tituloHitoMini {
      color: #e65100;
 }
+.cabeceraDias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 8px; 
+    margin: 20px 15% 5px 15%; 
+    text-align: center;
+    font-weight: bold;
+    color: #42254b;
+    text-transform: uppercase;
+}
+
+.cabeceraDias div {
+    padding: 10px 0;
+    border-bottom: 2px solid #e8d9e8; 
+}
+
+
+
 
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
@@ -1025,6 +1043,11 @@ Habra que comprobar, de momento es el tamaño para los valñ */
     .controlesCalendario button {
         padding: 5px 10px;
         font-size: 0.7rem;
+    }
+
+    .cabeceraDias {
+        margin: 10px 0 5px 0 ;
+        font-size: 0.8rem;
     }
 }
 /* _________________________________________ */
