@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa de las mujeres Vallekas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <!-- Fuentes obtenidas de Google Fonts, Poppins + Instrument serif -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,122 +12,41 @@
 
 </head>
 <body>
-<aside class="sidebarAdmin">
+
+<button id="btnMenuAdmin" aria-label="Abrir menú">☰</button>
+
+<aside class="sidebarAdmin" id="sidebarContenedor">
+
+    <button id="btnOcultarAdmin" aria-label="Ocultar menú">✖</button>
+
     <div class="sidebarTitulo">
-        <img src="images/logoVector.png" id="sidebarLogo" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
-        <h2>Panel de administración</h2>
+
+        <img src="../images/logoVector.png" class="sidebarLogo" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
+    
 </div>   
 
 <nav class="sidebarNav">
+    
     <ul>
-        <li> <a href="inicio.php">Inicio</a></li>
-        <li> <a href="agenda.php">Gestión de agenda</a></li>
-        <li> <a href="reservas.php">Control de reservas</a></li>
+        <li> <a href="memoriasAdmin.php" class="navLink active">Memorias</a></li>
+        <li> <a href="contadorAdmin.php" class="navLink">Contador</a></li>
     </ul>
+
 </nav>
 
 <div class="sidebarUser">
-    <!-- avatar con su foto -->
-    <img src="" alt="">
-    <p>Hola, [$nombreAdmin¨]</p>
-        <div class="userActions">
-            <a href="perfil.php" class="btnUser">Mi perfil</a>
-            <a href="logout.php" class="btnUser btnLogout">Cerrar sesión</a>
+    <div class="contenedorAvatar">
+    <img src="" alt="" class="avatarAdmin">
+    </div>
+    
+ <p>Hola, <strong><?php echo $nombreAdmin ?? 'Administradora'; ?></strong></p>
+        <div class="usuarioAdmin">
+            <a href="perfilAdmin.php" class="btnUser">Mi perfil</a>
+            <a href="logoutAdmin.php" class="btnUser btnLogout">Cerrar sesión</a>
         </div>
 </div>
 </aside>
 
-
-
-
-
-
-
-
-
-
-    <button id="btnMenu" class="menuToggle" aria-label="Abrir menú">☰</button>
-
-    <nav id="menuLateral">
-        <button id="btnOcultar" aria-label="Ocultar menú">✖ Ocultar menu</button>   
-<!-- Inicio -->
-        <a 
-
-        <?php
-        if ($pagina==='index') {
-            echo 'class="seccionActual"';
-        }
-        ?>
-
-        href="index.php">Inicio</a>
-
-<!-- Quienes somos -->
-
-        <a
-
-        <?php 
-        if ($pagina === 'quienesSomos') {
-            echo 'class="seccionActual"';
-        }
-        ?>
-        
-        href="quienesSomos.php">Quiénes somos</a>
-
-<!-- Agenda y actividades -->
- 
-        <a 
-        
-        <?php
-        if ($pagina==='agendaActividades') {
-            echo 'class="seccionActual"';
-        }
-        ?>
-
-        href="agendaActividades.php">Agenda y actividades</a>
-
-<!-- Inicio -->
- 
-        <a 
-        
-        <?php
-        if($pagina==='index') {
-            echo 'class="seccionActual"';
-        }
-        ?>
-        
-        href="index.php" id="contenedorLogo"><img src="images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos."></a>
-
-<!-- Colabora -->
- 
-        <a 
-        
-        <?php
-        if ($pagina==='colabora')  {
-            echo 'class="seccionActual"';
-        }
-        ?>
-
-        href="colabora.php">Colabora</a>
-
-<!-- Contacto -->
- 
-        <a
-        
-        <?php
-        if ($pagina==='contacto') {
-            echo 'class="seccionActual"';
-        }
-        ?>
-        
-        href="contacto.php">Contacto</a>
-
-<!-- Area privada, login -->
- 
-        <a
-        
-        href="login.php" class="boton         
-        <?php
-        if ($pagina==='login') {
-            echo "seccionActual" ;}?>">Área privada</a>
-    </nav> 
-</aside>
+<script src="../interaccion.js"></script>
+</body>
+</html>

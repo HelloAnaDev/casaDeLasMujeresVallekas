@@ -6,7 +6,6 @@ include 'header.php';
 <div class="bannerPortada">
     <div class="textoBanner">
     <h1 class="frase">Si sobreviví, fue gracias a la red que tejí.</h1>
-    <!-- <a href="#" class="botonBase">Participa</a> -->
     </div>
 </div>
 

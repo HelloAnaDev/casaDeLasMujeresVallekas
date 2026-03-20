@@ -1,34 +1,39 @@
-//Encabezado con menú (escritorio y móvil)
+//Encabezado con menú público (escritorio y móvil)
+//Encabezado con menú público (escritorio y móvil)
 
 const btnMenu = document.getElementById('btnMenu');
 const menuLateral = document.getElementById('menuLateral');
 const cabecera = document.querySelector('.cabecera');
+const btnOcultar = document.getElementById('btnOcultar'); // Lo subimos aquí arriba para agruparlo
 
-btnMenu.addEventListener('click', () =>{
-    menuLateral.classList.toggle('activo');
-});
+// AÑADIMOS EL ESCUDO PROTECTOR AQUÍ:
+if (btnMenu && menuLateral && cabecera && btnOcultar) {
 
-let ubicacionPrincipal = window.scrollY;
+    btnMenu.addEventListener('click', () =>{
+        menuLateral.classList.toggle('activo');
+    });
+
+    let ubicacionPrincipal = window.scrollY;
     window.addEventListener('scroll', () => {
         let desplazamientoActual = window.scrollY;
         if (menuLateral.classList.contains('activo')){
             return;
         } if (window.innerWidth >= 1327) {
-        cabecera.classList.remove('oculta');
-        return; 
+            cabecera.classList.remove('oculta');
+            return; 
         } if (ubicacionPrincipal>=desplazamientoActual){
             cabecera.classList.remove('oculta');
         } else {
             cabecera.classList.add('oculta');
         }
         ubicacionPrincipal=desplazamientoActual
-    })
-   
-const bntOcultar = document.getElementById('btnOcultar');
+    });
+       
+    btnOcultar.addEventListener('click',() =>{
+        menuLateral.classList.remove('activo');
+    });
 
-bntOcultar.addEventListener('click',() =>{
-    menuLateral.classList.remove('activo');
-})
+} // CERRAMOS EL ESCUDO AQUÍ
 
 //Formulario contacto, enviar mensaje a mi email a través del formulario
 
@@ -158,3 +163,22 @@ if (cuadriculaCalendario && fechaActualTitulo) {
         filtroCategoria.addEventListener("change", renderizarCalendario);
     }
 }
+
+// menú header sidebar (administración)
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnMenuAdmin = document.getElementById('btnMenuAdmin');
+    const btnOcultarAdmin = document.getElementById('btnOcultarAdmin');
+    const sidebarContenedor = document.getElementById('sidebarContenedor');
+
+    if (btnMenuAdmin && btnOcultarAdmin && sidebarContenedor) {
+
+        btnMenuAdmin.addEventListener('click', () => {
+            sidebarContenedor.classList.add('activa');
+        });
+
+        btnOcultarAdmin.addEventListener('click', () => {
+            sidebarContenedor.classList.remove('activa');
+        });
+    }
+});

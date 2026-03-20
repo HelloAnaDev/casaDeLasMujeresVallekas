@@ -17,7 +17,7 @@
         <img src="images/logoHorizontal.png" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'. Tres mujeres diferentes, unidas, formando una casa con sus brazos.">
     </a>   
 
-    <button id="btnMenu" class="menuToggle" aria-label="Abrir menú">☰</button>
+    <button id="btnMenu" aria-label="Abrir menú">☰</button>
 
     <nav id="menuLateral">
         <button id="btnOcultar" aria-label="Ocultar menú">✖ Ocultar menu</button>   
