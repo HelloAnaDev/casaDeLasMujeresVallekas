@@ -1,9 +1,14 @@
+<?php
+if (!isset($base_url)) {
+    $base_url = '/TFG/';
+}
+?>
 <footer class="piePagina">
     <div class="pieColumnas">
         
         <div class="columnaLogo">
-            <a href="index.php">
-                <img src="images/logoVector.png" alt="Logotipo de la Casa de las Mujeres de Vallekas">
+            <a href="<?php echo $base_url; ?>index.php">
+                <img src="<?php echo $base_url; ?>images/logoVector.png" alt="Logotipo de la Casa de las Mujeres de Vallekas">
             </a>
         </div>
 

@@ -20,7 +20,7 @@ body {
 }
 
 .cabecera {
-    background-color: var(--purpuraMedio);
+    background-color: var(--purpuraClaro);
     border-bottom: 2px solid var(--purpuraMedio);
     width: 100%;
     text-transform: uppercase;
@@ -244,7 +244,7 @@ p {
 }
 
 .piePagina {
-    background-color:var(--purpuraMedio);
+    background-color:var(--purpuraClaro);
     border-top: var(--purpuraMedio) 2px solid;
     margin: 3rem auto 0 auto;
     padding-top:2rem;
@@ -1588,6 +1588,120 @@ input:checked + label .contenidoTab {
     color: var(--purpuraOscuro);
     font-size: 1.1em;
     font-weight: 500;
+}
+
+.contenedorAdmin {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.gridModeracion {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tarjetaModeracion {
+    background-color: white;
+    border: 1px solid var(--purpuraMedio);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.headerModeracion {
+    margin-bottom: 15px;
+}
+
+.headerModeracion h3 {
+    margin: 0;
+    color: var(--purpuraOscuro);
+    font-size: 1.1rem;
+}
+
+.headerModeracion .actividadLink {
+    font-size: 0.85rem;
+    color: var(--purpuraMedio);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.cuerpoModeracion {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.accionesModeracion {
+    display: flex;
+    gap: 10px;
+}
+
+.btnAdmin {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btnAprobar {
+    background-color: #2e7d32; 
+    color: white;
+}
+
+.btnRechazar {
+    background-color: #c62828; 
+    color: white;
+}
+
+.btnAdmin:hover {
+    opacity: 0.8;
+}
+
+.gridDashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.tarjetaDashboard {
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid var(--purpuraMedio);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    background-color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tarjetaDashboard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    border-color: var(--purpuraOscuro);
+}
+
+.tarjetaDashboard h3 {
+    color: var(--purpuraOscuro);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.tarjetaDashboard p {
+    color: #555;
+    line-height: 1.4;
+    margin: 0;
 }
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */

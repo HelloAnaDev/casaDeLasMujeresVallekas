@@ -1,6 +1,17 @@
-<?php 
+<?php
+session_start();
+
+if (!isset($_SESSION['idAdmin'])) {
+    header('Location: ../login.php');
+    exit;
+}
+
+require_once '../config/config.php';
+
+$pagina = 'adminMemorias'; 
+
 include 'sidebarHeader.php'; 
-require_once '../config/db.php';
+
 
 $buscar = $_GET['buscar'] ?? '';
 

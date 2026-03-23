@@ -91,7 +91,6 @@ document.getElementById('fotosNuevas').addEventListener('change', function(event
         lector.onload = function(e) {
             const img = document.createElement('img');
             img.src = e.target.result;
-            // El estilo ya lo tienes en tu CSS para #contenedorPrevisualizacion img
             contenedor.appendChild(img);
         }
 
