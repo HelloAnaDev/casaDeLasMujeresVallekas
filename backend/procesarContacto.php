@@ -53,7 +53,6 @@ try{
 
 
 } catch (Exception $e) {
-    // header("Location: ../contacto.php?status=error");
     echo "Error crítico de Google: " . $mail->ErrorInfo;
     exit();
  }

@@ -5,32 +5,42 @@ include 'header.php';
 
 <main>
     <div id="pantallaMemoria" class="layoutDosColumnas">
-        
-        <section id="columnaIzquierda" class="detalleMemoria">
-            <div class="navegacionMeses">
-                <button id="btnMesAnterior">⬅</button>
-                <h2 id="tituloMes">Cargando...</h2>
-                <button id="btnMesSiguiente">🠪</button>
+       <section id="columnaIzquierda" class="detalleMemoria">
+            
+            <div class="contenedorBuscador">
+                <input type="text" id="buscadorMemorias" class="inputBuscador" placeholder="Buscar actividad por título o contenido...">
             </div>
 
-            <div class="carrusel">
-                <button id="btnFotoAnterior" class="flechaCarrusel">◀</button>
+            <div id="contenedorResultados" class="oculto"></div>
 
-                <div class="contenedorFotos">
-                    <img id="fotoAnterior" class="fotoLateral">
-                    <img id="fotoPrincipal" class="fotoCentral">
-                    <img id="fotoSiguiente" class="fotoLateral">
+            <div id="vistaDetalle">
+                <div class="navegacionMeses">
+                    <button id="btnMesAnterior">⬅</button>
+                    <h2 id="tituloMes">Cargando...</h2>
+                    <button id="btnMesSiguiente">🠪</button>
                 </div>
-                
-                <button id="btnFotoSiguiente" class="flechaCarrusel">▶</button>
-            </div>
 
-            <p id="contadorFotos">0/0</p>
-            <p id="textoMemoria"></p>
+                <div class="carrusel">
+                    <button id="btnFotoAnterior" class="flechaCarrusel">◀</button>
+
+                    <div class="contenedorFotos">
+                        <img id="fotoAnterior" class="fotoLateral">
+                        <img id="fotoPrincipal" class="fotoCentral">
+                        <img id="fotoSiguiente" class="fotoLateral">
+                    </div>
+                    
+                    <button id="btnFotoSiguiente" class="flechaCarrusel">▶</button>
+                </div>
+
+                <p id="contadorFotos">0/0</p>
+                <p id="textoMemoria"></p>
+            </div>
+            
         </section>
 
         <aside id="columnaDerecha" class="panelComentarios">
             <form id="formularioComentarios">
+                <input type="hidden" id="idMemoriaActual" name="idMemoria"> 
                 <label>Nombre / Alias</label>
                 <input type="text" id="aliasComentario" required>
                 

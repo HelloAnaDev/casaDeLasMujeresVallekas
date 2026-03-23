@@ -182,3 +182,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+function obtenerUUID() {
+    let uuid = localStorage.getItem('uuid_dispositivo');
+    if (!uuid) {
+        uuid = crypto.randomUUID(); 
+        localStorage.setItem('uuid_dispositivo', uuid);
+    }
+    return uuid;
+}
+
+const formComentarios = document.getElementById('formularioComentarios');
+
+if (formComentarios) {
+    formComentarios.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        const idMemoria = document.getElementById('idMemoriaActual').value;
+        const alias = document.getElementById('aliasComentario').value;
+        const texto = document.getElementById('textoComentario').value;
+        const tokenDispositivo = obtenerUUID();
+
+        if (!idMemoria || idMemoria === "") {
+            alert("Error: No se ha seleccionado ninguna memoria para comentar.");
+            return;
+        }
+
+        const datosEnvio = new FormData();
+        datosEnvio.append('idMemoria', idMemoria);
+        datosEnvio.append('nombre', alias);
+        datosEnvio.append('texto', texto);
+        datosEnvio.append('token', tokenDispositivo);
+
+        fetch('enviarComentario.php', {
+            method: 'POST',
+            body: datosEnvio
+        })
+        .then(respuesta => respuesta.json())
+        .then(datos => {
+            if (datos.status === 'success') {
+                alert(datos.message); 
+                formComentarios.reset(); 
+            } else {
+                alert("Atención: " + datos.message); 
+            }
+        })
+        .catch(error => {
+            alert("Hubo un problema de conexión con el servidor.");
+        });
+    });
+}
