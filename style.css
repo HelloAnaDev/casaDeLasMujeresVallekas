@@ -1703,12 +1703,277 @@ input:checked + label .contenidoTab {
     line-height: 1.4;
     margin: 0;
 }
+
+.contadorFlotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.contadorFlotante:hover {
+    transform: translateY(-5px);
+}
+
+.diasContador {
+    font-size: 1.1rem;
+}
+
+.zonaInfo {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.textoHover {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+    font-size: 0.9rem;
+}
+
+.contadorFlotante:hover .textoHover {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 8px;
+}
+
+.modalFeminismos {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modalFeminismos::backdrop {
+    background-color: rgba(24, 7, 32, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.modalContenido {
+    padding: 40px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.cerrarModal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+}
+
+.redSeguridad {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #fcf0f5; 
+    border-left: 5px solid var(--purpuraOscuro, #4a148c);
+    border-radius: 0 8px 8px 0;
+}
+
+.botonesAyuda {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn016 {
+    background-color: #e63946; 
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.btn016 span {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+.btnLegal {
+    background-color: transparent;
+    color: var(--purpuraOscuro, #4a148c);
+    border: 2px solid var(--purpuraOscuro, #4a148c);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.signoPregunta {
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease; 
+    overflow: hidden; 
+}
+
+.contadorFlotante:hover .signoPregunta {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.contadorFlotante:hover .textoHover {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 0; 
+}
+
+.contenedorContadorAdmin {
+    max-width: 750px; 
+    margin: 40px auto; 
+    padding: 50px; 
+    background-color: #ffffff; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    font-family: 'Poppins', sans-serif; 
+    color: #333333; 
+    line-height: 1.8; 
+}
+
+.textoIntro {
+    text-align: justify;
+    margin-bottom: 50px;
+    font-size: 1.05rem;
+    color: #555555; 
+}
+
+.grupoFormulario {
+    margin-bottom: 45px; 
+}
+
+.textoInstruccion {
+    margin-bottom: 20px;
+    font-weight: 600; 
+    color: #1a1a1a; 
+    font-size: 1.1rem;
+}
+
+.inputEnLinea {
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+.inputEnLinea label {
+    font-weight: normal;
+    color: #333333;
+    font-size: 1.05rem;
+}
+
+.inputSubrayado {
+    border: none;
+    border-bottom: 2px solid #e0e0e0; 
+    outline: none;
+    flex-grow: 1;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    background-color: transparent;
+    transition: border-color 0.3s ease; 
+}
+
+.inputSubrayado:focus {
+    border-bottom-color: var(--purpuraOscuro, #4a148c); 
+}
+
+.inputSubrayado:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.opcionesRadio {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.radioLabel, .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+.contenedorBoton {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+.btnVisibilizar {
+    background-color: transparent; 
+    border: none;
+    padding: 0; 
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.2s ease; 
+}
+
+.iconoLazo {
+    background-color: var(--purpuraClaro);
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: var(--purpuraOscuro) solid 1px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+}
+
+.btnVisibilizar:hover .iconoLazo {
+    background-color: var(--purpuraMedio); 
+    cursor: pointer;
+}
+
+ body.modo-luto > * {
+    filter: grayscale(100%);
+}
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */
-
-
-
 
 
 

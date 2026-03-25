@@ -51,7 +51,7 @@
 <p>Hola, <strong><?php echo htmlspecialchars($_SESSION['nombreAdmin'] ?? 'Administradora'); ?></strong></p>
         <div class="usuarioAdmin">
             <a href="perfilAdmin.php" class="btnUser">Mi perfil</a>
-            <a href="logoutAdmin.php" class="btnUser btnLogout">Cerrar sesión</a>
+            <a href="logoutAdmin.php" class="btnUser btnLogout" onclick="return confirm('¿Estás segura de que quieres cerrar sesión?');">Cerrar sesión</a>
         </div>
 </div>
 </aside>

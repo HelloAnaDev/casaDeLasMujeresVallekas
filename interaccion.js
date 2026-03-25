@@ -233,3 +233,19 @@ if (formComentarios) {
         });
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnAbrirModal = document.getElementById('btnContadorFlotante');
+    const modalManifiesto = document.getElementById('modalManifiesto');
+    const btnCerrarModal = document.getElementById('btnCerrarModal');
+
+    if (btnAbrirModal && modalManifiesto && btnCerrarModal) {
+        btnAbrirModal.addEventListener('click', () => {
+            modalManifiesto.showModal();
+        });
+
+        btnCerrarModal.addEventListener('click', () => {
+            modalManifiesto.close();
+        });
+    }
+});

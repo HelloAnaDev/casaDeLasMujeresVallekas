@@ -73,10 +73,8 @@ include 'header.php';
     <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, ¡aquí cabemos todas!. </p>
  </section>
 
-
+<script src="datosCalendario.js"></script>
 <?php include 'footer.php'; ?>
 
-<script src="datosCalendario.js"></script>
-<script src="interaccion.js"></script>
 </body>
 </html>

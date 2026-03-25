@@ -62,6 +62,5 @@ include 'header.php';
 
 <script src="memorias.js"></script>
 
-<script src="interaccion.js"></script>
 </body>
 </html>

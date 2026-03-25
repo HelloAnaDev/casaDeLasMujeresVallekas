@@ -3,6 +3,60 @@ if (!isset($base_url)) {
     $base_url = '/TFG/';
 }
 ?>
+
+<?php 
+require_once __DIR__ . '/config/config.php'; 
+
+$stmtUltimo = $pdo->query("SELECT fecha_registro, nombre, tipo_victima FROM registro_feminicidios ORDER BY fecha_registro DESC LIMIT 1");
+$ultimoCaso = $stmtUltimo->fetch();
+
+$diasSinVictimas = 0;
+if ($ultimoCaso) {
+    $fechaUltimo = new DateTime($ultimoCaso['fecha_registro']);
+    $hoy = new DateTime();
+    $diasSinVictimas = $hoy->diff($fechaUltimo)->days;
+}
+
+$stmtAnual = $pdo->query("SELECT tipo_victima, COUNT(*) as total FROM registro_feminicidios WHERE YEAR(fecha_registro) = YEAR(CURDATE()) GROUP BY tipo_victima");
+$stats = $stmtAnual->fetchAll(PDO::FETCH_KEY_PAIR);
+
+$mujeresEsteAno = $stats['mayor'] ?? 0;
+$ninasEsteAno = $stats['menor'] ?? 0;
+?>
+
+<button id="btnContadorFlotante" class="contadorFlotante" aria-label="Abrir información del contador">
+    <span class="diasContador"><strong><?php echo $diasSinVictimas; ?></strong> días</span>
+    <div class="zonaInfo">
+    <span class="signoPregunta">?</span>
+    <span class="textoHover">¿Por qué contamos?</span>
+    </div>
+</button>
+
+<dialog id="modalManifiesto" class="modalFeminismos">
+    <div class="modalContenido">
+        <button id="btnCerrarModal" class="cerrarModal" aria-label="Cerrar manifiesto">✖</button>
+        
+        <h3>¿Por qué contamos los días?</h3>
+        <p>Este contador no es una estadística, es una exigencia de vida. Las voluntarias de La Casa actualizamos este número como un acto de memoria, resistencia y visibilización.</p>
+        <p>Reivindicamos que el único número aceptable es que no falte ni una más.</p>
+        <p>Sin embargo, este año ya han sido asesinadas <strong><?php echo $mujeresEsteAno; ?> mujeres</strong> y <strong><?php echo $ninasEsteAno; ?> niñas</strong> por violencia machista.</p>
+        <?php 
+        if ($ultimoCaso && $ultimoCaso['tipo_victima'] === 'mayor' && !empty($ultimoCaso['nombre'])): 
+        ?>
+            <p class="textoMemoria">El último nombre de mujer que sumamos a nuestra memoria es <strong><?php echo htmlspecialchars($ultimoCaso['nombre']); ?></strong>. Por ella, y por todas, seguimos contando.</p>
+        <?php endif; ?>
+        
+     <div class="redSeguridad">
+            <h3>No estás sola</h3>
+            <p>Si tú o alguna mujer de tu entorno está sufriendo violencia, hemos tejido una red para sostenernos.</p>
+            <div class="botonesAyuda">
+                <a href="tel:016" class="btn016">Llama al 016 <span>(Atención a víctimas, no deja rastro en la factura)</span></a>
+                <a href="contacto.php" class="btnLegal">Contacta con nosotras</a>
+            </div>
+        </div>
+    </div>
+</dialog>
+
 <footer class="piePagina">
     <div class="pieColumnas">
         
@@ -47,3 +101,4 @@ if (!isset($base_url)) {
         <p>Desarrollado por <a  target="_blank" rel="noopener noreferrer">Hello.ana.dev</a></p>
     </div>
 </footer>
+<script src="<?php echo $base_url; ?>interaccion.js"></script>

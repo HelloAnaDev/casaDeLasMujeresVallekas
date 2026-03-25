@@ -130,13 +130,6 @@ const hitosFeministas = [
 
     // JUNIO
     {
-        dia: 5,
-        mes: 6,
-        categoria: "inventos",
-        titulo: "Invención del lavavajillas automático",
-        descripcion: "El 5 de junio de 1888 Josephine Cochrane inventó el primer lavavajillas automático comercial, liberando a las mujeres de horas de trabajo doméstico."
-    },
-    {
         dia: 12,
         mes: 6,
         categoria: "aniversarios",

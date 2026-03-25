@@ -90,6 +90,5 @@ include 'header.php';
 </main>
 <?php include 'footer.php'; ?>
 
-<script src="interaccion.js"></script>
 </body>
 </html>
