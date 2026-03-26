@@ -1980,6 +1980,8 @@ input:checked + label .contenidoTab {
     max-width: 800px;
     margin: 40px auto;
     padding: 40px;
+    position: relative;
+    left: 125px;;
     background-color: #ffffff;
     border-radius: 12px;
     font-family: 'Poppins', sans-serif;
@@ -2172,7 +2174,7 @@ input:checked + label .contenidoTab {
 }
 
 .btnGuardar:hover {
-    background-color: #380f6b; 
+    background-color: var(--purpuraMedio); 
 }
 
 .formularioFotoCabecera {
@@ -2213,6 +2215,154 @@ input:checked + label .contenidoTab {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+.contenedorPrincipalAdmin {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.cabeceraSeccion h2 {
+    color: var(--purpuraOscuro); 
+    margin-bottom: 8px;
+    font-size: 1.8rem;
+}
+
+.cabeceraSeccion p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.formularioGeneral {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupoInput {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grupoInput label {
+    font-weight: 600;
+    color: #333;
+}
+
+.grupoInput input {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.mensajeError, .mensajeExito {
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.mensajeError {
+    background-color: #ffeef0;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.mensajeExito {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.formularioGeneral .btnGuardar {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   ZONA DE PELIGRO: DAR DE BAJA EL PERFIL
+   ========================================= */
+
+.separacionSuperior {
+    margin-top: 20px;
+}
+
+.enlaceBaja {
+    color: #d35d5d;
+}
+
+.enlaceBaja:hover {
+    color: #b71c1c;
+    text-decoration: underline;
+}
+
+.mensajeErrorBaja {
+    color: #d32f2f;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.cabeceraModalPeligro {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.tituloPeligro.gigante {
+    font-size: 1.8rem;
+    color: #d32f2f;
+    margin-bottom: 8px;
+}
+
+.textoAviso {
+    color: #666;
+}
+
+.labelPeligro {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.inputPeligro {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.botonesColumna {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btnVolverAtras {
+    background-color: #16a34a ;
+    color: white ;
+    border: none ;
+}
+
+.btnVolverAtras:hover {
+    background-color: #15803d ;
+}
+
+.btnPeligro {
+    background-color: #d32f2f ;
+    color: #ffffff ;
+    border-color: #d32f2f ;
+}
+
+.btnPeligro:hover {
+    background-color: #b71c1c ;
 }
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
@@ -2285,8 +2435,6 @@ input:checked + label .contenidoTab {
     #btnMenuAdmin, #btnOcultarAdmin {
     display: none; 
 }
-
-
 /* _________________________________________ */
 /* ↑ Estilos cabecera solo escritorio ↑ */
 /* _________________________________________ */

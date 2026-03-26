@@ -4,7 +4,6 @@ use PHPMailer\PHPMailer\Exception;
 
 session_start();
 
-// 1. SEGURIDAD
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     header('Location: ../login.php');
     exit;
@@ -15,11 +14,29 @@ require_once '../libs/PHPMailer/src/Exception.php';
 require_once '../libs/PHPMailer/src/PHPMailer.php';
 require_once '../libs/PHPMailer/src/SMTP.php';
 
-// 2. PROCESAMIENTO DE DATOS (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idAdmin = $_SESSION['idAdmin'];
 
-    // --- Guardar Nombre ---
+    if (isset($_POST['btn_dar_baja'])) {
+        $passConfirmar = $_POST['pass_baja'];
+
+        $stmt = $pdo->prepare("SELECT password FROM administradoras WHERE idAdmin = ?");
+        $stmt->execute([$idAdmin]);
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($admin && password_verify($passConfirmar, $admin['password'])) {
+            $stmtDelete = $pdo->prepare("DELETE FROM administradoras WHERE idAdmin = ?");
+            if ($stmtDelete->execute([$idAdmin])) {
+                session_destroy();
+                header("Location: ../index.php");
+                exit;
+            }
+        } else {
+            header("Location: perfilAdmin.php?error=pass");
+            exit;
+        }
+    }
+
     if (isset($_POST['btn_actualizar_nombre'])) {
         $nuevoNombre = trim($_POST['nuevo_nombre']);
         if (!empty($nuevoNombre)) {
@@ -32,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // --- Guardar Email y Enviar Notificación con PHPMailer ---
     if (isset($_POST['btn_actualizar_email'])) {
         $nuevoEmail = trim($_POST['nuevo_email']);
         
@@ -72,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // --- Guardar Contraseña ---
     if (isset($_POST['btn_actualizar_pass'])) {
         $passActual = $_POST['pass_actual'];
         $passNueva = $_POST['pass_nueva'];
@@ -94,7 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// 3. OBTENER DATOS ACTUALES
 $idAdmin = $_SESSION['idAdmin'];
 try {
     $sql = "SELECT email FROM administradoras WHERE idAdmin = :id";
@@ -137,6 +151,15 @@ include 'sidebarHeader.php';
         <p>En caso afirmativo, <a href="registroAdmin.php" class="enlaceAlta">haz click aquí</a></p>
     </div>
 
+    <div class="seccionAlta separacionSuperior">
+        <h3>¿Necesitas dar de baja tu perfil?</h3>
+        <p>En caso afirmativo, <a href="#" onclick="event.preventDefault(); document.getElementById('modalBaja').showModal();" class="enlaceAlta enlaceBaja">haz click aquí</a></p>
+        
+        <?php if (isset($_GET['error']) && $_GET['error'] === 'pass'): ?>
+            <p class="mensajeErrorBaja">Contraseña incorrecta. Baja cancelada.</p>
+        <?php endif; ?>
+    </div>
+
 </div>
 
 <dialog id="modalNombre" class="modalPerfil">
@@ -175,6 +198,23 @@ include 'sidebarHeader.php';
         <div class="botonesModal">
             <button type="button" class="btnCancelar" onclick="document.getElementById('modalPassword').close()">Cancelar</button>
             <button type="submit" name="btn_actualizar_pass" class="btnGuardar">Guardar cambios</button>
+        </div>
+    </form>
+</dialog>
+
+<dialog id="modalBaja" class="modalPerfil">
+    <form method="POST" action="perfilAdmin.php">
+        <div class="cabeceraModalPeligro">
+            <h3 class="tituloPeligro gigante">ZONA DE PELIGRO</h3>
+            <p class="textoAviso">Estás a punto de eliminar tu cuenta permanentemente. Perderás el acceso a la administración y esta acción NO se puede deshacer.</p>
+        </div>
+        
+        <label for="pass_baja" class="labelPeligro">Para continuar, introduce tu contraseña actual:</label>
+        <input type="password" name="pass_baja" id="pass_baja" required class="inputPeligro">
+        
+        <div class="botonesModal botonesColumna">
+            <button type="button" class="btnGuardar btnVolverAtras" onclick="document.getElementById('modalBaja').close()">SÍ QUIERO MI PERFIL, VOLVER ATRÁS</button>
+            <button type="submit" name="btn_dar_baja" class="btnGuardar btnPeligro">DAR DE BAJA DEFINITIVAMENTE</button>
         </div>
     </form>
 </dialog>
