@@ -44,11 +44,7 @@
 </nav>
 
 <div class="sidebarUser">
-    <div class="contenedorAvatar">
-    <img src="" alt="" class="avatarAdmin">
-    </div>
-    
-<p>Hola, <strong><?php echo htmlspecialchars($_SESSION['nombreAdmin'] ?? 'Administradora'); ?></strong></p>
+    <p>¡Hola, <strong><?php echo htmlspecialchars($_SESSION['nombreAdmin'] ?? 'Administradora'); ?></strong>!</p>
         <div class="usuarioAdmin">
             <a href="perfilAdmin.php" class="btnUser">Mi perfil</a>
             <a href="logoutAdmin.php" class="btnUser btnLogout" onclick="return confirm('¿Estás segura de que quieres cerrar sesión?');">Cerrar sesión</a>
