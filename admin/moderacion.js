@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listaPendientes.innerHTML = '';
 
         if (comentarios.length === 0) {
-            listaPendientes.innerHTML = '<p class="mensajeVacio">No hay comentarios pendientes de revisión. ¡Buen trabajo!</p>';
+            listaPendientes.innerHTML = '<p class="mensajeVacio">No hay comentarios pendientes de revisión. ¡Gracias por estar pendiente!</p>';
             return;
         }
 
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <div class="headerModeracion">
-                    <span class="actividadLink">${comentario.actividad}</span>
-                    <h3>${comentario.nombre} <small>(${fechaEsp})</small></h3>
+                <span class="actividadLink">${comentario.titulo_memoria}</span>
+                <h3>${comentario.nombre} <small>(${fechaEsp})</small></h3>
                 </div>
                 <div class="cuerpoModeracion">
                     <p>"${comentario.texto}"</p>

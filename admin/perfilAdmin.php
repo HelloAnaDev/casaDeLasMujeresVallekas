@@ -2,6 +2,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+require_once '../libs/PHPMailer/src/Exception.php';
+require_once '../libs/PHPMailer/src/PHPMailer.php';
+require_once '../libs/PHPMailer/src/SMTP.php';
+
 session_start();
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
@@ -10,32 +14,81 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
 }
 
 require_once '../config/config.php';
-require_once '../libs/PHPMailer/src/Exception.php';
-require_once '../libs/PHPMailer/src/PHPMailer.php';
-require_once '../libs/PHPMailer/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idAdmin = $_SESSION['idAdmin'];
 
-    if (isset($_POST['btn_dar_baja'])) {
-        $passConfirmar = $_POST['pass_baja'];
+if (isset($_POST['btn_dar_baja'])) {
+    $passBaja = $_POST['pass_baja'];
+    $idAdminSesion = $_SESSION['idAdmin'];
 
-        $stmt = $pdo->prepare("SELECT password FROM administradoras WHERE idAdmin = ?");
-        $stmt->execute([$idAdmin]);
-        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    $sqlComprobar = "SELECT email, nombre, password FROM administradoras WHERE idAdmin = ?";
+    $stmtComprobar = $pdo->prepare($sqlComprobar);
+    $stmtComprobar->execute([$idAdminSesion]);
+    $datosAdmin = $stmtComprobar->fetch(PDO::FETCH_ASSOC);
 
-        if ($admin && password_verify($passConfirmar, $admin['password'])) {
-            $stmtDelete = $pdo->prepare("DELETE FROM administradoras WHERE idAdmin = ?");
-            if ($stmtDelete->execute([$idAdmin])) {
-                session_destroy();
-                header("Location: ../index.php");
-                exit;
-            }
-        } else {
-            header("Location: perfilAdmin.php?error=pass");
-            exit;
+    if ($datosAdmin && password_verify($passBaja, $datosAdmin['password'])) {
+        $email = $datosAdmin['email'];
+        $nombre = $datosAdmin['nombre'];
+
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host       = SMTP_HOST;
+            $mail->SMTPAuth   = true;
+            $mail->Username   = SMTP_USER;
+            $mail->Password   = SMTP_PASS;
+            $mail->Port       = SMTP_PORT;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+            $mail->setFrom(SMTP_FROM, SMTP_NAME);
+            $mail->addAddress($email, $nombre); 
+
+            $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';
+            $mail->Subject = 'Confirmación de baja - La Casa de Mujeres de Vallekas';
+            
+            $mail->Body = "
+                <style>
+                    .contenedor-email { font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; }
+                    .cabecera-baja { background-color: #4a4a4a; color: #ffffff; padding: 20px; text-align: center; }
+                    .cabecera-baja h2 { margin: 0; }
+                    .cuerpo-email { padding: 20px; background-color: #ffffff; }
+                    .caja-info { background-color: #f9f9f9; padding: 15px; border-left: 4px solid #800080; margin: 20px 0; }
+                </style>
+                <div class='contenedor-email'>
+                    <div class='cabecera-baja'>
+                        <h2>Hasta pronto, $nombre</h2>
+                    </div>
+                    <div class='cuerpo-email'>
+                        <p>Te escribimos para confirmarte que tu perfil de administradora ha sido eliminado correctamente de nuestro sistema.</p>
+                        <div class='caja-info'>
+                            <p style='margin: 0;'>De acuerdo con nuestro compromiso con la privacidad, todos tus datos de acceso han sido borrados de nuestra base de datos.</p>
+                        </div>
+                        <p>Gracias por el tiempo y el trabajo voluntario que has dedicado a la Casa
+                        <p>Un abrazo,<br><strong>La Casa de Mujeres de Vallekas</strong></p>
+                    </div>
+                </div>
+            ";
+            $mail->send();
+        } catch (Exception $e) {
+            error_log("Error enviando email de baja a $email: {$mail->ErrorInfo}");
         }
+
+        $sqlDelete = "DELETE FROM administradoras WHERE idAdmin = ?";
+        $stmtDelete = $pdo->prepare($sqlDelete);
+        
+        if ($stmtDelete->execute([$idAdminSesion])) {
+            session_destroy();
+            header("Location: ../index.php?mensaje=baja_correcta");
+            exit(); 
+        }
+        
+    } else {
+        header("Location: perfilAdmin.php?error=pass");
+        exit();
     }
+}
 
     if (isset($_POST['btn_actualizar_nombre'])) {
         $nuevoNombre = trim($_POST['nuevo_nombre']);

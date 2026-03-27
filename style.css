@@ -193,6 +193,14 @@ h2 {
     border-radius: 10px;
 }
 
+.imagenDeTexto #menorTamañoImagenTexto {
+    width: auto;
+    height: 300px;
+    display: block;
+    border-radius: 10px;
+    padding-left: 30px;
+}
+
 p {
     margin-bottom: 1rem ;
 }
@@ -508,10 +516,12 @@ p {
 }
 
 #userContrasena input {
+    width: 100%;
     padding: 0.8rem;
     border: 2px solid var(--purpuraMedio);
     border-radius: 10px;
     display: block;
+    margin-bottom: 1.5rem;
 }
 
 .mensaje-exito {
@@ -784,7 +794,7 @@ input:checked + label .contenidoTab {
     display: grid;
     grid-template-columns: repeat(7, 1fr); 
     gap: 8px; 
-    margin: 20px 15% 5px 15%; 
+    margin: 20px 0 5px 0; 
     text-align: center;
     font-weight: bold;
     color: var(--purpuraOscuro);
@@ -1682,7 +1692,7 @@ input:checked + label .contenidoTab {
     text-decoration: none;
     color: inherit;
     border: 2px solid var(--purpuraMedio);
-    padding: 30px;
+    padding: 20px 20px 45px 20px;
     border-radius: 12px;
     text-align: center;
     background-color: white;
@@ -2290,10 +2300,6 @@ input:checked + label .contenidoTab {
     font-size: 1.1rem;
 }
 
-/* =========================================
-   ZONA DE PELIGRO: DAR DE BAJA EL PERFIL
-   ========================================= */
-
 .separacionSuperior {
     margin-top: 20px;
 }
@@ -2364,6 +2370,175 @@ input:checked + label .contenidoTab {
 .btnPeligro:hover {
     background-color: #b71c1c ;
 }
+
+.seccionRedesAmigas {
+    margin: 4rem auto;
+    text-align: center;
+    max-width: 1100px;
+    padding: 0 1.5rem;
+}
+
+.seccionRedesAmigas h3 {
+    color: var(--purpuraMedio); 
+    margin-bottom: 2.5rem;
+    font-size: 1.8rem;
+}
+
+.gridColectivas {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 3rem; 
+}
+
+.colectivaItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    margin-bottom: 1.5rem;
+}
+
+.nombreColectiva {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 2.5rem; 
+}
+
+.colectivaItem a {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; 
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid transparent; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+
+.colectivaItem a:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 8px 15px rgba(128, 0, 128, 0.3); 
+    border-color: var(--purpuraMedio); 
+}
+
+.colectivaItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.recursosContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #2a2a2a;
+}
+
+.recursosHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.recursosCategoria {
+    margin-bottom: 4rem;
+}
+
+.recursosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.recursoCard {
+    background-color: #ffffff;
+    border: 1px solid var(--purpuraClaro);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(66, 37, 75, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recursoCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(66, 37, 75, 0.15);
+}
+
+.recursoCard h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    color: var(--purpuraOscuro);
+}
+
+.recursoCard p {
+    color: #555555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.recursoContacto {
+    background-color: var(--purpuraMasClaro);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--purpuraOscuro);
+}
+
+.recursoContacto span {
+    display: block;
+}
+
+.recursoEnlace {
+    display: inline-block;
+    text-align: center;
+    background-color: var(--purpuraOscuro);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin-top: auto;
+}
+
+.recursoEnlace:hover {
+    background-color: var(--purpuraMedio);
+    color: var(--purpuraOscuro);
+}
+
+.urgenciaDestacada {
+    border-color: #d32f2f;
+    border-left: 5px solid #d32f2f;
+}
+
+.urgenciaDestacada .recursoContacto {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.recursosCategoria h2 {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--purpuraOscuro);
+    font-size: 2rem;
+}
+
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */

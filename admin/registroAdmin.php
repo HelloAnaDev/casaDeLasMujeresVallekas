@@ -1,7 +1,13 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 session_start();
 
-// 1. SEGURIDAD ABSOLUTA: Solo administradoras pueden crear otras administradoras
+require_once '../libs/PHPMailer/src/Exception.php';
+require_once '../libs/PHPMailer/src/PHPMailer.php';
+require_once '../libs/PHPMailer/src/SMTP.php';
+
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     header('Location: ../login.php');
     exit;
@@ -9,11 +15,9 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
 
 require_once '../config/config.php';
 
-// Variables para manejar los mensajes de la interfaz
 $error = '';
 $exito = '';
 
-// 2. PROCESAMIENTO DEL FORMULARIO
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_registrar'])) {
     
     // Limpieza de datos
@@ -22,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_registrar'])) {
     $pass = $_POST['password'];
     $passConfirm = $_POST['password_confirm'];
 
-    // Validaciones básicas
     if (empty($nombre) || empty($email) || empty($pass) || empty($passConfirm)) {
         $error = "Todos los campos son obligatorios.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -33,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_registrar'])) {
         $error = "La contraseña debe tener al menos 6 caracteres.";
     } else {
         
-        // 3. COMPROBAR DUPLICADOS (Evitar que dos voluntarias tengan el mismo email)
         $stmtCheck = $pdo->prepare("SELECT idAdmin FROM administradoras WHERE email = ?");
         $stmtCheck->execute([$email]);
         
@@ -41,16 +43,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_registrar'])) {
             $error = "Ya existe una compañera registrada con ese correo electrónico.";
         } else {
             
-            // 4. CIFRADO E INSERCIÓN
-           // 4. CIFRADO E INSERCIÓN (Sin la columna 'rol')
             $hash = password_hash($pass, PASSWORD_DEFAULT);
             
-            // Insertamos solo nombre, email y contraseña
+
             $sql = "INSERT INTO administradoras (nombre, email, password) VALUES (?, ?, ?)";
             $stmtInsert = $pdo->prepare($sql);
             
             if ($stmtInsert->execute([$nombre, $email, $hash])) {
                 $exito = "¡Compañera $nombre dada de alta correctamente!";
+                
+                $mail = new PHPMailer(true);
+                try {
+                    $mail->isSMTP();
+                    $mail->Host       = SMTP_HOST;
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = SMTP_USER;
+                    $mail->Password   = SMTP_PASS;
+                    $mail->Port       = SMTP_PORT;
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+                    $mail->setFrom(SMTP_FROM, SMTP_NAME);
+                    $mail->addAddress($email, $nombre); 
+
+                    $mail->isHTML(true);
+                    $mail->CharSet = 'UTF-8';
+                    $mail->Subject = 'Bienvenida al equipo - La Casa de Mujeres de Vallekas';
+
+                    $mail->Body = "
+                        <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
+                            <div style='background-color: #800080; color: #ffffff; padding: 20px; text-align: center;'>
+                                <h2 style='margin: 0;'>¡Bienvenida a La Casa, $nombre!</h2>
+                            </div>
+                            <div style='padding: 20px; background-color: #ffffff;'>
+                                <p>Tu perfil de administradora ha sido creado con éxito. A partir de ahora podrás gestionar las memorias y moderar comentarios en nuestra web.</p>
+                                <p>Aquí tienes tus credenciales de acceso provisionales:</p>
+                                <div style='background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;'>
+                                    <p style='margin: 0;'><strong>Usuario (Email):</strong> $email</p>
+                                    <p style='margin: 5px 0 0 0;'><strong>Contraseña temporal:</strong> $pass</p>
+                                </div>
+                                <p style='color: #d32f2f; font-weight: bold;'>¡Importante!</p>
+                                <p>Por motivos de seguridad, te pedimos que inicies sesión y cambies esta contraseña en la sección "Mi Perfil" (Ubicado abajo a la izquierda una vez iniciada sesión) lo antes posible.</p>
+                                <br>
+                                <p>Un abrazo,<br><strong>La Casa de Mujeres de Vallekas</strong></p>
+                            </div>
+                        </div>
+                    ";
+                    
+                    $mail->send();
+                } catch (Exception $e) {
+                    $error = "La compañera fue registrada, pero hubo un error enviando el email de bienvenida.";
+                }
+                // --- FIN ENVÍO EMAIL ---
+
             } else {
                 $error = "Hubo un problema técnico al registrar a la usuaria.";
             }
@@ -58,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_registrar'])) {
     }
 }
 
-$pagina = 'registroAdmin'; // Para que el sidebar sepa dónde estamos
+$pagina = 'registroAdmin'; 
 include 'sidebarHeader.php';
 ?>
 

@@ -48,7 +48,6 @@ $idMemoria = $_POST['idMemoria'];
 
         $pdo->commit();
 
-        // --- INICIO BLOQUE PHPMAILER ---
         try {
             $mail = new PHPMailer(true);
             $mail->isSMTP();
@@ -60,18 +59,44 @@ $idMemoria = $_POST['idMemoria'];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             
             $mail->setFrom(SMTP_FROM, SMTP_NAME);
-            $mail->addAddress(SMTP_USER); // (el correo al que llega el aviso de que hay comentarios que moderar)
+            $mail->setFrom(SMTP_FROM, SMTP_NAME);
+            
+            $mail->addAddress(SMTP_USER); 
+            
+            $sqlAdmins = "SELECT email FROM administradoras";
+            $stmtAdmins = $pdo->query($sqlAdmins);
+            $listaAdmins = $stmtAdmins->fetchAll(PDO::FETCH_COLUMN);
+
+            foreach ($listaAdmins as $correoAdmin) {
+                if ($correoAdmin !== SMTP_USER) {
+                    $mail->addBcc($correoAdmin);
+                }
+            }
+            $mail->addAddress(SMTP_USER); 
             
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
             $mail->Subject = "Nuevo comentario de $nombre para moderar";
+            $enlaceModeracion = BASE_URL . '/admin/comentariosAdmin.php';
+            
             $mail->Body = "
-                <h2 style='color: #800080;'>Nuevo comentario requiere revisión</h2>
-                <p>Compañeras, hay un nuevo comentario oculto esperando aprobación en la web.</p>
-                <p><strong>Alias:</strong> $nombre</p>
-                <p><strong>Comentario:</strong><br>$texto</p>
-                <hr>
-                <p>Entrad al panel de administración para gestionarlo.</p>
+                <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
+                    <div style='background-color: #800080; color: #ffffff; padding: 20px; text-align: center;'>
+                        <h2 style='margin: 0;'>Nuevo comentario requiere revisión</h2>
+                    </div>
+                    <div style='padding: 20px; background-color: #ffffff;'>
+                        <p>Compañeras, hay un nuevo comentario esperando aprobación en la web.</p>
+                        <div style='background-color: #f5f5f5; padding: 15px; border-left: 4px solid #800080; margin: 20px 0;'>
+                            <p style='margin: 0 0 10px 0;'><strong>Alias:</strong> $nombre</p>
+                            <p style='margin: 0;'><strong>Comentario:</strong><br>$texto</p>
+                        </div>
+                        <p>Para aprobar o rechazar este comentario, pulsa en el botón de abajo para ir directamente al panel de gestión de comentarios:</p>
+                        <br>
+                        <div style='text-align: center;'>
+                            <a href='$enlaceModeracion' style='display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;'>Ir al Panel de Moderación</a>
+                        </div>
+                    </div>
+                </div>
             ";
             $mail->send();
         } catch (Exception $e) {

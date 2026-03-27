@@ -1,11 +1,20 @@
 <?php
+session_start(); 
+
+if (!isset($_SESSION['idAdmin'])) {
+    header("Location: ../login.php");
+    exit;
+}
+
 require_once '../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = $_POST['titulo'] ?? '';
     $fecha = $_POST['fecha'] ?? date('Y-m-d');
     $descripcion = $_POST['descripcion'] ?? '';
-    $id_admin = null; 
+    
+    // Capturamos el ID real de la sesión
+    $id_admin = $_SESSION['idAdmin']; 
 
     try {
         $pdo->beginTransaction();

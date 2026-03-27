@@ -113,12 +113,12 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
 <a
         
         <?php
-        if ($pagina==='ayudaLegal') {
+        if ($pagina==='ayudaYRecursos') {
             echo 'class="seccionActual"';
         }
         ?>
         
-        href="<?php echo $base_url; ?>ayudaLegal.php">Ayuda Legal</a>
+        href="<?php echo $base_url; ?>ayudaYRecursos.php">Ayuda y recursos</a>
 
     </nav> 
 </header>

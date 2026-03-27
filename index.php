@@ -60,13 +60,13 @@ include 'header.php';
             <option value="aniversarios">Aniversarios</option>
         </select> </div>
     <div class="cabeceraDias">
-    <div>L</div>
-    <div>M</div>
-    <div>X</div>
-    <div>J</div>
-    <div>V</div>
-    <div>S</div>
-    <div>D</div>
+    <div>Lunes</div>
+    <div>Martes</div>
+    <div>Miércoles</div>
+    <div>Jueves</div>
+    <div>Viernes</div>
+    <div>Sábado</div>
+    <div>Domingo</div>
 </div>
 
     <div id="cuadriculaCalendario" class="cuadricula"></div>

@@ -20,6 +20,7 @@ include 'header.php';
     <p>No es el valor de una moneda, es el valor de saber que no estamos solas. ¿Te unes a nuestro grupo de Teaming? Con el precio de un café al mes, construimos un hogar para todas.</p>
 
 <button href="https://www.teaming.net/casadelasmujeresdevallecas" rel="noopener noreferrer" target="_blank">Quiero ayudar</button>
+
 </div></label>
 
 <!-- banco -->
@@ -32,15 +33,15 @@ include 'header.php';
 
     <p>Si hoy te apetece sumar, puedes hacer una donación esporádica por transferencia. Sin cuotas, sin compromisos a largo plazo, solo un "aquí estoy" cuando tú quieras y puedas. ¡Gracias por ser parte de nuestra red!</p>
     <h3>Transferencia bancaria:</h3>
-    <p>IBAN: [Insertar número de cuenta]</p>
+    <p>Beneficiario: Casa de las muejres Vallekas</p>
+    <p>IBAN: ES89 2100 2378 8102 0019 3231</p>
     <p>Concepto: Donación</p>
 
-    <h3>Bizum:</h3>
-    <p>(numero o codigo)</p>
-    <p>Concepto: Donación</p>
+    <!-- <p>¿Quieres hacer una aportación mensual? En ese caso, <strong>pásate por la Casa</strong>, </p> -->
+
 </div></label>
 
-<!-- obejtos -->
+<!-- objetos -->
 <input type="radio" name="option" id="objetos">
 <label for="objetos">
 <div class="tituloTab">Donación de objetos</div>

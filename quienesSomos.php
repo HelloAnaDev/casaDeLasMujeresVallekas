@@ -78,15 +78,151 @@ include 'header.php';
     </div>
 
     <div class="imagenDeTexto">
-        <img src="images/logo.png" alt="Logo original de la casa de las mujeres, es el mismo logo de la cabecera, pero incrementando detalles de facciones y corporales, siendo realmente una ilustración.">
+        <img id="menorTamañoImagenTexto" src="images/logoproposito.jpg" alt="Mujeres del logo jugando a los dardos">
     </div>
 </div>
 
     <h2>Redes amigas</h2>
     <div class="redesVecinales">
     <p>En <strong>La casa de las mujeres Vallekas</strong> confíamos en el trabajo colectivo, y por ello, recomendamos siempre usar el apoyo de las redes vecinales. Por eso, desde aquí os facilitamos el acceso a aquellas asociaciones amigas que, al igual que nosotras, cuentan con un propósito y una metodología transparente en la que confíamos y creemos que también pueden complementar la labor que nosotras podemos ofrecer.</p>
-    <!-- TO DO: poner las asociaciones que queramos meter aqui -->
-     </div>
+<section class="seccionRedesAmigas">
+    <h3>Red de Colectivas Feministas en Vallekas</h3>
+    
+    <div class="gridColectivas">
+        
+        <article class="colectivaItem">
+            <span class="nombreColectiva">8M Vallekas</span>
+            <a href="https://www.instagram.com/8mvallekas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de 8M Vallekas">
+                <img src="images/redesAmigas/feministas/1.jpg" alt="Logo 8M Vallekas">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Punto Feminista Atalaya</span>
+            <a href="https://www.instagram.com/puntofeministaatalaya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Punto Feminista Atalaya">
+                <img src="images/redesAmigas/feministas/2.jpg" alt="Logo Punto Feminista Atalaya">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Orgullo Vallekano</span>
+            <a href="https://www.instagram.com/orgullovallekas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Orgullo Vallekano">
+                <img src="images/redesAmigas/feministas/3.png" alt="Logo Orgullo Vallekano">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Federación Red Artemisa</span>
+            <a href="https://www.instagram.com/federacionredartemisa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Federación Red Artemisa">
+                <img src="images/redesAmigas/feministas/5.png" alt="Logo Federación Red Artemisa">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Ariskas</span>
+            <a href="https://www.instagram.com/ariskas.vk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Ariskas">
+                <img src="images/redesAmigas/feministas/6.jpeg" alt="Logo Ariskas">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Ármate Vallekana</span>
+            <a href="https://www.instagram.com/armate.vallekana?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Ármate Vallekana">
+                <img src="images/redesAmigas/feministas/7.jpg" alt="Logo Ármate Vallekana">
+            </a>
+        </article>
+
+    </div>
+<h3 style="margin-top: 4rem;">Otras entidades amigas</h3>
+    
+    <div class="gridColectivas">
+        
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Asociación Cultural La Kalle</span>
+            <a href="https://www.instagram.com/lakalleasociacion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de La Kalle">
+                <img src="images/redesAmigas/otros/1.jpg" alt="Logo Asociación Cultural La Kalle">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">La Villana de Vallekas</span>
+            <a href="https://www.instagram.com/lavillanadevallekas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de La Villana">
+                <img src="images/redesAmigas/otros/2.jpg" alt="Logo La Villana de Vallekas">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Ateneo Republicano</span>
+            <a href="https://www.instagram.com/ateneo_republicano_de_vallekas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram del Ateneo Republicano">
+                <img src="images/redesAmigas/otros/3.png" alt="Logo Ateneo Republicano">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Vallekas Está Harta</span>
+            <a href="https://www.instagram.com/vallekas.esta.harta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Vallekas Está Harta">
+                <img src="images/redesAmigas/otros/4.jpg" alt="Logo Vallekas Está Harta">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">A.V. Alto del Arenal</span>
+            <a href="https://www.instagram.com/alto_av?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de A.V. Alto del Arenal">
+                <img src="images/redesAmigas/otros/5.jpg" alt="Logo Alto del Arenal">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">A.V. Puente de Vallecas</span>
+            <a href="https://www.instagram.com/avptevallecas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de A.V. Puente de Vallecas">
+                <img src="images/redesAmigas/otros/6.jpg" alt="Logo Puente de Vallecas">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">A.V. Kaskoviejo</span>
+            <a href="https://www.instagram.com/kaskoviejo_vallecas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de A.V. Kaskoviejo">
+                <img src="images/redesAmigas/otros/7.jpg" alt="Logo Kaskoviejo">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">A.V. Nuevas Palomeras</span>
+            <a href="https://www.instagram.com/nuevaspalomeras?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de A.V. Nuevas Palomeras">
+                <img src="images/redesAmigas/otros/8.jpg" alt="Logo Nuevas Palomeras">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">A.V. Palomeras Bajas</span>
+            <a href="https://www.instagram.com/av_palomerasbajas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de A.V. Palomeras Bajas">
+                <img src="images/redesAmigas/otros/9.jpg" alt="Logo Palomeras Bajas">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">A.V. La Paz de Entrevías</span>
+            <a href="https://www.instagram.com/asovecinalapaz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de A.V. La Paz de Entrevías">
+                <img src="images/redesAmigas/otros/10.png" alt="Logo La Paz de Entrevías">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Periódico VallecasVa</span>
+            <a href="https://www.instagram.com/vallecasva?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de VallecasVa">
+                <img src="images/redesAmigas/otros/11.jpg" alt="Logo Periódico VallecasVa">
+            </a>
+        </article>
+
+        <article class="colectivaItem">
+            <span class="nombreColectiva">Espacio Mujer Madrid</span>
+            <a href="https://www.instagram.com/emma.espaciomujer?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de Espacio Mujer Madrid">
+                <img src="images/redesAmigas/otros/12.jpg" alt="Logo Espacio Mujer Madrid">
+            </a>
+        </article>
+
+    </div>
+     </section>
 </main>
 <?php include 'footer.php'; ?>
 

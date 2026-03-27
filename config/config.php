@@ -1,5 +1,9 @@
 <?php
 
+// Base_url es temporal hasta que tenga el dominio, cuando lo tenga, lo cambio ahi
+
+define('BASE_URL', 'http://localhost/TFG');
+
 // base de datos
 
 $host = "localhost";
@@ -22,13 +26,5 @@ define ('SMTP_PASS', 'iycnzgjhuxphusjb');
 define ('SMTP_PORT', 587);
 define ('SMTP_FROM', 'ananevadodeoyarbide@gmail.com');
 define ('SMTP_NAME', 'Web Casa de las mujeres Vallekas');
-
-
-
-
-
-
-
-
 
 ?> 
