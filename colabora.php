@@ -4,8 +4,9 @@ include 'header.php';
 ?>
 
 <main>
-
+<div class="tituloComun">
 <h2>¿Cómo puedo colaborar?</h2>
+</div>
 
 <div class="colaboracion" >
 

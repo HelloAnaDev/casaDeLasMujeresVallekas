@@ -19,10 +19,11 @@
 
     <button id="btnOcultarAdmin" aria-label="Ocultar menú">✖</button>
 
-    <div class="sidebarTitulo">
-
+        
+<div class="sidebarTitulo">
+    <a href="inicioAdmin.php">
         <img src="../images/logoVector.png" class="sidebarLogo" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
-    
+    </a>
 </div>   
 
 <nav class="sidebarNav">
@@ -47,7 +48,7 @@
     <p>¡Hola, <strong><?php echo htmlspecialchars($_SESSION['nombreAdmin'] ?? 'Administradora'); ?></strong>!</p>
         <div class="usuarioAdmin">
             <a href="perfilAdmin.php" class="btnUser">Mi perfil</a>
-            <a href="logoutAdmin.php" class="btnUser btnLogout" onclick="return confirm('¿Estás segura de que quieres cerrar sesión?');">Cerrar sesión</a>
+            <a href="logoutAdmin.php" class="btnUser btnLogout" onclick="return confirm('Vas a cerrar sesión y volverás a las secciones públicas de la web, saliendo del área de administración. ¡Podrás volver con tu usuario y contraseña siempre que lo necesites! Acepta si quieres salir, Cancela si olvidas algo que revisar en el panel de administración.');">Cerrar sesión</a>
         </div>
 </div>
 </aside>

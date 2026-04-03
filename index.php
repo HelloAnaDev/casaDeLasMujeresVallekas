@@ -22,7 +22,7 @@ include 'header.php';
     <div class="tarjetasHacemos">
         <h3 class="tituloHacemos">Activismo</h3>
         <img src="images/iconos/activismo.png" alt="Icono mujer protestando con una pancarta, en la que aparece dibujado un altavoz">
-        <p>Participamos activamente en los movimientos justos y reivindicativos que como mujeres nos importan y en la vida del barrio para transformar nuestra realidad desde la base.</p></div>
+        <p>Participamos activamente en los movimientos justos y reivindicativos que como mujeres nos importan. También en la vida del barrio, para transformar nuestra realidad desde la base.</p></div>
 
     <div class="tarjetasHacemos">
         <h3 class="tituloHacemos">Actividades</h3>
@@ -70,7 +70,7 @@ include 'header.php';
 </div>
 
     <div id="cuadriculaCalendario" class="cuadricula"></div>
-    <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, ¡aquí cabemos todas!. </p>
+    <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, <strong>¡Aquí cabemos todas!</strong>. </p>
  </section>
 
 <script src="datosCalendario.js"></script>

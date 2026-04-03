@@ -4,6 +4,11 @@ include 'header.php';
 ?>
 
 <main>
+
+<div class="tituloComun">
+<h2>Contacto</h2>
+</div>
+
 <div class="contenedorContacto">
     <div id="columnaIzquierdaRedes">
         <ul>
@@ -11,7 +16,7 @@ include 'header.php';
             <li><a href="https://www.facebook.com/p/Casa-de-las-Mujeres-de-Vallekas-100067144956203/?locale=es_LA" rel="noopener noreferrer" target="_blank">Facebook</a></li>
             <li>653 53 92 12 | <a href="tel:+34653539212">Teléfono</a> | <a href="https://wa.me/34653539212"></a>Whatsapp</a></li>
             <li><a href="mailto:casademujeresvk@gmail.com">casademujeresvk@gmail.com</a></li>
-            <li><a href="https://maps.app.goo.gl/9rxrcuWJwi8xCzYb8" rel="noopener noreferrer" target="_blank">Calle Diligencia, 10 (entrada por calle Volver a Empezar) 28038, Puente de Vallecas. Madrid.</a></li>
+            <li><a href="https://maps.app.goo.gl/9rxrcuWJwi8xCzYb8" rel="noopener noreferrer" target="_blank">Calle Diligencia, 10 (entrada por calle Volver a Empezar) 28018, Puente de Vallecas. Madrid.</a></li>
         </ul>
     </div>
 

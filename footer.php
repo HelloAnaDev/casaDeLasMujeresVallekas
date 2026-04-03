@@ -82,16 +82,20 @@ $ninasEsteAno = $stats['menor'] ?? 0;
             </ul>
             <span class="tituloPie espaciadoExtra">ENCUENTRANOS EN</span>
             <ul>  
-                <li><a href="https://maps.app.goo.gl/9rxrcuWJwi8xCzYb8" rel="noopener noreferrer" target="_blank">Calle Diligencia, 10 (entrada por calle Volver a Empezar) <br> 28038, Puente de Vallecas. Madrid.</a></li>
+                <li><a href="https://maps.app.goo.gl/9rxrcuWJwi8xCzYb8" rel="noopener noreferrer" target="_blank">Calle Diligencia, 10 (entrada por calle Volver a Empezar) <br> 28018, Puente de Vallecas. Madrid.</a></li>
             </ul>
         </div>
         <div class="columnaEnlaces">
+            <span class="tituloPie">INFORMACIÓN LEGAL</span>
             <ul>
                 <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Aviso legal</a></li>                
                 <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Política de Privacidad</a></li>
                 <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Política de cookies</a></li>
                 <li><a href="legal.php" rel="noopener noreferrer" target="_blank">Términos y condiciones</a></li>
-                <li><a href="login.php">Acceso área privada</a></li>
+            </ul>
+            <span class="tituloPie espaciadoExtra">ÁREA PRIVADA</span>
+            <ul>
+                <li><a href="login.php">Acceso administración</a></li>
             </ul>
         </div>
     </div>

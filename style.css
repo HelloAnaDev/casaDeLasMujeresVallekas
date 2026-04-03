@@ -548,6 +548,13 @@ p {
     background-color: #333;
 }
 
+.tituloComun h2 {
+    color: var(--purpuraOscuro);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+}
+
 .colaboracion {
     height: 300px;
     width: 70%;
@@ -555,7 +562,7 @@ p {
     display: flex;
     position: relative;
     padding-top: 0;
-        margin-bottom: 250px;
+    margin-bottom: 250px;
 }
 
 .colaboracion label {
@@ -628,7 +635,6 @@ input:checked + label .contenidoTab {
     transition: 0.25s;
     margin-top: -10px;
 }
-
 
 #calendario {
     margin: 40px auto;
@@ -1988,10 +1994,9 @@ input:checked + label .contenidoTab {
 
 .contenedorPerfilAdmin {
     max-width: 800px;
-    margin: 40px auto;
-    padding: 40px;
+    margin: 0px auto;
+    padding: 1rem;
     position: relative;
-    left: 125px;;
     background-color: #ffffff;
     border-radius: 12px;
     font-family: 'Poppins', sans-serif;
@@ -2433,27 +2438,97 @@ input:checked + label .contenidoTab {
     display: block;
 }
 
-/* --- CONTENEDOR PRINCIPAL --- */
-.recursosContainer {
+.recursosIntro {
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto 3rem auto;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.recursosIntro h2 {
+    color: var(--purpuraOscuro);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.textoAlertaUrgencia {
+    color: #cb1919;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.recursosLayout {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
     font-family: system-ui, -apple-system, sans-serif;
-    color: #2a2a2a;
+    padding: 0 1rem;
 }
 
-.recursosHeader {
-    text-align: center;
-    margin-bottom: 3rem;
+.recursosTabs {
+    font-family: poppins;
+    width: 320px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch; 
+    flex-shrink: 0;
+    transform: translateX(1px); 
+    z-index: 2; 
 }
 
-.recursosCategoria {
-    margin-bottom: 4rem;
+.tabButton {
+    width: 100%; 
+    box-sizing: border-box; 
+    display: block; 
+    background-color: var(--purpuraClaro); 
+    color: var(--purpuraOscuro);
+    border: 1px solid var(--purpuraOscuro);
+    margin-bottom: -1px; 
+    padding: 1.5rem 2rem;
+    font-size: 1.05rem;
+    line-height: 1.4; 
+    font-family: inherit; 
+    cursor: pointer;
+    text-align: left; 
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.tabButton.active {
+    background-color: #ffffff;
+    font-weight: bold;
+    border-right: 1px solid #ffffff;
+}
+
+
+.recursosContenedorPaneles {
+    flex-grow: 1;
+    background-color: #ffffff;
+    border: 1px solid var(--purpuraOscuro);
+    border-radius: 0 8px 8px 8px; 
+    padding: 3rem;
+    min-height: 600px; 
+    z-index: 1;
+}
+
+.tabPanel {
+    display: none; 
+}
+
+.tabPanel.active {
+    display: block; 
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .recursosGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
 }
 
@@ -2465,18 +2540,12 @@ input:checked + label .contenidoTab {
     box-shadow: 0 2px 4px rgba(66, 37, 75, 0.08);
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.recursoCard:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(66, 37, 75, 0.15);
 }
 
 .recursoCard h3 {
     margin-top: 0;
     margin-bottom: 0.75rem;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--purpuraOscuro);
 }
 
@@ -2489,7 +2558,7 @@ input:checked + label .contenidoTab {
 }
 
 .recursoContacto {
-    background-color: var(--purpuraMasClaro);
+    background-color: var(--purpuraClaro);
     padding: 1rem;
     border-radius: 6px;
     margin-bottom: 1rem;
@@ -2500,9 +2569,7 @@ input:checked + label .contenidoTab {
     color: var(--purpuraOscuro);
 }
 
-.recursoContacto span {
-    display: block;
-}
+.recursoContacto span { display: block; }
 
 .recursoEnlace {
     display: inline-block;
@@ -2513,30 +2580,82 @@ input:checked + label .contenidoTab {
     padding: 0.75rem 1rem;
     border-radius: 6px;
     font-weight: 500;
-    transition: background-color 0.2s ease;
     margin-top: auto;
 }
 
-.recursoEnlace:hover {
-    background-color: var(--purpuraMedio);
-    color: var(--purpuraOscuro);
-}
-
 .urgenciaDestacada {
-    border-color: #d32f2f;
-    border-left: 5px solid #d32f2f;
+    border-color: #cb1919;
+    border-left: 5px solid #cb1919;
 }
 
-.urgenciaDestacada .recursoContacto {
+.recursoContacto.urgenciaRojo {
     background-color: #ffebee;
-    color: #d32f2f;
+    color: #cb1919;
 }
 
-.recursosCategoria h2 {
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--purpuraOscuro);
-    font-size: 2rem;
+.btnFlotanteUrgencias {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem; 
+    background-color: #cb1919;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(203, 25, 25, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 100;
+    transition: transform 0.2s ease;
+}
+
+.btnFlotanteUrgencias:hover {
+    transform: scale(1.05);
+}
+
+.iconoAlerta {
+    font-size: 1.4rem;
+}
+
+.modalUrgencias {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 90%;
+}
+
+.modalUrgencias::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+.modalContenedorInterior {
+    padding: 2.5rem;
+    position: relative;
+}
+
+.tituloModalRojo {
+    color: #cb1919;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.cerrarModalBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555555;
 }
 
 /* _________________________________________ */
@@ -2613,11 +2732,6 @@ input:checked + label .contenidoTab {
 /* _________________________________________ */
 /* ↑ Estilos cabecera solo escritorio ↑ */
 /* _________________________________________ */
-
-
-
-
-
 
 
 /* _________________________________________ */
@@ -2703,6 +2817,8 @@ input:checked + label .contenidoTab {
     #contenedorLogoMovil:hover{
         background-color: transparent;
     }
+
+    
 }
 /* _________________________________________ */
 /* ↑ Estilos cabecera solo móvil ↑ */
@@ -2712,7 +2828,6 @@ input:checked + label .contenidoTab {
 
 /* _________________________________________ */
 /* ↓ Estilos generales para Móvil y Tablet ↓
-Habra que comprobar, de momento es el tamaño para los valñ */
 /* _________________________________________ */
 @media (max-width: 983px) {
     .claseImagenConTexto {
@@ -2747,15 +2862,96 @@ Habra que comprobar, de momento es el tamaño para los valñ */
         gap: 2rem;
 
 
-}
+    }
 
-.tarjetasHacemos {
+    .tarjetasHacemos {
         width: 90%; 
         max-width: 400px;
     }
 
-}
+    .recursosLayout {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
 
+    .recursosTabs {
+        width: 100%;
+        flex-direction: column; 
+        overflow: hidden; 
+        transform: translateY(1px); 
+        z-index: 2;
+    }
+
+    .tabButton {
+        width: 100%;
+        padding: 1.2rem 1rem;
+        margin-right: 0;
+        margin-bottom: -1px; 
+        border-radius: 0 ; 
+        white-space: normal; 
+    }
+
+    .tabButton:first-child {
+        border-radius: 8px 8px 0 0 ; 
+    }
+
+    .tabButton.active {
+        background-color: #ffffff;
+        font-weight: bold;
+        border-right: 1px solid var(--purpuraOscuro); 
+        border-bottom: 1px solid var(--purpuraOscuro); 
+    }
+    
+    .tabButton:last-child.active {
+        border-bottom: 1px solid #ffffff;
+    }
+    .recursosContenedorPaneles {
+        padding: 2rem; 
+        border-radius: 0 0 8px 8px; 
+        min-height: auto; 
+    }
+
+    .colaboracion {
+        display: block;
+        height: auto;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .tituloTab {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .contenidoTab {
+        position: relative ;
+        top: 0 ;
+        width: 100% ;
+        opacity: 1 ;
+        display: none; 
+        border-radius: 0 0 15px 15px ;
+        margin-top: 0 ;
+        border-top: none ;
+    }
+
+    input:checked + label .contenidoTab {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    input:checked + label .tituloTab {
+        border-bottom-left-radius: 0 ;
+        border-bottom-right-radius: 0 ;
+        margin-bottom: 0;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
 
 
 @media (max-width: 768px) {
@@ -2874,6 +3070,33 @@ Habra que comprobar, de momento es el tamaño para los valñ */
     }
     .tituloDetalle {
         font-size: 1.6rem;
+    }
+    .recursosIntro h2 {
+        font-size: 1.75rem;
+    }
+    .recursosContenedorPaneles {
+        padding: 1.25rem; 
+    }
+    .recursosGrid {
+        grid-template-columns: 1fr; 
+        gap: 1rem;
+    }
+    .btnFlotanteUrgencias {
+        bottom: 2rem;
+        left: 1rem;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+    .modalContenedorInterior {
+        padding: 2rem 1.25rem 1.25rem 1.25rem; 
+    }
+    .cerrarModalBtn {
+        top: 0.5rem;
+        right: 0.75rem;
+    }
+    .tituloModalRojo {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
     }
 }
 

@@ -4,7 +4,11 @@ include 'header.php';
 ?>
 
 <main>
-<h2>Nuestra historia</h2>
+
+<div class="tituloComun">
+<h2>¿Quiénes somos?</h2>
+</div>
+
 <div class="claseImagenConTexto">
     <div class="imagenDeTexto">
         <img src="images/logo.png" alt="Por rellenar.">
@@ -14,28 +18,12 @@ include 'header.php';
         <p id="frasesResalto">Las mujeres del barrio de Vallekas tenían una necesidad: Un espacio de referencia suyo, en su barrio, que fuese hecho por y para ellas. Con esto en mente, en marzo de 2018 aparecieron las primeras miembros de este proyecto, cuya primera meta fue crear una asociación, ubicarla en un espacio físico, y comenzar a desarrollar actividades que nutrieran a las mujeres del barrio. Y lo consiguieron.</p> <p> El 14 de febrero de 2019, "La casa de las mujeres Vallekas" nació como asociación registrada,empezando su labor con algunas actividades, y un año después, el 7 de febrero del 2020, el hogar físico de La casa de las mujeres Vallekas abría sus puertas. </p> <p> Desde entonces y hasta ahora, ha sido un espacio autogestionado, abierto a todas las mujeres que necesiten una mano amiga, hablar, aprender, o que quieran ser aquellas que prestan su ayuda.</p>
     </div>
 </div>
-<!-- <h2>Equipo</h2> -->
-<!-- <div class="divTitulo">
-    
-    <div class="tarjetasEquipo">
-        <img src="images/equipo/1.png" alt="retrato de..">
-        <h3 class="tituloEquipo">Carmen</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum enim quis gravida pulvinar.</p></div></a>
-        
-    <div class="tarjetasEquipo">
-        <img src="images/equipo/2.png" alt="retrato de..">
-        <h3 class="tituloEquipo">Chus</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum enim quis gravida pulvinar.</p></div></a>
-
-    <div class="tarjetasEquipo">
-        <img src="images/equipo/3.png" alt="retrato de..">
-        <h3 class="tituloEquipo">María</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum enim quis gravida pulvinar.</p></div></a>
-
-    </div> -->
 
 <section class="contenedorValores">
+
+    <div class="tituloComun">
     <h2>Valores</h2>
+    </div>
 
         <article class="filaHorizontalValor">
             <span class="columnaNumero">01</span>
@@ -70,7 +58,10 @@ include 'header.php';
 
 </section>
 
+<div class="tituloComun">
 <h2>Propósito</h2>
+</div>
+
 <div class="claseImagenConTexto">
 
     <div class="textoDeImagen">
@@ -82,11 +73,14 @@ include 'header.php';
     </div>
 </div>
 
+    <div class="tituloComun">
     <h2>Redes amigas</h2>
+    </div>
+
     <div class="redesVecinales">
-    <p>En <strong>La casa de las mujeres Vallekas</strong> confíamos en el trabajo colectivo, y por ello, recomendamos siempre usar el apoyo de las redes vecinales. Por eso, desde aquí os facilitamos el acceso a aquellas asociaciones amigas que, al igual que nosotras, cuentan con un propósito y una metodología transparente en la que confíamos y creemos que también pueden complementar la labor que nosotras podemos ofrecer.</p>
+    <p>En <strong>La Casa de las Mujeres Vallekas</strong> confiamos en el cuidado colectivo, y por ello, recomendamos siempre usar el apoyo de las redes vecinales. Por eso, desde aquí os facilitamos el acceso a aquellas asociaciones amigas que, al igual que nosotras, cuentan con un propósito y una metodología transparente en la que confiamos y creemos que también pueden complementar la labor que nosotras podemos ofrecer.</p>
 <section class="seccionRedesAmigas">
-    <h3>Red de Colectivas Feministas en Vallekas</h3>
+    <h3>Red de colectivas feministas en Vallekas</h3>
     
     <div class="gridColectivas">
         
