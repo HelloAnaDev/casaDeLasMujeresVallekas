@@ -7,9 +7,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fecha = $_POST['fecha'] ?? '';
     $descripcion = $_POST['descripcion'] ?? '';
 
-    if (!$idMemoria) {
+if (!$idMemoria) {
         header("Location: memoriasAdmin.php");
         exit;
+    }
+
+    function convertirAWebp($rutaTemporal, $rutaDestinoFinal, $calidad = 80) {
+        $info = @getimagesize($rutaTemporal);
+        if ($info === false) return false;
+        
+        $mime = $info['mime'];
+        
+        if ($mime == 'image/jpeg') {
+            $img = imagecreatefromjpeg($rutaTemporal);
+        } elseif ($mime == 'image/png') {
+            $img = imagecreatefrompng($rutaTemporal);
+            imagepalettetotruecolor($img);
+            imagealphablending($img, true);
+            imagesavealpha($img, true);
+        } elseif ($mime == 'image/webp') {
+            return move_uploaded_file($rutaTemporal, $rutaDestinoFinal);
+        } else {
+            return false;
+        }
+
+        if (!$img) return false;
+        $exito = imagewebp($img, $rutaDestinoFinal, $calidad);
+        imagedestroy($img);
+        return $exito;
     }
 
     try {
@@ -26,11 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!empty($_FILES['imagenes']['name'][0])) {
             foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) {
-                $nombreOriginal = $_FILES['imagenes']['name'][$key];
-                $nombreFinal = time() . "_" . $nombreOriginal;
+                if ($_FILES['imagenes']['error'][$key] !== UPLOAD_ERR_OK) continue;
+
+                $nombreFinal = uniqid('img_') . "_" . time() . ".webp";
                 $rutaDestino = "../images/memorias/" . $nombreFinal;
 
-                if (move_uploaded_file($tmp_name, $rutaDestino)) {
+                if (convertirAWebp($tmp_name, $rutaDestino, 80)) {
                     $sqlImg = "INSERT INTO imagenes_memorias (idMemoria, rutaImagen) VALUES (?, ?)";
                     $pdo->prepare($sqlImg)->execute([$idMemoria, $nombreFinal]);
                 }

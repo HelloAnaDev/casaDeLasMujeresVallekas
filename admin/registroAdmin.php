@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_registrar'])) {
                                     <p style='margin: 5px 0 0 0;'><strong>Contraseña temporal:</strong> $pass</p>
                                 </div>
                                 <p style='color: #d32f2f; font-weight: bold;'>¡Importante!</p>
-                                <p>Por motivos de seguridad, te pedimos que inicies sesión y cambies esta contraseña en la sección "Mi Perfil" (Ubicado abajo a la izquierda una vez iniciada sesión) lo antes posible.</p>
+                                <p>Por motivos de seguridad, te pedimos que inicies sesión y cambies esta contraseña en la sección ``Mi Perfil´´(Ubicado abajo a la izquierda una vez iniciada sesión) lo antes posible.</p>
                                 <br>
                                 <p>Un abrazo,<br><strong>La Casa de Mujeres de Vallekas</strong></p>
                             </div>

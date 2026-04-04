@@ -20,7 +20,7 @@ include 'header.php';
 
     <p>No es el valor de una moneda, es el valor de saber que no estamos solas. ¿Te unes a nuestro grupo de Teaming? Con el precio de un café al mes, construimos un hogar para todas.</p>
 
-<button href="https://www.teaming.net/casadelasmujeresdevallecas" rel="noopener noreferrer" target="_blank">Quiero ayudar</button>
+<a href="https://www.teaming.net/casadelasmujeresdevallecas" rel="noopener noreferrer" target="_blank" class="btnColabora">Quiero ayudar</a>
 
 </div></label>
 
@@ -38,8 +38,6 @@ include 'header.php';
     <p>IBAN: ES89 2100 2378 8102 0019 3231</p>
     <p>Concepto: Donación</p>
 
-    <!-- <p>¿Quieres hacer una aportación mensual? En ese caso, <strong>pásate por la Casa</strong>, </p> -->
-
 </div></label>
 
 <!-- objetos -->
@@ -52,8 +50,8 @@ include 'header.php';
 
     <p>Antes de deshacerte de algo que esté en buen estado, pregúntanos. Ayudarnos a equipar nuestro espacio es ayudarnos a que sea un lugar más digno y acogedor para todas. ¡Démosle una segunda vida a las cosas con un propósito social!
 
-    <p>Si tienes algo que nos pueda ayudar, <a href="contacto.php">contacta con nosotras</a> para hablar y ver qué tan útil nos puede ser.</p>
-</p>
+    <p>Si tienes algo que nos pueda ayudar, contacta con nosotras para hablar y ver qué tan útil nos puede ser.</p>
+    <a href="contacto.php">Contacta con nosotras</a>
 </div></label>
 
 <!-- voluntariado -->
@@ -66,7 +64,8 @@ include 'header.php';
 
     <p>Si tienes un ratito a la semana, o al mes, o incluso puntual, y te apetece dar un taller, una charla o una clase, nuestras puertas están abiertas. No buscamos "expertas mundiales", buscamos mujeres con ganas de enseñar y aprender juntas. ¡Tu tiempo es el mejor regalo que nos puedes hacer!</p>
 
-    <p>Si es así, <a href="contacto.php">contacta con nosotras</a> para hablar y ponernos manos a la obra.</p>
+    <p>Si es así, contacta con nosotras para hablar y ponernos manos a la obra.</p>
+    <a href="contacto.php">contacta con nosotras</a>
 
 </div></label>
 </div>

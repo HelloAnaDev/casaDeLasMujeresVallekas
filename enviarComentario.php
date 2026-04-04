@@ -17,7 +17,7 @@ $idMemoria = $_POST['idMemoria'];
     try {
         $pdo->beginTransaction();
 
-        $stmt = $pdo->prepare("SELECT idDispositivo FROM comentaristas WHERE token = ?");
+        $stmt = $pdo->prepare("SELECT idDispositivo, bloqueado FROM comentaristas WHERE token = ?");
         $stmt->execute([$token]);
         $dispositivo = $stmt->fetch();
 
@@ -28,15 +28,10 @@ $idMemoria = $_POST['idMemoria'];
         } else {
             $idDispositivo = $dispositivo['idDispositivo'];
 
-            $sqlCheck = "SELECT COUNT(*) FROM comentarios WHERE idDispositivo = ? AND estadoPublicacion = 2";
-            $stmtCheck = $pdo->prepare($sqlCheck);
-            $stmtCheck->execute([$idDispositivo]);
-            $rechazados = $stmtCheck->fetchColumn();
-
-            if ($rechazados >= 3) {
+            if ($dispositivo['bloqueado'] == 1) {
                 echo json_encode([
                     'status' => 'error', 
-                    'message' => 'Este dispositivo ha sido bloqueado por publicar contenido inadecuado repetidamente.'
+                    'message' => 'Este dispositivo ha sido bloqueado por la administración por intentar publicar contenido inadecuado.'
                 ]);
                 $pdo->rollBack();
                 exit;

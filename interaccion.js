@@ -1,39 +1,45 @@
 //Encabezado con menú público (escritorio y móvil)
-//Encabezado con menú público (escritorio y móvil)
 
 const btnMenu = document.getElementById('btnMenu');
 const menuLateral = document.getElementById('menuLateral');
 const cabecera = document.querySelector('.cabecera');
 const btnOcultar = document.getElementById('btnOcultar'); // Lo subimos aquí arriba para agruparlo
 
-// AÑADIMOS EL ESCUDO PROTECTOR AQUÍ:
 if (btnMenu && menuLateral && cabecera && btnOcultar) {
 
     btnMenu.addEventListener('click', () =>{
         menuLateral.classList.toggle('activo');
     });
 
-    let ubicacionPrincipal = window.scrollY;
+    let ubicacionPrincipal = window.scrollY || document.documentElement.scrollTop;
     window.addEventListener('scroll', () => {
-        let desplazamientoActual = window.scrollY;
-        if (menuLateral.classList.contains('activo')){
+        let desplazamientoActual = window.scrollY || document.documentElement.scrollTop;
+        
+        if (menuLateral && menuLateral.classList.contains('activo')){
             return;
-        } if (window.innerWidth >= 1327) {
+        } 
+        if (window.innerWidth >= 1327) {
             cabecera.classList.remove('oculta');
             return; 
-        } if (ubicacionPrincipal>=desplazamientoActual){
+        } 
+        
+        if (desplazamientoActual <= 10) {
             cabecera.classList.remove('oculta');
-        } else {
+        } 
+        else if (ubicacionPrincipal < desplazamientoActual) {
             cabecera.classList.add('oculta');
+        } else {
+            cabecera.classList.remove('oculta');
         }
-        ubicacionPrincipal=desplazamientoActual
+        
+        ubicacionPrincipal = desplazamientoActual;
     });
        
     btnOcultar.addEventListener('click',() =>{
         menuLateral.classList.remove('activo');
     });
 
-} // CERRAMOS EL ESCUDO AQUÍ
+} 
 
 //Formulario contacto, enviar mensaje a mi email a través del formulario
 

@@ -11,7 +11,7 @@ include 'sidebarHeader.php';
 ?>
 
 <main class="contenedorAdmin">
-    <h1 class="tituloAdmin">Moderación de Comentarios</h1>
+    <h1 class="tituloAdmin">Moderación de comentarios</h1>
     <p class="subtituloAdmin">Revisa los mensajes pendientes antes de que se publiquen en la web.</p>
 
     <div id="listaPendientes" class="gridModeracion">

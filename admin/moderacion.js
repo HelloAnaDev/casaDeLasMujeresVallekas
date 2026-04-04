@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="accionesModeracion">
                     <button class="btnAdmin btnAprobar" onclick="gestionar(${comentario.idComentario}, 1)">APROBAR</button>
                     <button class="btnAdmin btnRechazar" onclick="gestionar(${comentario.idComentario}, 2)">RECHAZAR</button>
+                    <button class="btnAdmin btnBloquear" onclick="gestionar(${comentario.idComentario}, 'bloquear')">BORRAR Y BLOQUEAR</button>
                 </div>
             `;
             listaPendientes.appendChild(card);
@@ -55,9 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function gestionar(idComentario, nuevoEstado) {
-    const accion = nuevoEstado === 1 ? 'aprobar' : 'rechazar';
+    let accionMensaje = '';
     
-    if (confirm(`¿Estás segura de que quieres ${accion} este comentario?`)) {
+    if (nuevoEstado === 1) {
+        accionMensaje = 'APROBAR';
+    } else if (nuevoEstado === 2) {
+        accionMensaje = 'RECHAZAR';
+    } else if (nuevoEstado === 'bloquear') {
+        accionMensaje = 'RECHAZAR Y BLOQUEAR PARA SIEMPRE al autor de';
+    }
+    
+    if (confirm(`¿Estás segura de que quieres ${accionMensaje} este comentario?`)) {
         
         const datos = new FormData();
         datos.append('idComentario', idComentario);
