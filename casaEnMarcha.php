@@ -15,9 +15,9 @@ include 'header.php';
 
             <div id="vistaDetalle">
                 <div class="navegacionMeses">
-                    <button id="btnMesAnterior">⬅</button>
+                    <button id="btnMesAnterior"><</button>
                     <h2 id="tituloMes">Cargando...</h2>
-                    <button id="btnMesSiguiente">🠪</button>
+                    <button id="btnMesSiguiente">></button>
                 </div>
 
                 <div class="carrusel">

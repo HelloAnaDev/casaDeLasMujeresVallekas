@@ -1,8 +1,9 @@
 <?php
-$host = 'localhost';
-$dbname = 'casamujeresvallekas';
-$username = 'root';
-$password= '';
+
+$host = 'mysql-helloanadev.alwaysdata.net';
+$dbname = 'helloanadev_casadelasmujeresvallekas';
+$username = 'helloanadev';
+$password= 'He110.ana.dev';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 

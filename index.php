@@ -16,17 +16,17 @@ include 'header.php';
 <div class="divTitulo">
     <div class="tarjetasHacemos">
         <h3 class="tituloHacemos">Acogedoras</h3>
-        <img src="images/iconos/acogedoras.png" alt="Icono personas abrazadas">
+        <img src="<?php echo BASE_URL; ?>/images/iconos/acogedoras.png" alt="Icono personas abrazadas">
         <p>Ayudamos, acompañamos y apoyamos a cualquier mujer que lo necesite. Ofrecemos espacios de escucha y asesoramiento ante cualquier necesidad.</p></div>
         
     <div class="tarjetasHacemos">
         <h3 class="tituloHacemos">Activismo</h3>
-        <img src="images/iconos/activismo.png" alt="Icono mujer protestando con una pancarta, en la que aparece dibujado un altavoz">
+        <img src="<?php echo BASE_URL; ?>/images/iconos/activismo.png" alt="Icono mujer protestando con una pancarta, en la que aparece dibujado un altavoz">
         <p>Participamos activamente en los movimientos justos y reivindicativos que como mujeres nos importan. También en la vida del barrio, para transformar nuestra realidad desde la base.</p></div>
 
     <div class="tarjetasHacemos">
         <h3 class="tituloHacemos">Actividades</h3>
-        <img src="images/iconos/actividades.png" alt="Icono con un libro abierto, un brazo fuerte y un bocadillo de diálogo">
+        <img src="<?php echo BASE_URL; ?>/images/iconos/actividades.png" alt="Icono con un libro abierto, un brazo fuerte y un bocadillo de diálogo">
         <p> Talleres, charlas y actividades para nuestro bienestar, ocio, empoderamiento y crecimiento personal y colectivo.</div>
     </div>
 </div> 
@@ -60,20 +60,20 @@ include 'header.php';
             <option value="aniversarios">Aniversarios</option>
         </select> </div>
     <div class="cabeceraDias">
-    <div>Lunes</div>
-    <div>Martes</div>
-    <div>Miércoles</div>
-    <div>Jueves</div>
-    <div>Viernes</div>
-    <div>Sábado</div>
-    <div>Domingo</div>
+    <div>L</div>
+    <div>M</div>
+    <div>M</div>
+    <div>J</div>
+    <div>V</div>
+    <div>S</div>
+    <div>D</div>
 </div>
 
     <div id="cuadriculaCalendario" class="cuadricula"></div>
     <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, <strong>¡Aquí cabemos todas!</strong>. </p>
  </section>
 
-<script src="datosCalendario.js"></script>
+
 <?php include 'footer.php'; ?>
 
 </body>

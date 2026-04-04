@@ -21,7 +21,7 @@ include 'sidebarHeader.php';
             <p>Aprobar o rechazar los mensajes pendientes que nos hayan escrito en las memorias mesuales.</p>
         </a>
 
-        <a href="MemoriasAdmin.php" class="tarjetaDashboard">
+        <a href="memoriasAdmin.php" class="tarjetaDashboard">
             <h3>Memorias de "La casa en marcha"</h3>
             <p>Crear, editar o eliminar las memorias mensuales publicadas en "La casa en marcha".</p>
         </a>

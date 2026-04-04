@@ -287,7 +287,7 @@ include 'header.php';
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- LÓGICA DE PESTAÑAS (TABS) ---
+
     const tabButtons = document.querySelectorAll('.tabButton');
     const tabPanels = document.querySelectorAll('.tabPanel');
 
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- LÓGICA DEL MODAL DE URGENCIAS ---
+
     const btnAbrirModal = document.getElementById('btnFlotanteUrgencias');
     const modalUrgencias = document.getElementById('modalUrgencias');
     const btnCerrarModal = document.getElementById('cerrarModal');

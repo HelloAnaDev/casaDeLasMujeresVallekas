@@ -62,7 +62,7 @@ $ninasEsteAno = $stats['menor'] ?? 0;
         
         <div class="columnaLogo">
             <a href="<?php echo $base_url; ?>index.php">
-                <img src="<?php echo $base_url; ?>images/logoVector.png" alt="Logotipo de la Casa de las Mujeres de Vallekas">
+                <img src="<?php echo BASE_URL; ?>/images/logoVector.png" alt="Logotipo de la Casa de las Mujeres de Vallekas">
             </a>
         </div>
 
@@ -104,5 +104,7 @@ $ninasEsteAno = $stats['menor'] ?? 0;
         <p>2026 &copy; Casa de las Mujeres Vallekas</p>
         <p>Desarrollado por <a  target="_blank" rel="noopener noreferrer">Hello.ana.dev</a></p>
     </div>
+    <script src="<?php echo BASE_URL; ?>/datosCalendario.js"></script>
+<script src="<?php echo BASE_URL; ?>/interaccion.js"></script>
 </footer>
 <script src="<?php echo $base_url; ?>interaccion.js"></script>

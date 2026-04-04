@@ -1727,7 +1727,7 @@ input:checked + label .contenidoTab {
 .contadorFlotante {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left:15px;
     background-color: black;
     color: white;
     border: none;
@@ -2775,12 +2775,12 @@ input:checked + label .contenidoTab {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 15px;
+        padding: 5px 10px;
      }
 
     #logoMovil{
         width: 100%;
-        max-width: 400px;
+        max-width: 800px;
         height: auto;
     }
 
@@ -2813,6 +2813,18 @@ input:checked + label .contenidoTab {
         background-color: var(--purpuraOscuro);
         color: var(--purpuraMasClaro);
         }
+
+    #contenedorLogoMovil {
+        flex: 5 !important; 
+        justify-content: flex-start !important; 
+        padding: 10px 0 !important; 
+    }
+
+    #btnMenu {
+        /* El botón solo ocupa su tamaño real, no la mitad de la pantalla */
+        flex: 0 !important; 
+        padding: 10px !important;
+    }
 
     #contenedorLogoMovil:hover{
         background-color: transparent;
@@ -2995,13 +3007,36 @@ input:checked + label .contenidoTab {
     }
 
     #pantallaMemoria {
-        grid-template-columns: 1fr;
-        margin: 20px auto;
-        padding: 0 20px; 
-        width: 70%; 
-        gap: 40px;
+        display: flex !important; /* Forzamos a flex en lugar de grid para evitar líos de columnas */
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 15px !important; /* El aire lo damos con padding, no con width 70% */
+        gap: 20px !important;
+        overflow: hidden; /* Candado de seguridad final */
     }
 
+    #columnaIzquierda, #columnaDerecha {
+    width: 100% !important; /* Cada columna ocupa el total del ancho del móvil */
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+    .fotoLateral {
+        display: none !important;
+    }
+    
+    .fotoCentral {
+        width: 100% !important;
+        max-height: 300px;
+    }
+
+    .contenedorFotos {
+        max-width: 100%;
+        gap: 0;
+    }
     #btnMenuAdmin {
         display: block;
         position: fixed;
@@ -3082,7 +3117,7 @@ input:checked + label .contenidoTab {
         gap: 1rem;
     }
     .btnFlotanteUrgencias {
-        bottom: 2rem;
+        bottom: 7rem;
         left: 1rem;
         padding: 0.75rem 1rem;
         font-size: 1rem;
@@ -3104,3 +3139,10 @@ input:checked + label .contenidoTab {
 /* _________________________________________ */
 /* ↑ Estilos generales para Móvil y Tablet  ↑ */
 /* _________________________________________ */
+
+/* PARCHE PARA MÓVIL*/
+html, body {
+    overflow-x: hidden; 
+    width: 100%;       
+    position: relative;
+}
