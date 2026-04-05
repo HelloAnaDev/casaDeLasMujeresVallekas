@@ -7,6 +7,7 @@ include 'header.php';
 <div id="legal">
     <nav class="indiceLegal">
         <ul>
+            <br>
             <li> <a href="#avisoLegal">Aviso Legal</a></li>
             <li> <a href="#politicaPrivacidad">Política de Privacidad</a></li>
             <li> <a href="#politicaCookies">Política de Cookies</a></li>
