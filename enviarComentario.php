@@ -6,10 +6,10 @@ require 'libs/PHPMailer/src/PHPMailer.php';
 require 'libs/PHPMailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\Exception as PHPMailerException; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$idMemoria = $_POST['idMemoria'];
+    $idMemoria = $_POST['idMemoria'];
     $nombre = strip_tags(trim($_POST['nombre'])); 
     $texto = strip_tags(trim($_POST['texto']));   
     $token = $_POST['token'];
@@ -53,10 +53,8 @@ $idMemoria = $_POST['idMemoria'];
             $mail->Port       = SMTP_PORT;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             
-            $mail->setFrom(SMTP_FROM, SMTP_NAME);
-            $mail->setFrom(SMTP_FROM, SMTP_NAME);
-            
-            $mail->addAddress(SMTP_USER); 
+            $mail->setFrom(SMTP_FROM, SMTP_NAME); // Declarado 1 sola vez
+            $mail->addAddress(SMTP_USER);         // Declarado 1 sola vez
             
             $sqlAdmins = "SELECT email FROM administradoras";
             $stmtAdmins = $pdo->query($sqlAdmins);
@@ -67,12 +65,12 @@ $idMemoria = $_POST['idMemoria'];
                     $mail->addBcc($correoAdmin);
                 }
             }
-            $mail->addAddress(SMTP_USER); 
             
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
             $mail->Subject = "Nuevo comentario de $nombre para moderar";
-            $enlaceModeracion = BASE_URL . '/admin/comentariosAdmin.php';
+            
+            $enlaceModeracion = PUBLIC_URL . '/admin/comentariosAdmin.php';
             
             $mail->Body = "
                 <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
@@ -94,11 +92,18 @@ $idMemoria = $_POST['idMemoria'];
                 </div>
             ";
             $mail->send();
-        } catch (Exception $e) {
-                    }
+            
+        } catch (PHPMailerException $e) { 
+        }
+        
         echo json_encode(['status' => 'success', 'message' => 'Comentario enviado. Aparecerá cuando sea revisado por moderación.']);
 
-    } catch (Exception $e) {
+    } catch (\PDOException $e) { 
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        echo json_encode(['status' => 'error', 'message' => 'Error de Base de Datos: ' . $e->getMessage()]);
+    } catch (\Exception $e) {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }

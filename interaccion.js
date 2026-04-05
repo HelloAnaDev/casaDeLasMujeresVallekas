@@ -3,7 +3,7 @@
 const btnMenu = document.getElementById('btnMenu');
 const menuLateral = document.getElementById('menuLateral');
 const cabecera = document.querySelector('.cabecera');
-const btnOcultar = document.getElementById('btnOcultar'); // Lo subimos aquí arriba para agruparlo
+const btnOcultar = document.getElementById('btnOcultar'); // Lo subo aquí arriba para agruparlo
 
 if (btnMenu && menuLateral && cabecera && btnOcultar) {
 
