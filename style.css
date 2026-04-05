@@ -1433,7 +1433,6 @@ input:checked + label .contenidoTab {
     border: 1px solid #f5c6cb;
 }
 
-/* Animación opcional para que queden más pro */
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1553,6 +1552,7 @@ input:checked + label .contenidoTab {
     color: var(--purpuraOscuro);
     font-size: 1rem;
     box-sizing: border-box; 
+    margin-top: 1rem;
 }
 
 .inputBuscador:focus {
