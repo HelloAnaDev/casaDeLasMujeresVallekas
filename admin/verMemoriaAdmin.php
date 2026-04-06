@@ -1,6 +1,12 @@
 <?php 
-include 'sidebarHeader.php'; 
+session_start();
 
+if (!isset($_SESSION['idAdmin'])) {
+    header('Location: ../login.php');
+    exit;
+}
+
+include 'sidebarHeader.php'; 
 
 require_once '../config/db.php';
 
