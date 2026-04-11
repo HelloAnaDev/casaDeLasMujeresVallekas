@@ -51,8 +51,7 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
 
         <a <?php if ($pagina==='index') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/index.php">Inicio</a>
         <a <?php if ($pagina==='quienesSomos') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/quienesSomos.php">Quiénes somos</a>
-        <a <?php if ($pagina==='casaEnMarcha') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/casaEnMarcha.php">La casa en marcha</a>
-
+        <a <?php if ($pagina === 'casaEnMarcha') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/casaEnMarcha.php">La casa en marcha</a>
         <a href="<?php echo BASE_URL; ?>/index.php" id="contenedorLogo">
             <img src="<?php echo BASE_URL; ?>/images/logoHorizontal.webp" id="logoHorizontal" alt="Logotipo">
         </a>
