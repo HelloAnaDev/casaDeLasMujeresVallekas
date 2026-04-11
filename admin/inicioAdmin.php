@@ -18,7 +18,7 @@ include 'sidebarHeader.php';
         <a href="comentariosAdmin.php" class="tarjetaDashboard">
 
             <h3>Moderar comentarios</h3>
-            <p>Aprobar o rechazar los mensajes pendientes que nos hayan escrito en las memorias mesuales.</p>
+            <p>Aprobar o rechazar los mensajes pendientes que nos hayan escrito en las memorias mensuales.</p>
         </a>
 
         <a href="memoriasAdmin.php" class="tarjetaDashboard">

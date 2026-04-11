@@ -24,9 +24,9 @@ include 'header.php';
                     <button id="btnFotoAnterior" class="flechaCarrusel">◀</button>
 
                     <div class="contenedorFotos">
-                        <img id="fotoAnterior" class="fotoLateral">
-                        <img id="fotoPrincipal" class="fotoCentral">
-                        <img id="fotoSiguiente" class="fotoLateral">
+                        <img id="fotoAnterior" class="fotoLateral" alt="Fotografía anterior de la actividad">
+                        <img id="fotoPrincipal" class="fotoCentral" alt="Fotografía de la actividad">
+                        <img id="fotoSiguiente" class="fotoLateral" alt="Fotografía posterior de la actividad">
                     </div>
                     
                     <button id="btnFotoSiguiente" class="flechaCarrusel">▶</button>

@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const divTarjeta = document.createElement('div');
                     divTarjeta.classList.add('tarjetaResultado');
 
-                    const foto = memoria.galeria_fotos.length > 0 ? `images/memorias/${memoria.galeria_fotos[0]}` : 'images/logoVector.png';
+                    const foto = memoria.galeria_fotos.length > 0 ? `images/memorias/${memoria.galeria_fotos[0]}` : 'images/logoVector.webp';
 
                     divTarjeta.innerHTML = `
                         <img src="${foto}" class="miniaturaResultado" alt="Miniatura de ${memoria.titulo}">

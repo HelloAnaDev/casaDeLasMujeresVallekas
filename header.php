@@ -28,7 +28,7 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa de las mujeres Vallekas</title>
-    
+    <meta name="description" content="La Casa de las Mujeres de Vallekas es un espacio de encuentro, apoyo mutuo y resistencia feminista en el barrio de Vallecas.">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css?v=4.6">
     <!---------------------------------- VERSION AQUÍ ------------------------------------>
@@ -41,7 +41,7 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
 <body class="<?php echo $lutoActivo ? 'modo-luto' : ''; ?>">
 <header class="cabecera">
     <a href="<?php echo BASE_URL; ?>/index.php" id="contenedorLogoMovil">
-        <img src="<?php echo BASE_URL; ?>/images/logoHorizontal.png" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
+        <img src="<?php echo BASE_URL; ?>/images/logoHorizontal.webp" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
     </a>   
 
     <button id="btnMenu" aria-label="Abrir menú">☰</button>
@@ -54,7 +54,7 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
         <a <?php if ($pagina==='casaEnMarcha') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/casaEnMarcha.php">La casa en marcha</a>
 
         <a href="<?php echo BASE_URL; ?>/index.php" id="contenedorLogo">
-            <img src="<?php echo BASE_URL; ?>/images/logoHorizontal.png" id="logoHorizontal" alt="Logotipo">
+            <img src="<?php echo BASE_URL; ?>/images/logoHorizontal.webp" id="logoHorizontal" alt="Logotipo">
         </a>
 
         <a <?php if ($pagina==='colabora') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/colabora.php">Colabora</a>

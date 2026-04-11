@@ -25,7 +25,7 @@
         
 <div class="sidebarTitulo">
     <a href="inicioAdmin.php">
-        <img src="<?php echo BASE_URL; ?>/images/logoVector.png" class="sidebarLogo" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
+        <img src="<?php echo BASE_URL; ?>/images/logoVector.webp" class="sidebarLogo" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
     </a>
 </div>   
 
