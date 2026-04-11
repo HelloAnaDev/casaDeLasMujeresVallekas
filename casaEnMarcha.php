@@ -1,5 +1,5 @@
 <?php 
-$pagina = 'agendaActividades';
+$pagina = 'casaEnMarcha';
 include 'header.php'; 
 ?>
 

@@ -103,7 +103,7 @@ $ninasEsteAno = $stats['menor'] ?? 0;
     <div class="pieCreditos">
         <p>2026 &copy; Casa de las Mujeres Vallekas</p>
         <p>Desarrollado por <a href="https://github.com/HelloAnaDev" target="_blank" rel="noopener noreferrer">Hello.ana.dev</a></p>
-    </div>
+    </div></footer>
     <script src="<?php echo BASE_URL; ?>/datosCalendario.js"></script>
 <script src="<?php echo BASE_URL; ?>/interaccion.js"></script>
-</footer>
+
