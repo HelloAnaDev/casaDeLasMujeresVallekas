@@ -61,10 +61,10 @@ $ninasEsteAno = $stats['menor'] ?? 0;
     <div class="pieColumnas">
         
         <div class="columnaLogo">
-            <a href="<?php echo $base_url; ?>index.php">
-                <img src="<?php echo BASE_URL; ?>/images/logoVector.webp" alt="Logotipo de la Casa de las Mujeres de Vallekas">
-            </a>
-        </div>
+         <a href="<?php echo BASE_URL; ?>/index.php">
+        <img src="<?php echo BASE_URL; ?>/images/logoVector.webp" alt="Logotipo de la Casa de las Mujeres de Vallekas">
+    </a>
+</div>
 
         <div class="columnaEnlaces">
             <span class="tituloPie">SÍGUENOS</span>
