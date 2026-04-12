@@ -31,7 +31,7 @@ try{
     $mail->Port=SMTP_PORT;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->setFrom(SMTP_FROM,SMTP_NAME);
-    $mail->addAddress(SMTP_USER);
+    $mail->addAddress('casademujeresvk@gmail.com');
     if (!empty($email)) {
         $mail->addReplyTo($email, $nombre);
     }
