@@ -77,7 +77,7 @@ include 'header.php';
 </div>
 
     <div id="cuadriculaCalendario" class="cuadricula"></div>
-    <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, <strong>¡Aquí cabemos todas!</strong>. </p>
+    <br><p>¿Te gusta lo que ves? Te invitamos a seguir conociéndonos a través de esta página web en la que estás navegando ahora, nuestras redes sociales, y sobre todo, en nuestra casa en Vallekas, <strong>¡Aquí cabemos todas!</strong></p>
  </section>
 
 
