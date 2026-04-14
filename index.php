@@ -12,24 +12,31 @@ include 'header.php';
  <div class="tarjetaInformacion">
     <p>Este es un espacio abierto y gestionado por y para las mujeres del barrio. La Casa de las Mujeres de Vallekas nace como un punto de encuentro, apoyo mutuo y resistencia. Construimos una red donde la diversidad, el feminismo y la solidaridad vecinal son nuestros pilares.</p>
 <p>En Vallekas, ninguna mujer camina sola. <strong>Pasa, ponte cómoda: esta también es tu casa.</strong> </p>
+</div>
+<div class="contenedor-carrusel-hacemos">
+    <button class="flecha-carrusel prev" id="btnAtras" aria-label="Anterior"></button>
+    <button class="flecha-carrusel next" id="btnSig" aria-label="Siguiente"></button>
 
-<div class="divTitulo">
-    <div class="tarjetasHacemos">
-        <h3 class="tituloHacemos">Acogedoras</h3>
-        <img src="<?php echo BASE_URL; ?>/images/iconos/acogedoras.png" alt="Icono personas abrazadas">
-        <p>Ayudamos, acompañamos y apoyamos a cualquier mujer que lo necesite. Ofrecemos espacios de escucha y asesoramiento ante cualquier necesidad.</p></div>
+    <div class="divTitulo" id="carruselHacemos">
+        <div class="tarjetasHacemos" id="tarjetaA">
+            <h3 class="tituloHacemos">Acogedoras</h3>
+            <img src="<?php echo BASE_URL; ?>/images/iconos/acogedoras.png" alt="Icono acogedoras">
+            <p>Ayudamos, acompañamos y apoyamos a cualquier mujer que lo necesite.</p>
+        </div>
         
-    <div class="tarjetasHacemos">
-        <h3 class="tituloHacemos">Activismo</h3>
-        <img src="<?php echo BASE_URL; ?>/images/iconos/activismo.png" alt="Icono mujer protestando con una pancarta, en la que aparece dibujado un altavoz">
-        <p>Participamos activamente en los movimientos justos y reivindicativos que como mujeres nos importan. También en la vida del barrio, para transformar nuestra realidad desde la base.</p></div>
+        <div class="tarjetasHacemos" id="tarjetaB">
+            <h3 class="tituloHacemos">Activismo</h3>
+            <img src="<?php echo BASE_URL; ?>/images/iconos/activismo.png" alt="Icono activismo">
+            <p>Participamos activamente en los movimientos justos y reivindicativos.</p>
+        </div>
 
-    <div class="tarjetasHacemos">
-        <h3 class="tituloHacemos">Actividades</h3>
-        <img src="<?php echo BASE_URL; ?>/images/iconos/actividades.png" alt="Icono con un libro abierto, un brazo fuerte y un bocadillo de diálogo">
-        <p> Talleres, charlas y actividades para nuestro bienestar, ocio, empoderamiento y crecimiento personal y colectivo.</div>
+        <div class="tarjetasHacemos" id="tarjetaC">
+            <h3 class="tituloHacemos">Actividades</h3>
+            <img src="<?php echo BASE_URL; ?>/images/iconos/actividades.png" alt="Icono actividades">
+            <p>Talleres, charlas y actividades para nuestro empoderamiento.</p>
+        </div>
     </div>
-</div> 
+</div>
 
 <h2 id="tituloDeCalendario" >Calendario</h2>
 

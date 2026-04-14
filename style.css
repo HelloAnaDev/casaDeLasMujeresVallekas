@@ -2806,11 +2806,6 @@ input:checked + label .contenidoTab {
         max-width: 400px;
     }
     
-    .divTitulo {
-        flex-direction: column;
-        width: 90%;
-        align-items: center;
-    }
     .filaHorizontalValor, .filaHorizontalValor.inverso {
         flex-direction: column;
         text-align: center;
@@ -2824,13 +2819,82 @@ input:checked + label .contenidoTab {
     .contenedorContacto{
         flex-direction: column;
         gap: 2rem;
+    }
 
+    .contenedor-carrusel-hacemos {
+            position: relative;
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            overflow: hidden;
+        }
 
+    .divTitulo::-webkit-scrollbar { 
+        display: none; 
+    }
+
+    .divTitulo {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 0; 
+            scrollbar-width: none;
+            padding: 40px 10vw; 
+            scroll-behavior: smooth;
+            align-items: center;
+            justify-content: flex-start; 
+            box-sizing: border-box;
+        }
+
+    .divTitulo::-webkit-scrollbar {
+        display: none; 
     }
 
     .tarjetasHacemos {
-        width: 90%; 
-        max-width: 400px;
+        flex: 0 0 80vw; 
+        scroll-snap-align: center;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        opacity: 0.3; 
+        transform: scale(0.85);
+        pointer-events: none; 
+        margin: 0; 
+    }
+    .tarjetasHacemos.activa {
+        opacity: 1; 
+        transform: scale(1);
+        pointer-events: auto;
+        box-shadow: 0 10px 25px rgba(66, 37, 75, 0.15);
+    }
+
+    .flecha-carrusel {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--purpuraOscuro);
+        color: var(--purpuraMasClaro);
+        border: 2px solid var(--purpuraMedio);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        z-index: 100;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease;
+    }
+
+    .flecha-carrusel.oculta {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden; 
+        }
+
+        .flecha-carrusel.prev { left: 15px; }
+        .flecha-carrusel.next { right: 15px; }
     }
 
     .recursosLayout {
@@ -2911,12 +2975,18 @@ input:checked + label .contenidoTab {
         margin-bottom: 0;
     }
 
+        .flecha-carrusel.prev::before {
+        content: '\276E'; /* Símbolo ❮ */
+    }
+
+.flecha-carrusel.next::before {
+    content: '\276F'; /* Símbolo ❯ */
+}
+
     @keyframes slideDown {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-}
-
 
 @media (max-width: 768px) {
     
@@ -2959,18 +3029,18 @@ input:checked + label .contenidoTab {
     }
 
     #pantallaMemoria {
-        display: flex !important; /* Forzamos a flex en lugar de grid para evitar líos de columnas */
+        display: flex !important; 
         flex-direction: column !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
-        padding: 0 15px !important; /* El aire lo damos con padding, no con width 70% */
+        padding: 0 15px !important; 
         gap: 20px !important;
-        overflow: hidden; /* Candado de seguridad final */
+        overflow: hidden; 
     }
 
     #columnaIzquierda, #columnaDerecha {
-    width: 100% !important; /* Cada columna ocupa el total del ancho del móvil */
+    width: 100% !important; 
     max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;

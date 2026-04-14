@@ -255,3 +255,59 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// tarjetasHacemos de inicio en carrusel 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carrusel = document.getElementById('carruselHacemos');
+    const tarjetas = document.querySelectorAll('.tarjetasHacemos');
+    const btnAtras = document.getElementById('btnAtras');
+    const btnSig = document.getElementById('btnSig');
+
+    if (!carrusel || tarjetas.length === 0) return;
+
+    const mover = (direccion) => {
+        const desplazamiento = tarjetas[0].offsetWidth;
+        carrusel.scrollBy({
+            left: direccion === 'next' ? desplazamiento : -desplazamiento,
+            behavior: 'smooth'
+        });
+    };
+
+    btnSig.addEventListener('click', () => mover('next'));
+    btnAtras.addEventListener('click', () => mover('prev'));
+
+    const observerOptions = {
+        root: carrusel,
+        threshold: 0.6 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('activa');
+
+                if (entry.target.id === 'tarjetaA') {
+                    btnAtras.classList.add('oculta');
+                } else {
+                    btnAtras.classList.remove('oculta');
+                }
+
+                if (entry.target.id === 'tarjetaC') {
+                    btnSig.classList.add('oculta');
+                } else {
+                    btnSig.classList.remove('oculta');
+                }
+
+            } else {
+                entry.target.classList.remove('activa');
+            }
+        });
+    }, observerOptions);
+
+    tarjetas.forEach(t => observer.observe(t));
+
+    setTimeout(() => {
+        carrusel.scrollTo({ left: 0 });
+    }, 50);
+});
