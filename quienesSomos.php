@@ -79,6 +79,7 @@ include 'header.php';
 
     <div class="redesVecinales">
     <p>En <strong>La Casa de las Mujeres Vallekas</strong> confiamos en el cuidado colectivo, y por ello, recomendamos siempre usar el apoyo de las redes vecinales. Por eso, desde aquí os facilitamos el acceso a aquellas asociaciones amigas que, al igual que nosotras, cuentan con un propósito y una metodología transparente en la que confiamos y creemos que también pueden complementar la labor que nosotras podemos ofrecer.</p>
+
 <section class="seccionRedesAmigas">
     <h3>Red de colectivas feministas en Vallekas</h3>
     
@@ -127,7 +128,8 @@ include 'header.php';
         </article>
 
     </div>
-<h3 style="margin-top: 4rem;">Otras entidades amigas</h3>
+    
+<h3>Otras entidades amigas</h3>
     
     <div class="gridColectivas">
         

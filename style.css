@@ -2975,13 +2975,13 @@ input:checked + label .contenidoTab {
         margin-bottom: 0;
     }
 
-        .flecha-carrusel.prev::before {
+    .flecha-carrusel.prev::before {
         content: '\276E'; /* Símbolo ❮ */
     }
 
-.flecha-carrusel.next::before {
-    content: '\276F'; /* Símbolo ❯ */
-}
+    .flecha-carrusel.next::before {
+        content: '\276F'; /* Símbolo ❯ */
+    }
 
     @keyframes slideDown {
         from { opacity: 0; transform: translateY(-10px); }
@@ -2990,6 +2990,45 @@ input:checked + label .contenidoTab {
 
 @media (max-width: 768px) {
     
+    .seccionRedesAmigas {
+        margin: 2rem auto; 
+        padding: 0 10px;
+    }
+
+    .seccionRedesAmigas h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .gridColectivas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.5rem 10px; 
+        justify-items: center; 
+        width: 100%;
+    }
+
+    .colectivaItem {
+        width: 100%;
+        margin-bottom: 0; 
+    }
+
+    .colectivaItem a {
+        width: 90px;
+        height: 90px;
+    }
+
+    .nombreColectiva {
+        font-size: 0.85rem;
+        min-height: 2.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: flex-end; 
+        justify-content: center;
+        line-height: 1.2;
+        padding: 0 5px;
+    }
+
     #calendario, #cuadriculaCalendario {
         margin: 10px 0 !important;
         width: 100% !important;
