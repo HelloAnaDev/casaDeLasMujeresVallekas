@@ -2610,6 +2610,39 @@ input:checked + label .contenidoTab {
     color: #555555;
 }
 
+.contenedorEnlaceReset {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.linkOlvido {
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.linkOlvido:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.linkLogin {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333; 
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.linkLogin:hover {
+    background-color: #000;
+}
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */
@@ -2681,6 +2714,8 @@ input:checked + label .contenidoTab {
     #btnMenuAdmin, #btnOcultarAdmin {
     display: none; 
 }
+
+
 /* _________________________________________ */
 /* ↑ Estilos cabecera solo escritorio ↑ */
 /* _________________________________________ */

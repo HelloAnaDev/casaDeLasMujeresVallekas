@@ -50,6 +50,10 @@ include 'header.php';
         <label for="contrasena">Contraseña</label>
         <input type="password" id="contrasena" name="contrasena" required>
 
+        <div class="contenedorEnlaceReset">
+            <a href="solicitar_reset.php" class="linkOlvido">¿Has olvidado tu contraseña?</a>
+        </div>
+
         <button type="submit" class="btnEnvio">Acceder</button>
     </form>
         
