@@ -149,6 +149,10 @@ h2 {
     gap: 30px;
 }
 
+.flecha-carrusel {
+    display: none;
+}
+
 .tarjetaInformacion {
     margin: 4% ;
     padding: 0 8%;
