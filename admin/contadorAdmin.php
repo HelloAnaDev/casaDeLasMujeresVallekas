@@ -121,7 +121,7 @@ include 'sidebarHeader.php';
 
     <div class="panelGestion">
             <p>Desde esta sección pueden borrarse duplicados en caso de necesitarlo (si por ejemplo, si dos compañeras han creado dos veces por error el mismo registro). Si este no es el caso, no debe borrarse ningún dato y no es necesario usar la siguiente tabla.</p>
-            <p>Si necesitas borrar, busca el caso y dale al botón "Borrar". Para evitar equivocaciones, te saldrá un mensaje preguntándote de nuevo si quieres borrar los datos. Si es así, dale a aceptar, si te has equivocado, dale a cancelar.</p>
+            <p>Si necesitas borrar, toca "Registros(Mostrar/Ocultar)", busca el caso y dale al botón "Borrar". Para evitar equivocaciones, te saldrá un mensaje preguntándote de nuevo si quieres borrar los datos. Si es así, dale a aceptar, si te has equivocado, dale a cancelar.</p>
     <details>
         <summary class="tituloGestion">Registros (Mostrar/Ocultar)</summary>
             <table class="tablaRegistros">
