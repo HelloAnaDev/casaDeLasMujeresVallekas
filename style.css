@@ -1882,6 +1882,83 @@ input:checked + label .contenidoTab {
     font-family: 'Poppins', sans-serif; 
     color: #333333; 
     line-height: 1.8; 
+    text-align: justify;
+}
+
+input[type="date"].inputSubrayado {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+    font-family: inherit;
+    color: #333;
+    outline: none;
+    background-color: transparent;
+}
+
+input[type="date"].inputSubrayado:focus {
+    border-bottom-color: #5b3e5b;
+}
+
+.panelGestion {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #eaeaea;
+}
+
+.tituloGestion {
+    color: #5b3e5b;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f7f5f7;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.tituloGestion:hover {
+    background-color: #eaeaea;
+}
+
+.tablaRegistros {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.tablaRegistros th, 
+.tablaRegistros td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.tablaRegistros th {
+    background-color: #f7f5f7;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.btnBorrarRegistro {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btnBorrarRegistro:hover {
+    background-color: #c9302c;
 }
 
 .textoIntro {
