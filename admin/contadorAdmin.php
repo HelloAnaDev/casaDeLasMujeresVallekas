@@ -127,7 +127,7 @@ include 'sidebarHeader.php';
             <table class="tablaRegistros">
                 <thead>
                     <tr>
-                        <th>Fecha Caso</th>
+                        <th>Fecha caso</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
                         <th>Acción</th>
