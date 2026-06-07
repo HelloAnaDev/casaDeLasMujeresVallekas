@@ -110,7 +110,7 @@ h2 {
     z-index: 1; 
  }
 
- .botonBase {
+.botonBase {
     display: inline-block;
     background-color: var(--purpuraOscuro);
     color: var(--purpuraMasClaro);
@@ -118,7 +118,7 @@ h2 {
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
- 
+    transition: all 0.35s ease-in-out;
  }
 
  .botonBase:hover {
@@ -560,86 +560,6 @@ p {
     padding: 2rem;
 }
 
-.colaboracion {
-    height: 350px;
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    position: relative;
-    padding-top: 0;
-    margin-bottom: 250px;
-}
-
-.colaboracion label {
-    display: block; 
-    margin: 0;
-    padding: 0;
-}
-
-.colaboracion input{
-    display: none;
-}
-
-.colaboracion a{
-    background-color: var(--purpuraMedio);
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 30px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.colaboracion a:hover {
-    transform: scale(1.05);
-    box-shadow: 5px 5px 16px rgba(36, 26, 34, 0.5);
-    background-color: var(--purpuraClaro); 
-}
-
-.tituloTab {
-    color: rgb(77, 38, 78);
-    height: 45px;
-    width: auto;
-    background: #ffffff;
-    padding: 10px 30px;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: #666 solid 1px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-input:checked + label .tituloTab {
-    background-color: var(--purpuraOscuro);
-    color: white;
-    font-weight: 700;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-input:checked + label .contenidoTab {
-    opacity: 1;
-    z-index: 1;    
-}
-
-.contenidoTab {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    background-color: white;
-    color: #000;
-    padding: 15px;
-    box-sizing: border-box;
-    border-radius: 25px;
-    border-top-left-radius: 0px;
-    border:#666 solid 1px; 
-    opacity: 0;
-    z-index: 0;
-    transition: 0.25s;
-    margin-top: -10px;
-    padding-bottom: 20px;
-}
 
 #calendario {
     margin: 40px auto;
@@ -2724,6 +2644,87 @@ input[type="date"].inputSubrayado:focus {
 .linkLogin:hover {
     background-color: #000;
 }
+
+/* ==========================================================================
+   SISTEMA DE PESTAÑAS LATERALES PARA COLABORA (ESCRITORIO)
+   ========================================================================== */
+.seccion-colabora-tabs {
+    display: flex;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 40px;
+    align-items: start;
+}
+
+.colabora-nav-lateral {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 140px;
+}
+
+.btn-tab-lateral {
+    background-color: var(--purpuraMasClaro);
+    color: var(--purpuraOscuro);
+    border: 2px solid var(--purpuraMedio);
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-family: "poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.35s ease-in-out; 
+}
+
+.btn-tab-lateral:hover {
+    background-color: var(--purpuraClaro);
+    transform: translateX(6px);
+}
+
+.btn-tab-lateral.active {
+    background-color: var(--purpuraOscuro);
+    color: white;
+    border-color: var(--purpuraOscuro);
+    box-shadow: 0 4px 12px rgba(66, 37, 75, 0.15);
+}
+
+.btn-destacado-socia {
+    border: 2px dashed var(--purpuraOscuro);
+    background-color: #ffffff;
+}
+
+.btn-destacado-socia.active {
+    border-style: solid;
+}
+
+.colabora-contenido-paneles {
+    flex: 2;
+    background-color: #ffffff;
+    border-left: 2px solid var(--purpuraMedio);
+    padding: 0 10px 0 40px;
+    min-height: 450px;
+}
+
+.panel-colabora {
+    display: none;
+    animation: cambiarPanelEfecto 0.35s ease-out forwards;
+}
+
+.panel-colabora.active {
+    display: block;
+}
+
+@keyframes cambiarPanelEfecto {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */
@@ -2910,6 +2911,25 @@ input[type="date"].inputSubrayado:focus {
 /* ↓ Estilos generales para Móvil y Tablet ↓
 /* _________________________________________ */
 @media (max-width: 983px) {
+    
+    .seccion-colabora-tabs {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .colabora-nav-lateral {
+        position: static;
+        width: 100%;
+    }
+    .btn-tab-lateral:hover {
+        transform: none;
+    }
+    .colabora-contenido-paneles {
+        border-left: none;
+        padding: 0;
+        width: 100%;
+        min-height: auto;
+    }
+
     .claseImagenConTexto {
         flex-direction: column;
         padding: 20px;
@@ -3055,12 +3075,6 @@ input[type="date"].inputSubrayado:focus {
         min-height: auto; 
     }
 
-    .colaboracion {
-        display: block;
-        height: auto;
-        width: 100%;
-        margin-bottom: 50px;
-    }
 
     .tituloTab {
         width: 100%;
