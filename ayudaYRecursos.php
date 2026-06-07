@@ -9,7 +9,7 @@ include 'header.php';
         <h2>Ayuda y recursos</h2>
         </div>
         <p>Directorio de recursos y servicios que pueden resultar de utilidad a las vecinas, ordenados por temáticas.</p>
-        <p class="textoAlertaUrgencia">Si tienes una urgencia que necesita atención inmediata (Peligros inmediatos de violencia de género o riesgo de suicidio), toca el botón rojo de "Contactos urgentes" para encontrar rápidamente los contactos.</p>
+        <p class="textoAlertaUrgencia">Si tienes una urgencia que necesita atención INMEDIATA (Peligros inmediatos de violencia de género o riesgo de suicidio), toca el botón rojo de "Contactos urgentes" para encontrar rápidamente los contactos.</p>
     </section>
 
     <section class="recursosLayout">
@@ -257,21 +257,22 @@ include 'header.php';
         <div class="modalContenedorInterior">
             <button id="cerrarModal" class="cerrarModalBtn">✖</button>
             <h2 class="tituloModalRojo">Contactos Urgentes</h2>
+            <p>Si necesitas llamar AHORA, toca el número de teléfono que necesitas y te llevará directo a tu teclado de llamada con el teléfono marcado (solo apto para móviles).</p>
             <div class="recursosGrid">
                 <article class="recursoCard urgenciaDestacada">
                     <h3>Prevención del suicidio</h3>
                     <p>Líneas de atención inmediata disponibles las 24 horas.</p>
                     <div class="recursoContacto urgenciaRojo">
-                        <span><strong>Teléfono Nacional:</strong> 024</span>
-                        <span><strong>Teléfono de la Esperanza:</strong> 717 003 717</span>
+                        <span><strong>Teléfono Nacional:</strong> <a href="tel:024" class="linkLlamada">024</a></span>
+                        <span><strong>Teléfono de la Esperanza:</strong> <a href="tel:717003717" class="linkLlamada">717 003 717</a></span>
                     </div>
                 </article>
                 <article class="recursoCard urgenciaDestacada">
                     <h3>Teléfonos de emergencia y atención VG</h3>
                     <p>Atención inmediata ante situaciones de violencia de género.</p>
                     <div class="recursoContacto urgenciaRojo">
-                        <span><strong>Información y asesoramiento:</strong> 016</span>
-                        <span><strong>Emergencias:</strong> 112</span>
+                        <span><strong>Información y asesoramiento:</strong> <a href="tel:016" class="linkLlamada">016</a></span>
+                        <span><strong>Emergencias:</strong> <a href="tel:112" class="linkLlamada">112</a></span>
                     </div>
                 </article>
             </div>

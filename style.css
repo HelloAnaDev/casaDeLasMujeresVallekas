@@ -2796,6 +2796,20 @@ input[type="date"].inputSubrayado:focus {
     width: auto;
     font-weight: normal !important;
 }
+/* ==========================================================================
+   ENLACES DE LLAMADA TELEFÓNICA DIRECTA
+   ========================================================================== */
+.linkLlamada {
+    color: inherit; /* Mantiene el color rojo o morado del texto que le rodea */
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.linkLlamada:hover {
+    text-decoration: underline; /* Solo se subraya si pasas el ratón por encima en el PC */
+    opacity: 0.8;
+}
 
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
