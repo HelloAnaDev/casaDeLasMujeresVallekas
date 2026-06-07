@@ -2888,39 +2888,158 @@ input[type="date"].inputSubrayado:focus {
 /* ↑ Estilos cabecera solo escritorio ↑ */
 /* _________________________________________ */
 
-
 /* _________________________________________ */
 /* ↓ Estilos cabecera solo móvil ↓ */
 /* _________________________________________ */
 @media (max-width:1326px) {
-/* ==========================================================================
-       TRADUCTOR MÓVIL (BOTÓN EN MENÚ Y POPUP CENTRAL)
-       ========================================================================== */
-    .btn-traductor-movil {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: none;
-        border-top: 2px solid var(--purpuraMedio);
-        color: var(--purpuraOscuro);
-        font-size: 1.8rem;
+    /* ==========================================================
+       1. AJUSTES BASE (Cabecera fija de 90px)
+       ========================================================== */
+    body {
+        padding-top: 90px; 
+    }
+
+    .cabecera {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        padding: 20px 0;
-        margin-top: auto;
+        height: 90px; /* Altura inamovible */
+        display: flex;
+        justify-content: center; /* Centra el logo */
+        align-items: center;
+        padding: 0 15px;
+        background-color: var(--purpuraClaro);
+        z-index: 2000;
+        box-sizing: border-box;
+    }
+
+    /* Ocultamos enlaces de escritorio que se cuelen */
+    .cabecera > a:not(#contenedorLogoMovil) {
+        display: none;
+    }
+
+    /* ==========================================================
+       2. LOGO CENTRADO Y CONTENIDO (Límites estrictos)
+       ========================================================== */
+    #contenedorLogoMovil {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        flex: 0 0 auto; 
+    }
+
+    #logoMovil {
+        width: auto;
+        max-width: 220px; /* Límite de ancho estricto */
+        max-height: 70px; /* Límite de alto estricto */
+        display: block;
+        object-fit: contain;
+    }
+
+    #contenedorLogo { 
+        display: none; 
+    }
+
+    /* ==========================================================
+       3. BOTÓN HAMBURGUESA ANCLADO A LA DERECHA
+       ========================================================== */
+    #btnMenu {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        background: none;
+        border: none;
+        font-size: 35px;
+        color: var(--purpuraOscuro);
+        padding: 10px;
+        margin: 0;
         cursor: pointer;
     }
 
-    .btn-traductor-movil i {
-        font-weight: normal !important;
+    /* ==========================================================
+       4. MENÚ MATEMÁTICO PERFECTO (7 secciones + Globo Fijo)
+       ========================================================== */
+    #menuLateral {
+        position: fixed;
+        top: 90px; /* Nace justo donde acaba la cabecera */
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: calc(100vh - 90px); /* Altura calculada exacta */
+        background-color: var(--purpuraMasClaro);
+        display: flex;
+        flex-direction: column;
+        transition: right 0.4s ease;
+        z-index: 1999;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        overflow: hidden; /* Evita scrolls rebeldes */
     }
 
-    /* Ocultamos el contenedor real (pestaña PC) por defecto en móvil */
+    #menuLateral.activo {
+        right: 0;
+    }
+
+    #menuLateral #contenedorLogo { 
+        display: none; 
+    }
+
+    /* Pestaña de Traducción: Fija al fondo con 60px */
+    .btn-traductor-movil {
+        flex: 0 0 60px;
+        height: 60px;
+        padding: 0;
+        margin: 0;
+        border: none; /* Mata todos los bordes laterales e inferiores */
+        border-top: 2px solid var(--purpuraMedio); /* Resucita SOLO el borde superior */
+        background: transparent;
+        outline: none; /* Evita recuadros al hacer clic */
+        color: var(--purpuraOscuro);
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    /* Fórmula Matemática para Botón Cerrar + 6 Enlaces */
+    #menuLateral #btnOcultar,
+    #menuLateral a:not(#contenedorLogo) {
+        flex: 1 1 0%; /* Reparto equitativo inquebrantable */
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+        text-align: center;
+        color: var(--purpuraOscuro);
+        text-decoration: none;
+        font-family: "poppins", sans-serif;
+    }
+
+    #menuLateral #btnOcultar {
+        background-color: var(--purpuraOscuro);
+        color: var(--purpuraMedio);
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+
+    /* ==========================================================
+       5. POPUP DEL TRADUCTOR 
+       ========================================================== */
     .contenedor-traductor {
         display: none; 
     }
 
-    /* Transformación mágica a Popup cuando pulsas el botón */
     .contenedor-traductor.popup-activo {
         display: flex;
         position: fixed;
@@ -2928,7 +3047,7 @@ input[type="date"].inputSubrayado:focus {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(24, 7, 32, 0.85); /* Fondo oscuro con el tono de La Casa */
+        background-color: rgba(24, 7, 32, 0.85); 
         border-radius: 0;
         box-shadow: none;
         z-index: 9999;
@@ -2950,9 +3069,7 @@ input[type="date"].inputSubrayado:focus {
         cursor: pointer;
     }
 
-    .contenedor-traductor.popup-activo .icono-traductor {
-        display: none; /* Quitamos el globo de la caja porque ya estás dentro */
-    }
+    .contenedor-traductor.popup-activo .icono-traductor { display: none; }
 
     .contenedor-traductor.popup-activo .titulo-popup-movil {
         display: block;
@@ -2964,15 +3081,15 @@ input[type="date"].inputSubrayado:focus {
         text-align: center;
     }
 
+    /* Google Translate a veces inyecta inline styles, mantenemos estos !important por seguridad externa */
     .contenedor-traductor.popup-activo #google_translate_element {
-        opacity: 1;
-        visibility: visible;
+        opacity: 1 !important;
+        visibility: visible !important;
         width: 100%;
         display: flex;
         justify-content: center;
     }
 
-    /* El selector se adapta 100% a lo que necesite Google sin cortarse */
     .contenedor-traductor.popup-activo #google_translate_element select {
         padding: 12px;
         font-size: 1.1rem;
@@ -2981,99 +3098,6 @@ input[type="date"].inputSubrayado:focus {
         max-width: 90vw;
         color: var(--purpuraOscuro);
     }
-
-    #btnOcultar {
-        background: var(--purpuraOscuro);
-        color: var(--purpuraMedio);
-        border: none;
-        padding: 20px;
-        margin: 0;
-        width: 100%;
-        font-family: "poppins", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 30px;
-    }
-
-    #menuLateral{
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 40%;
-        height: 100vh;
-        background-color: var(--purpuraMasClaro);
-        display: flex;
-        flex-direction: column;
-        transition: 0.4s ease;
-        z-index: 100;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        font-family: "poppins", sans-serif;
-    }
-
-    #menuLateral.activo{
-        right: 0;
-    }
-
-    .cabecera {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 10px;
-     }
-
-    #logoMovil{
-        width: 100%;
-        max-width: 800px;
-        height: auto;
-    }
-
-    #btnMenu {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 32px;
-        color:var(--purpuraOscuro);
-        padding: 30px;
-
-        }
-
-    #contenedorLogo {
-        display: none;
-    }
-
-    .cabecera a{
-        text-decoration: none;
-        color: var(--purpuraOscuro);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 30px 20px;
-        flex: 1;
-        text-align: center;
-    }
-
-    .cabecera a:hover {
-        background-color: var(--purpuraOscuro);
-        color: var(--purpuraMasClaro);
-        }
-
-    #contenedorLogoMovil {
-        flex: 5 !important; 
-        justify-content: flex-start !important; 
-        padding: 10px 0 !important; 
-    }
-
-    #btnMenu {
-        /* El botón solo ocupa su tamaño real, no la mitad de la pantalla */
-        flex: 0 !important; 
-        padding: 10px !important;
-    }
-
-    #contenedorLogoMovil:hover{
-        background-color: transparent;
-    }
-
-    
 }
 /* _________________________________________ */
 /* ↑ Estilos cabecera solo móvil ↑ */
@@ -3085,6 +3109,14 @@ input[type="date"].inputSubrayado:focus {
 /* ↓ Estilos generales para Móvil y Tablet ↓
 /* _________________________________________ */
 @media (max-width: 983px) {
+
+    /* Logo alineado a la izquierda exclusivo para móviles */
+    .cabecera {
+        justify-content: flex-start; 
+    }
+    #contenedorLogoMovil {
+        justify-content: flex-start;
+    }
     
     .seccion-colabora-tabs {
         flex-direction: column;
