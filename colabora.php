@@ -138,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tab-socias').classList.add('active');
         
         if (estado === 'success') {
-            cajaMsg.textContent = "¡Solicitud enviada correctamente! Bienvenida a la red de socias de La Casa.";
+            cajaMsg.textContent = "¡Solicitud enviada correctamente! Bienvenida a la red de socias de la Casa de mujeres Vallekas.";
             cajaMsg.className = "alerta alerta-exito";
         } else {
-            cajaMsg.textContent = "Hubo un problema al tramitar la solicitud. Por favor, inténtalo de nuevo.";
+            cajaMsg.textContent = "Hubo un problema al tramitar la solicitud. Por favor, inténtalo de nuevo, si no se soluciona por favor ponte en contacto con nosotras en el número 676533739. Te atenderá nuestra informática para tomar nota del problema y tus datos para darte de alta lo antes posible. ¡Gracias!";
             cajaMsg.className = "alerta alerta-error";
         }
         cajaMsg.scrollIntoView({ behavior: 'smooth' });
