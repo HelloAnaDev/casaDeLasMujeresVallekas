@@ -2724,6 +2724,78 @@ input[type="date"].inputSubrayado:focus {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* ==========================================================================
+   PESTAÑA FLOTANTE DEL TRADUCTOR (DESKTOP - ESQUINA INFERIOR DERECHA)
+   ========================================================================== */
+/* Elementos que solo existen en móvil los ocultamos en PC */
+.btn-traductor-movil, .cerrar-popup-movil, .titulo-popup-movil { 
+    display: none; 
+}
+
+.contenedor-traductor {
+    position: fixed;
+    bottom: 30px;
+    right: 0;
+    background-color: var(--purpuraOscuro);
+    color: var(--purpuraMasClaro);
+    border-radius: 15px 0 0 15px;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contenedor-traductor:hover,
+.contenedor-traductor:focus-within {
+    width: auto;
+    min-width: 230px;
+    background-color: #2e1935;
+    padding-right: 15px;
+}
+
+.icono-traductor {
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-traductor i {
+    font-size: 1.6rem;
+    font-weight: normal !important;
+}
+
+#google_translate_element {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    width: auto;
+}
+
+.contenedor-traductor:hover #google_translate_element,
+.contenedor-traductor:focus-within #google_translate_element {
+    opacity: 1;
+    visibility: visible;
+}
+
+#google_translate_element select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--purpuraMedio);
+    outline: none;
+    font-family: "poppins", sans-serif;
+    cursor: pointer;
+    background-color: #fff;
+    width: auto;
+    font-weight: normal !important;
+}
 
 /* _________________________________________ */
 /* ↑ Estilos de base para todo el proyecto ↑ */
@@ -2807,6 +2879,94 @@ input[type="date"].inputSubrayado:focus {
 /* ↓ Estilos cabecera solo móvil ↓ */
 /* _________________________________________ */
 @media (max-width:1326px) {
+/* ==========================================================================
+       TRADUCTOR MÓVIL (BOTÓN EN MENÚ Y POPUP CENTRAL)
+       ========================================================================== */
+    .btn-traductor-movil {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-top: 2px solid var(--purpuraMedio);
+        color: var(--purpuraOscuro);
+        font-size: 1.8rem;
+        width: 100%;
+        padding: 20px 0;
+        margin-top: auto;
+        cursor: pointer;
+    }
+
+    .btn-traductor-movil i {
+        font-weight: normal !important;
+    }
+
+    /* Ocultamos el contenedor real (pestaña PC) por defecto en móvil */
+    .contenedor-traductor {
+        display: none; 
+    }
+
+    /* Transformación mágica a Popup cuando pulsas el botón */
+    .contenedor-traductor.popup-activo {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(24, 7, 32, 0.85); /* Fondo oscuro con el tono de La Casa */
+        border-radius: 0;
+        box-shadow: none;
+        z-index: 9999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .contenedor-traductor.popup-activo .cerrar-popup-movil {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+    }
+
+    .contenedor-traductor.popup-activo .icono-traductor {
+        display: none; /* Quitamos el globo de la caja porque ya estás dentro */
+    }
+
+    .contenedor-traductor.popup-activo .titulo-popup-movil {
+        display: block;
+        color: white;
+        font-size: 1.3rem;
+        font-weight: bold;
+        font-family: "poppins", sans-serif;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .contenedor-traductor.popup-activo #google_translate_element {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* El selector se adapta 100% a lo que necesite Google sin cortarse */
+    .contenedor-traductor.popup-activo #google_translate_element select {
+        padding: 12px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        width: auto;
+        max-width: 90vw;
+        color: var(--purpuraOscuro);
+    }
 
     #btnOcultar {
         background: var(--purpuraOscuro);

@@ -59,5 +59,29 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
         <a <?php if ($pagina==='colabora') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/colabora.php">Colabora</a>
         <a <?php if ($pagina==='contacto') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/contacto.php">Contacto</a>
         <a <?php if ($pagina==='ayudaYRecursos') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/ayudaYRecursos.php">Ayuda y recursos</a>
+
+        <button id="btnAbreTraductorMovil" class="btn-traductor-movil" aria-label="Abrir idiomas">
+            <i class='bx bx-globe'></i>
+        </button>
+
     </nav> 
+
+    <div id="cajaTraductorReal" class="contenedor-traductor">
+        <button id="btnCierraTraductorMovil" class="cerrar-popup-movil">✖</button>
+        <span class="icono-traductor"><i class='bx bx-globe'></i></span>
+        <div class="titulo-popup-movil">Selecciona un idioma:</div>
+        <div id="google_translate_element"></div>
+    </div>
+
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es', 
+        includedLanguages: 'es,ro,zh-CN,ar,fr,en', 
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </header>

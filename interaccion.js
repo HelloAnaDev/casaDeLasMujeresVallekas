@@ -311,3 +311,20 @@ document.addEventListener('DOMContentLoaded', () => {
         carrusel.scrollTo({ left: 0 });
     }, 50);
 });
+
+// Control del Traductor Móvil (Popup)
+document.addEventListener('DOMContentLoaded', () => {
+    const btnAbreTraductor = document.getElementById('btnAbreTraductorMovil');
+    const btnCierraTraductor = document.getElementById('btnCierraTraductorMovil');
+    const cajaTraductor = document.getElementById('cajaTraductorReal');
+
+    if(btnAbreTraductor && btnCierraTraductor && cajaTraductor) {
+        btnAbreTraductor.addEventListener('click', (e) => {
+            e.preventDefault();
+            cajaTraductor.classList.add('popup-activo');
+        });
+        btnCierraTraductor.addEventListener('click', () => {
+            cajaTraductor.classList.remove('popup-activo');
+        });
+    }
+});

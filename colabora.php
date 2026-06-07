@@ -28,7 +28,7 @@ include 'header.php';
                 
                 <p>Puedes rellenar tus datos en el formulario online aquí abajo, o si lo prefieres de la forma tradicional, descargar el papel en PDF para imprimirlo, rellenarlo tranquilamente y traérnoslo un día a La Casa en persona.</p>
                 
-                <a href="archivos/formulario_socia.pdf" download class="botonBase" style="background-color: var(--purpuraMedio); color: #241a22; margin-bottom: 2rem;">📥 Descargar formulario en PDF</a>
+                <a href="archivos/formulario_socia.pdf" download class="botonBase" style="background-color: var(--purpuraMedio); color: #241a22; margin-bottom: 2rem;">Descargar formulario en PDF</a>
 
                 <div id="mensajeNotificacionSocia" class="oculto"></div>
                 
