@@ -24,9 +24,11 @@ include 'header.php';
                 <h3>¡HAZTE SOCIA!</h3>
                 <p>En el barrio sabemos bien que las cosas nunca nos las han regalado; las hemos conseguido juntas, apoyándonos hombro con hombro. La Casa de las Mujeres nació de esa misma rebeldía y apoyo mutuo, y para seguir abiertas y fuertes, te necesitamos.</p>
                 
-                <p>Ser socia de La Casa es mucho más que firmar un papel. Cuantas más mujeres formemos parte de esta red oficial, **más fuerza tendremos al levantar la voz**. No es lo mismo ir a hablar con las instituciones, con la junta del distrito o reclamar recursos siendo unas pocas, que yendo respaldadas por cientos de vecinas. Al hacerte socia, nos haces más visibles, más respetadas y logramos que se nos escuche de verdad. Es nuestra forma de demostrar que somos una comunidad unida y activa.</p>
+                <p>Ser socia de La Casa es mucho más que firmar un papel. Cuantas más mujeres formemos parte de esta red oficial, <strong>más fuerza tendremos al levantar la voz</strong>. No es lo mismo ir a hablar con las instituciones, con la junta del distrito o reclamar recursos siendo unas pocas, que yendo respaldadas por cientos de vecinas. Al hacerte socia, nos haces más visibles, más respetadas y logramos que se nos escuche de verdad. Es nuestra forma de demostrar que somos una comunidad unida y activa.</p>
                 
                 <p>Puedes rellenar tus datos en el formulario online aquí abajo, o si lo prefieres de la forma tradicional, descargar el papel en PDF para imprimirlo, rellenarlo tranquilamente y traérnoslo un día a La Casa en persona.</p>
+
+                <p><strong>CERO CORREOS BASURA.</strong>Únicamente recibiras emails útiles con información sobre actividades, marchas, etc que resulten de interés, pero te prometemos que no vamos a saturar tu buzón y que la frecuencia de estos emails es esporádica. Solo nos asomaremos a tu pantalla cuando haya algo importante que celebrar, debatir o pelear juntas.</p>
                 
                 <a href="archivos/formulario_socia.pdf" download class="botonBase" style="background-color: var(--purpuraMedio); color: #241a22; margin-bottom: 2rem;">Descargar formulario en PDF</a>
 
