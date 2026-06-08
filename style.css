@@ -4104,6 +4104,18 @@ input[type="date"].inputSubrayado:focus {
 /* ↑ Estilos generales para Móvil y Tablet  ↑ */
 /* _________________________________________ */
 
+/* =======================================================
+   PARCHE RÁPIDO: Ocultar "Anterior/Siguiente" en el Carrusel
+   ======================================================= */
+.foto-lateral-lectura {
+    display: none !important; /* Desaparecen las fotos rotas de los lados */
+}
+
+.foto-central-lectura {
+    width: 100% !important; /* La foto principal aprovecha todo el espacio */
+    object-fit: contain !important; /* Se ajusta sin desbordarse NUNCA */
+}
+
 /* PARCHE PARA MÓVIL*/
 html, body {
     overflow-x: hidden; 

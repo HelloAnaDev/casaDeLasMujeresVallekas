@@ -57,7 +57,7 @@ try {
 
     <div class="contenedor-volver">
         <a href="casaEnMarcha.php" class="btn-volver-muro">
-            <span>◀</span> Volver al Muro
+            <span>◀</span> Volver al muro de publicaciones
         </a>
     </div>
 
@@ -70,9 +70,7 @@ try {
                 <button id="btnAnteriorLectura" class="flecha-carrusel-lectura">◀</button>
                 
                 <div class="contenedor-fotos-lectura">
-                    <img id="fotoIzqLectura" class="foto-lateral-lectura" src="" alt="Anterior">
-                    <img id="fotoCentroLectura" class="foto-central-lectura" src="<?= $fotoPrincipal ?>" alt="Actual">
-                    <img id="fotoDerLectura" class="foto-lateral-lectura" src="" alt="Siguiente">
+                    <img id="fotoCentroLectura" class="foto-central-lectura" src="<?= $fotoPrincipal ?>" alt="Fotografía de la actividad">
                 </div>
                 
                 <button id="btnSiguienteLectura" class="flecha-carrusel-lectura">▶</button>
