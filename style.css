@@ -2961,6 +2961,20 @@ input[type="date"].inputSubrayado:focus {
         cursor: pointer;
     }
 
+        .btn-traductor-movil {
+        position: absolute;
+        right: 70px; /* Lo separamos para que no pise al menú */
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        background: transparent;
+        border: none;
+        font-size: 26px; /* Un pelín más pequeño que la hamburguesa para que quede elegante */
+        color: var(--purpuraOscuro);
+        padding: 10px;
+        margin: 0;
+        cursor: pointer;
+    }
     /* ==========================================================
        4. MENÚ MATEMÁTICO PERFECTO (7 secciones + Globo Fijo)
        ========================================================== */
@@ -2970,7 +2984,7 @@ input[type="date"].inputSubrayado:focus {
         right: -100%;
         width: 75%;
         max-width: 320px;
-        height: calc(100vh - 90px); /* Altura calculada exacta */
+        height: calc(100dvh - 90px); /* Altura calculada exacta */
         background-color: var(--purpuraMasClaro);
         display: flex;
         flex-direction: column;
@@ -2988,24 +3002,6 @@ input[type="date"].inputSubrayado:focus {
         display: none; 
     }
 
-    /* Pestaña de Traducción: Fija al fondo con 60px */
-    .btn-traductor-movil {
-        flex: 0 0 60px;
-        height: 60px;
-        padding: 0;
-        margin: 0;
-        border: none; /* Mata todos los bordes laterales e inferiores */
-        border-top: 2px solid var(--purpuraMedio); /* Resucita SOLO el borde superior */
-        background: transparent;
-        outline: none; /* Evita recuadros al hacer clic */
-        color: var(--purpuraOscuro);
-        font-size: 1.8rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        width: 100%;
-    }
 
     /* Fórmula Matemática para Botón Cerrar + 6 Enlaces */
     #menuLateral #btnOcultar,

@@ -43,7 +43,9 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
     <a href="<?php echo BASE_URL; ?>/index.php" id="contenedorLogoMovil">
         <img src="<?php echo BASE_URL; ?>/images/logoHorizontal.webp" id="logoMovil" alt="Logotipo de la 'Casa de las Mujeres de Vallekas'.">
     </a>   
-
+    <button id="btnAbreTraductorMovil" class="btn-traductor-movil" aria-label="Abrir idiomas">
+            <i class='bx bx-globe'></i>
+    </button>
     <button id="btnMenu" aria-label="Abrir menú">☰</button>
 
     <nav id="menuLateral">
@@ -59,10 +61,6 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
         <a <?php if ($pagina==='colabora') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/colabora.php">Colabora</a>
         <a <?php if ($pagina==='contacto') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/contacto.php">Contacto</a>
         <a <?php if ($pagina==='ayudaYRecursos') echo 'class="seccionActual"'; ?> href="<?php echo BASE_URL; ?>/ayudaYRecursos.php">Ayuda y recursos</a>
-
-        <button id="btnAbreTraductorMovil" class="btn-traductor-movil" aria-label="Abrir idiomas">
-            <i class='bx bx-globe'></i>
-        </button>
 
     </nav> 
 
