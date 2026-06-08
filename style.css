@@ -2815,8 +2815,516 @@ input[type="date"].inputSubrayado:focus {
 /* ↑ Estilos de base para todo el proyecto ↑ */
 /* _________________________________________ */
 
+/* ==========================================================
+   MURO DE LA CASA EN MARCHA (GRID Y TARJETAS CUADRADAS)
+   ========================================================== */
+.cabeceraMuro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
+.contenedorBuscadorMuro {
+    flex-grow: 1;
+    max-width: 600px;
+}
 
+.contenedorBuscadorMuro input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "poppins", sans-serif;
+}
+
+.contenedorFiltro select {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-family: "poppins", sans-serif;
+    cursor: pointer;
+}
+
+#contenedorMuro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px 20px;
+}
+
+/* --- La Cuadrícula de 3 columnas --- */
+.grid-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Fuerza 3 columnas exactas */
+    gap: 50px 30px; /* Mucho espacio vertical para que respiren, hueco horizontal normal */
+}
+
+/* El contenedor individual de cada tarjeta + su fecha */
+.item-muro {
+    display: flex;
+    flex-direction: column;
+}
+
+/* El mes/año encima de CADA tarjeta (Gris oscuro) */
+.titulo-mes-tarjeta {
+    display: block;
+    font-size: 1rem;
+    color: #555555; /* Gris oscuro para el texto */
+    text-transform: uppercase;
+    border-bottom: 1px solid #555555; /* Línea gris oscura y un pelín más gruesa */
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* --- Responsive para Tablet y Móvil --- */
+@media (max-width: 983px) {
+    .grid-tarjetas { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .grid-tarjetas { grid-template-columns: 1fr; }
+}
+
+/* --- La Tarjeta (Formato Cuadrado con Aire Superior Doble) --- */
+.tarjeta-muro {
+    background-color: var(--purpuraMasClaro);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    aspect-ratio: 1 / 1;
+    padding-top: 40px; /* ¡Pasamos de 20px a 40px (el doble)! */
+}
+
+/* Ajustamos la foto para que el borde lateral mida los mismos 40px que el borde superior */
+.tarjeta-muro img {
+    width: calc(100% - 80px); /* 40px por la izquierda + 40px por la derecha = 80px */
+    margin: 0 auto; 
+    height: 42%;
+    object-fit: cover;
+    border-radius: 10px; 
+}
+
+.tarjeta-muro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.tarjeta-muro img {
+    width: 100%;
+    height: 42%; /* Recorte estricto idéntico para todas */
+    object-fit: cover;
+}
+
+.info-tarjeta {
+    padding: 15px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-tarjeta h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.15rem; /* Un poco más pequeño para prevenir desbordes */
+    color: var(--purpuraOscuro);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Forzamos a que el título nunca pase de 2 líneas */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.info-tarjeta p {
+    font-size: 0.90rem;
+    color: #747474;
+    line-height: 1.4;
+    margin-bottom: auto; /* Truco elástico: empuja los likes hacia el fondo siempre */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Forzamos el texto a 2 líneas */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+/* --- Iconos y Etiquetas inferiores --- */
+.interacciones-tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--purpuraOscuro);
+    padding-top: 10px; /* Separación de seguridad con el texto */
+}
+
+.interacciones-tarjeta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.interacciones-tarjeta i {
+    width: 15px;
+}
+
+.btn-like {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.btn-like:hover i {
+    color: #d12c5b; 
+}
+
+.etiqueta-categoria {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--purpuraOscuro);
+    font-weight: bold;
+}
+
+/* ==========================================================
+   PÁGINA DE LECTURA INDIVIDUAL (DOS COLUMNAS)
+   ========================================================== */
+.fondo-lectura {
+    background-color: #fafafa;
+    padding-bottom: 60px;
+}
+
+/* --- Hero Borroso --- */
+.hero-lectura {
+    width: 100%;
+    height: 45vh;
+    min-height: 350px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-lectura-bg {
+    position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px; /* Margen extra para que el blur no deje bordes blancos */
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px); /* Efecto borroso */
+    opacity: 0.5; /* Translúcido */
+    z-index: 1;
+}
+
+.hero-lectura-contenido {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--purpuraOscuro);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px 50px;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero-lectura-contenido h1 {
+    font-size: 2.2rem;
+    margin: 10px 0 0 0;
+}
+
+.etiqueta-lectura {
+    display: inline-block;
+    background-color: var(--purpuraOscuro);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.contenedor-volver {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.btn-volver-muro {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.btn-volver-muro:hover {
+    color: var(--purpuraOscuro);
+}
+
+/* --- Grid de 2 Columnas --- */
+.layout-dos-columnas-lectura {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 66% izquierda, 33% derecha */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: start; /* Importante para que el sticky funcione */
+}
+
+/* --- Columna Izquierda (Contenido) --- */
+.columna-contenido {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.texto-lectura p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.barra-interaccion {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    margin: 30px 0;
+}
+
+.btn-like-lectura {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #555;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.icono-corazon-lectura {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--purpuraOscuro);
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.btn-like-lectura.like-activo .icono-corazon-lectura {
+    fill: #d12c5b;
+    stroke: #d12c5b;
+    transform: scale(1.15);
+}
+
+/* --- Carrusel --- */
+.carrusel-lectura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.contenedor-fotos-lectura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 350px; /* Altura fija para que no salte la página */
+}
+
+.foto-central-lectura {
+    width: 60%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+    z-index: 2;
+}
+
+.foto-lateral-lectura {
+    width: 20%;
+    height: 70%;
+    object-fit: cover;
+    opacity: 0.4;
+    border-radius: 10px;
+}
+
+.flecha-carrusel-lectura {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--purpuraMedio);
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.flecha-carrusel-lectura:hover {
+    transform: scale(1.2);
+    color: var(--purpuraOscuro);
+}
+
+.contador-carrusel {
+    text-align: center;
+    color: #777;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* --- Columna Derecha (Comentarios Sticky) --- */
+.tablon-comentarios-sticky {
+    position: sticky;
+    top: 100px; /* Se queda pegado al hacer scroll */
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.formulario-comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.formulario-comentarios label {
+    font-weight: 600;
+    color: var(--purpuraOscuro);
+}
+
+.formulario-comentarios input,
+.formulario-comentarios textarea {
+    padding: 15px;
+    border: 1px solid #777;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+.formulario-comentarios textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+.btn-enviar-comentario {
+    align-self: center;
+    background-color: var(--purpuraMasClaro);
+    color: black;
+    border: 1px solid #555;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-enviar-comentario:hover {
+    background-color: var(--purpuraMedio);
+}
+
+/* Área scroll de comentarios limitando su altura */
+.lista-comentarios {
+    max-height: 50vh; /* La altura máxima del tablón */
+    overflow-y: auto; /* Scroll vertical */
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Scrollbar personalizada para que quede bonita */
+.lista-comentarios::-webkit-scrollbar {
+    width: 6px;
+}
+.lista-comentarios::-webkit-scrollbar-thumb {
+    background-color: var(--purpuraMedio);
+    border-radius: 10px;
+}
+
+.tarjeta-comentario {
+    background-color: var(--purpuraMasClaro);
+    border-left: 4px solid var(--purpuraOscuro);
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+.tarjeta-comentario h4 {
+    margin: 0 0 5px 0;
+    color: var(--purpuraOscuro);
+    display: flex;
+    justify-content: space-between;
+}
+
+.tarjeta-comentario h4 span {
+    font-size: 0.8rem;
+    color: #777;
+    font-weight: normal;
+}
+
+.tarjeta-comentario p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.comentario-vacio-animador {
+    border: 2px dashed #ccc;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 15px;
+    color: #777;
+    font-style: italic;
+}
+
+/* --- Responsive --- */
+@media (max-width: 983px) {
+    .layout-dos-columnas-lectura {
+        grid-template-columns: 1fr; /* Pasa a 1 columna en móviles */
+    }
+    .tablon-comentarios-sticky {
+        position: static; /* Quita el sticky en móviles */
+    }
+    .lista-comentarios {
+        max-height: 400px;
+    }
+}
 
 /* _________________________________________ */
 /* ↓ Estilos cabecera solo escritorio ↓ */

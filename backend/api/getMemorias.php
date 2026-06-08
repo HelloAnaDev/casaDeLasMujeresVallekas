@@ -8,10 +8,14 @@ try {
                 m.idMemoria,
                 m.titulo, 
                 m.descripcion,
+                m.fecha,
+                m.categoria,
+                m.likes,
                 GROUP_CONCAT(i.rutaImagen) AS galeria_fotos
             FROM memorias m
             LEFT JOIN imagenes_memorias i ON m.idMemoria = i.idMemoria
-            GROUP BY m.idMemoria";
+            GROUP BY m.idMemoria
+            ORDER BY m.fecha DESC";
             
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -30,7 +34,6 @@ try {
 
         $stmtComentarios->execute([$memoria['idMemoria']]);
         $memoria['comentarios'] = $stmtComentarios->fetchAll(PDO::FETCH_ASSOC);
-
     }
     unset($memoria); 
 
@@ -38,6 +41,6 @@ try {
 
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(["error" => "Fallo en la base de datos"]);
+    echo json_encode(["error" => "Fallo SQL: " . $e->getMessage()]);
 }
 ?>

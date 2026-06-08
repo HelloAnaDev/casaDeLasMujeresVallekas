@@ -1,197 +1,142 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let todasLasMemorias = []; 
-    let listaMemorias = [];    
-    let indiceMemoria = 0;
-    let indiceFoto = 0;
-
-    const tituloMes = document.getElementById('tituloMes');
-    const fotoPrincipal = document.getElementById('fotoPrincipal');
-    const contadorFotos = document.getElementById('contadorFotos');
-    const textoMemoria = document.getElementById('textoMemoria'); 
-    const btnMesAnterior = document.getElementById('btnMesAnterior');
-    const btnMesSiguiente = document.getElementById('btnMesSiguiente');
-    const btnFotoAnterior = document.getElementById('btnFotoAnterior');
-    const btnFotoSiguiente = document.getElementById('btnFotoSiguiente');
+    const contenedorMuro = document.getElementById('contenedorMuro');
     const buscador = document.getElementById('buscadorMemorias');
-    const contenedorResultados = document.getElementById('contenedorResultados');
-    const vistaDetalle = document.getElementById('vistaDetalle');
-    const columnaDerecha = document.getElementById('columnaDerecha');
+    const filtro = document.getElementById('filtroCategoria');
+    let todasLasMemorias = [];
 
+    // 1. Pedir los datos a la base de datos
     fetch('backend/api/getMemorias.php')
-        .then(respuesta => respuesta.json())
-        .then(datos => {
-            if (datos.length === 0) {
-                tituloMes.textContent = "No hay actividades publicadas.";
-                return;
-            }
-            todasLasMemorias = datos; 
-            listaMemorias = [...todasLasMemorias]; 
-            
-            indiceMemoria = listaMemorias.length - 1;
-            pintarMemoria();
+        .then(res => {
+            if (!res.ok) throw new Error("Fallo al conectar con el servidor");
+            return res.json();
+        })
+        .then(data => {
+            if (data.error) throw new Error(data.error);
+            todasLasMemorias = data;
+            pintarMuro(todasLasMemorias);
+        })
+        .catch(error => {
+            contenedorMuro.innerHTML = `<p style="color:#d32f2f; text-align:center; padding: 40px; font-weight:bold;">⚠️ Error: ${error.message}</p>`;
         });
 
-    function pintarMemoria() {
-        const memoria = listaMemorias[indiceMemoria];
-            
-        tituloMes.textContent = memoria.titulo;
-            
-        if (textoMemoria) {
-            textoMemoria.textContent = memoria.descripcion; 
-        }
-
-        const inputIdMemoria = document.getElementById('idMemoriaActual');
-        if (inputIdMemoria && memoria.idMemoria) {
-            inputIdMemoria.value = memoria.idMemoria; 
-        }
-
-        indiceFoto = 0;
-        pintarFoto();
-        pintarComentarios();
-    }
-
-    function pintarFoto() {
-        const memoria = listaMemorias[indiceMemoria];
-        const galeria = memoria.galeria_fotos;
-        const total = galeria.length;
-
-        if (total > 0) {
-            fotoPrincipal.src = `images/memorias/${galeria[indiceFoto]}`;
-            contadorFotos.textContent = `${indiceFoto + 1} / ${total}`;
-
-            let idxAnt = (indiceFoto === 0) ? total - 1 : indiceFoto - 1;
-            document.getElementById('fotoAnterior').src = `images/memorias/${galeria[idxAnt]}`;
-
-            let idxSig = (indiceFoto === total - 1) ? 0 : indiceFoto + 1;
-            document.getElementById('fotoSiguiente').src = `images/memorias/${galeria[idxSig]}`;
-        }
-    }
-
-    function pintarComentarios() {
-        const memoria = listaMemorias[indiceMemoria];
-        const muro = document.getElementById('muroComentarios');
+    // 2. Función que dibuja el muro con SVG Nativos y Cuadrícula
+    function pintarMuro(datos) {
+        contenedorMuro.innerHTML = '<div class="grid-tarjetas"></div>';
+        const grid = contenedorMuro.querySelector('.grid-tarjetas');
         
-        muro.innerHTML = '';
-
-        if (memoria.comentarios && memoria.comentarios.length > 0) {
-            memoria.comentarios.forEach(comentario => {
-                const [soloFecha] = comentario.fecha.split(' '); 
-                const [anio, mes, dia] = soloFecha.split('-');   
-                const fechaEspana = `${dia}/${mes}/${anio}`;
-                
-                const divComentario = document.createElement('div');
-                divComentario.classList.add('tarjetaComentario');
-                
-                divComentario.innerHTML = `
-                    <p><strong>${comentario.nombre}</strong> <span class="fechaMini">${fechaEspana}</span></p>
-                    <p>${comentario.texto}</p>
-                `;
-                muro.appendChild(divComentario);
-            });
-        } else {
-            muro.innerHTML = `
-                <div class="comentarioVacio">
-                    <p>Aún no hay comentarios, ¡Anímate a compartir tus impresiones!</p>
-                </div>
-            `;
+        if (datos.length === 0) {
+            contenedorMuro.innerHTML = '<p style="text-align:center; padding: 40px; font-size: 1.2rem; color: #555;">No hay publicaciones.</p>';
+            return;
         }
+
+        datos.forEach(mem => {
+            const fechaValida = mem.fecha ? mem.fecha : '2026-01-01';
+            const fechaDate = new Date(fechaValida);
+            const mes = fechaDate.toLocaleString('es-ES', { month: 'long' }).toUpperCase();
+            const anio = fechaDate.getFullYear();
+            const mesAnioNormal = `${mes} ${anio}`; 
+
+            const numComentarios = mem.comentarios ? mem.comentarios.length : 0;
+            const numLikes = mem.likes || 0;
+            const cat = mem.categoria || 'LA CASA';
+            const foto = mem.galeria_fotos.length > 0 ? `images/memorias/${mem.galeria_fotos[0]}` : 'images/logoVector.webp';
+            
+            // Códigos SVG Nativos
+            const iconoCorazonSVG = `<svg class="icono-svg corazon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: all 0.2s ease;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+            const iconoBocadilloSVG = `<svg class="icono-svg" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'item-muro';
+            
+            wrapper.innerHTML = `
+                <div class="titulo-mes-tarjeta">${mesAnioNormal}</div>
+                <a href="lectura.php?id=${mem.idMemoria}" class="tarjeta-muro">
+                    <img src="${foto}" alt="Fotografía" onerror="this.src='images/logoVector.webp'">
+                    <div class="info-tarjeta">
+                        <h3>${mem.titulo}</h3>
+                        <p>${mem.descripcion}</p>
+                        <div class="interacciones-tarjeta">
+                            <button class="btn-like" data-id="${mem.idMemoria}" data-liked="false">
+                                ${iconoCorazonSVG} <span class="contador-likes">${numLikes}</span> me gusta
+                            </button>
+                            <span style="display: flex; align-items: center; gap: 8px;">
+                                ${iconoBocadilloSVG} ${numComentarios} comentarios
+                            </span>
+                        </div>
+                        <span class="etiqueta-categoria">${cat}</span>
+                    </div>
+                </a>
+            `;
+
+            const btnLike = wrapper.querySelector('.btn-like');
+            btnLike.addEventListener('click', (evento) => {
+                evento.preventDefault(); 
+                darLike(mem.idMemoria, btnLike);
+            });
+
+            grid.appendChild(wrapper);
+        });
     }
 
-    btnMesSiguiente.addEventListener('click', () => {
-        if (indiceMemoria < listaMemorias.length - 1) {
-            indiceMemoria++;
-            pintarMemoria();
-        }
-    });
+    // 3. Filtros y Buscador
+    function aplicarFiltros() {
+        const textoBusqueda = buscador.value.toLowerCase().trim();
+        const categoriaFiltro = filtro.value;
 
-    btnMesAnterior.addEventListener('click', () => {
-        if (indiceMemoria > 0) {
-            indiceMemoria--;
-            pintarMemoria();
-        }
-    });
-
-    btnFotoSiguiente.addEventListener('click', () => {
-        const galeria = listaMemorias[indiceMemoria].galeria_fotos;
-        if (indiceFoto < galeria.length - 1) {
-            indiceFoto++;
-        } else {
-            indiceFoto = 0;
-        }
-        pintarFoto();
-    });
-
-    btnFotoAnterior.addEventListener('click', () => {
-        const galeria = listaMemorias[indiceMemoria].galeria_fotos;
-        if (indiceFoto > 0) {
-            indiceFoto--;
-        } else {
-            indiceFoto = galeria.length - 1; 
-        }
-        pintarFoto();
-    });
-
-    if (buscador) {
-        buscador.addEventListener('input', (evento) => {
-            const textoBuscado = evento.target.value.toLowerCase().trim();
+        const resultados = todasLasMemorias.filter(mem => {
+            const coincideTexto = mem.titulo.toLowerCase().includes(textoBusqueda) || 
+                                  mem.descripcion.toLowerCase().includes(textoBusqueda);
+            const coincideCategoria = (categoriaFiltro === 'TODO') || (mem.categoria === categoriaFiltro);
             
-            if (textoBuscado === '') {
-                contenedorResultados.classList.add('oculto');
-                vistaDetalle.classList.remove('oculto');
-                columnaDerecha.classList.remove('oculto');
-                
-                listaMemorias = [...todasLasMemorias];
-                indiceMemoria = listaMemorias.length - 1;
-                pintarMemoria();
-                return;
-            }
-
-            const resultados = todasLasMemorias.filter(memoria => {
-                const coincideTitulo = memoria.titulo.toLowerCase().includes(textoBuscado);
-                const coincideDescripcion = memoria.descripcion.toLowerCase().includes(textoBuscado);
-                return coincideTitulo || coincideDescripcion;
-            });
-
-            vistaDetalle.classList.add('oculto');
-            columnaDerecha.classList.add('oculto');
-            contenedorResultados.classList.remove('oculto');
-            contenedorResultados.innerHTML = '';
-
-            if (resultados.length > 0) {
-                resultados.forEach(memoria => {
-                    const divTarjeta = document.createElement('div');
-                    divTarjeta.classList.add('tarjetaResultado');
-
-                    const foto = memoria.galeria_fotos.length > 0 ? `images/memorias/${memoria.galeria_fotos[0]}` : 'images/logoVector.webp';
-
-                    divTarjeta.innerHTML = `
-                        <img src="${foto}" class="miniaturaResultado" alt="Miniatura de ${memoria.titulo}">
-                        <div class="infoResultado">
-                            <h4>${memoria.titulo}</h4>
-                            <p>${memoria.descripcion}</p>
-                        </div>
-                    `;
-
-                    divTarjeta.addEventListener('click', () => {
-                        buscador.value = ''; 
-                        contenedorResultados.classList.add('oculto');
-                        vistaDetalle.classList.remove('oculto');
-                        columnaDerecha.classList.remove('oculto');
-
-                        listaMemorias = [...todasLasMemorias]; 
-                        indiceMemoria = listaMemorias.findIndex(m => m.idMemoria === memoria.idMemoria);
-                        pintarMemoria();
-                    });
-
-                    contenedorResultados.appendChild(divTarjeta);
-                });
-            } else {
-                contenedorResultados.innerHTML = `
-                    <div class="mensajeSinResultados">
-                        <p>No se encontraron actividades con esa palabra.</p>
-                    </div>
-                `;
-            }
+            return coincideTexto && coincideCategoria;
         });
+
+        pintarMuro(resultados);
+    }
+
+    buscador.addEventListener('input', aplicarFiltros);
+    filtro.addEventListener('change', aplicarFiltros);
+
+    // 4. Función de Like (Visual + Real a Base de Datos)
+    function darLike(idMemoria, btnElement) {
+        const contadorSpan = btnElement.querySelector('.contador-likes');
+        const iconoCorazon = btnElement.querySelector('.corazon');
+        let likesActuales = parseInt(contadorSpan.textContent);
+        let accion = 'like';
+
+        if (btnElement.getAttribute('data-liked') === 'true') {
+            // QUITAR LIKE
+            contadorSpan.textContent = Math.max(0, likesActuales - 1);
+            btnElement.setAttribute('data-liked', 'false');
+            if(iconoCorazon) {
+                iconoCorazon.style.fill = 'none';
+                iconoCorazon.style.stroke = 'currentColor';
+            }
+            accion = 'unlike';
+        } else {
+            // DAR LIKE
+            contadorSpan.textContent = likesActuales + 1;
+            btnElement.setAttribute('data-liked', 'true');
+            if(iconoCorazon) {
+                iconoCorazon.style.fill = '#d12c5b'; 
+                iconoCorazon.style.stroke = '#d12c5b';
+                iconoCorazon.style.transform = 'scale(1.15)'; 
+                setTimeout(() => iconoCorazon.style.transform = 'scale(1)', 200);
+            }
+        }
+
+        // Llamada al servidor
+        fetch('sumar_like.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: idMemoria, accion: accion })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === 'success') {
+                contadorSpan.textContent = data.likes;
+            }
+        })
+        .catch(err => console.error('Error con el like:', err));
     }
 });

@@ -12,8 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = $_POST['titulo'] ?? '';
     $fecha = $_POST['fecha'] ?? date('Y-m-d');
     $descripcion = $_POST['descripcion'] ?? '';
+    $categoria = $_POST['categoria'] ?? 'LA CASA';
     
-    $id_admin = $_SESSION['idAdmin']; 
+    $id_admin = $_SESSION['idAdmin'];
 
     function convertirAWebp($rutaTemporal, $rutaDestinoFinal, $calidad = 80) {
         $info = @getimagesize($rutaTemporal);
@@ -42,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $pdo->beginTransaction();
 
-        $sql = "INSERT INTO memorias (titulo, fecha, descripcion, id_admin) VALUES (:t, :f, :d, :a)";
+        $sql = "INSERT INTO memorias (titulo, fecha, descripcion, id_admin, categoria) VALUES (:t, :f, :d, :a, :c)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['t' => $titulo, 'f' => $fecha, 'd' => $descripcion, 'a' => $id_admin]);
+        $stmt->execute(['t' => $titulo, 'f' => $fecha, 'd' => $descripcion, 'a' => $id_admin, 'c' => $categoria]);
         
         $idMemoria = $pdo->lastInsertId();
 

@@ -31,6 +31,14 @@ include 'sidebarHeader.php';
             </div>
 
             <div class="grupoInput">
+                <label for="categoria">Tipo de contenido</label>
+                <select id="categoria" name="categoria" required style="padding: 12px 15px; border: 2px solid #eee; border-radius: 15px; font-family: inherit; font-size: 1rem; color: #333; outline: none; transition: border-color 0.2s;">
+                    <option value="LA CASA">La Casa (Actividades y eventos)</option>
+                    <option value="VARIOS">Lecturas (Artículos, reflexiones, etc.)</option>
+                </select>
+            </div>
+            
+            <div class="grupoInput">
                 <label for="descripcion">Descripción de las actividades</label>
                 <textarea id="descripcion" name="descripcion" rows="8" placeholder="Escribe aquí qué se hizo en la Casa este mes..." required></textarea>
             </div>
