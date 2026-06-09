@@ -39,36 +39,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const numComentarios = mem.comentarios ? mem.comentarios.length : 0;
             const numLikes = mem.likes || 0;
             const cat = mem.categoria || 'LA CASA';
-            const foto = mem.galeria_fotos.length > 0 ? `images/memorias/${mem.galeria_fotos[0]}` : 'images/logoVector.webp';
+            
+            // Si hay foto, la usamos de fondo. Si no, usamos color transparente corporativo.
+            const fotoReal = mem.galeria_fotos.length > 0 ? `images/memorias/${mem.galeria_fotos[0]}` : '';
+            const bgStyle = fotoReal ? `background-image: url('${fotoReal}');` : `background-color: rgba(196, 177, 202, 0.8);`;
             
             // Códigos SVG Nativos
-            const iconoCorazonSVG = `<svg class="icono-svg corazon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: all 0.2s ease;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
-            const iconoBocadilloSVG = `<svg class="icono-svg" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+            const iconoCorazonSVG = `<svg class="icono-svg corazon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: all 0.2s ease;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+            const iconoBocadilloSVG = `<svg class="icono-svg" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
 
             const wrapper = document.createElement('div');
             wrapper.className = 'item-muro';
             
             wrapper.innerHTML = `
-                <div class="titulo-mes-tarjeta">${mesAnioNormal}</div>
-                <a href="lectura.php?id=${mem.idMemoria}" class="tarjeta-muro">
-                    <img src="${foto}" alt="Fotografía" onerror="this.src='images/logoVector.webp'">
-                    <div class="info-tarjeta">
+                <div class="titulo-mes-tarjeta-lineas"><span>${mesAnioNormal}</span></div>
+                <a href="lectura.php?id=${mem.idMemoria}" class="tarjeta-muro-overlay" style="${bgStyle}">
+                    <div class="tarjeta-overlay-blanco">
                         <h3>${mem.titulo}</h3>
                         <p>${mem.descripcion}</p>
-                        <div class="interacciones-tarjeta">
-                            <button class="btn-like" data-id="${mem.idMemoria}" data-liked="false">
-                                ${iconoCorazonSVG} <span class="contador-likes">${numLikes}</span> me gusta
+                        <div class="interacciones-tarjeta-bottom">
+                            <button class="btn-like-muro" data-id="${mem.idMemoria}" data-liked="false">
+                                ${iconoCorazonSVG} <span><span class="contador-likes">${numLikes}</span> me gusta</span>
                             </button>
-                            <span style="display: flex; align-items: center; gap: 8px;">
-                                ${iconoBocadilloSVG} ${numComentarios} comentarios
+                            <span class="separador-muro"></span>
+                            <span class="comentarios-muro">
+                                ${iconoBocadilloSVG} <span>${numComentarios} comentarios</span>
                             </span>
+                            <span class="separador-muro"></span>
+                            <span class="etiqueta-categoria-muro">${cat}</span>
                         </div>
-                        <span class="etiqueta-categoria">${cat}</span>
                     </div>
                 </a>
             `;
 
-            const btnLike = wrapper.querySelector('.btn-like');
+            const btnLike = wrapper.querySelector('.btn-like-muro');
+            
+            // Comprobar estado previo guardado en el dispositivo
+            let likesLocales = JSON.parse(localStorage.getItem('likes_dispositivo')) || [];
+            if (likesLocales.includes(mem.idMemoria.toString())) {
+                btnLike.setAttribute('data-liked', 'true');
+                const icono = btnLike.querySelector('.corazon');
+                if(icono) {
+                    icono.style.fill = '#d12c5b'; 
+                    icono.style.stroke = '#d12c5b';
+                }
+            }
+
             btnLike.addEventListener('click', (evento) => {
                 evento.preventDefault(); 
                 darLike(mem.idMemoria, btnLike);
@@ -135,6 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if(data.status === 'success') {
                 contadorSpan.textContent = data.likes;
+                
+                // Actualizar registro del dispositivo
+                let likesGuardados = JSON.parse(localStorage.getItem('likes_dispositivo')) || [];
+                if (accion === 'like') {
+                    likesGuardados.push(idMemoria.toString());
+                } else {
+                    likesGuardados = likesGuardados.filter(id => id !== idMemoria.toString());
+                }
+                localStorage.setItem('likes_dispositivo', JSON.stringify(likesGuardados));
             }
         })
         .catch(err => console.error('Error con el like:', err));

@@ -14,7 +14,7 @@ include 'header.php';
             <select id="filtroCategoria">
                 <option value="TODO">Todo</option>
                 <option value="LA CASA">La Casa</option>
-                <option value="VARIOS">Lecturas</option>
+                <option value="VARIOS">Varios</option>
             </select>
         </div>
     </div>

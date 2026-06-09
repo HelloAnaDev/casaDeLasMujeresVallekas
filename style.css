@@ -4122,3 +4122,212 @@ html, body {
     width: 100%;       
     position: relative;
 }
+
+/* ==========================================================
+   REDISEÑO MURO LA CASA EN MARCHA (TARJETAS OVERLAY)
+   ========================================================== */
+.titulo-mes-tarjeta-lineas {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.titulo-mes-tarjeta-lineas::before, 
+.titulo-mes-tarjeta-lineas::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #777;
+}
+
+.titulo-mes-tarjeta-lineas span {
+    padding: 0 15px;
+}
+
+.tarjeta-muro-overlay {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    aspect-ratio: 3 / 2; /* Proporción para que se vea rectangular */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tarjeta-muro-overlay:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.tarjeta-overlay-blanco {
+    background-color: rgba(255, 255, 255, 0.75); /* Efecto translúcido de la imagen */
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.tarjeta-muro-overlay:hover .tarjeta-overlay-blanco {
+    background-color: rgba(255, 255, 255, 0.85); /* Se aclara ligeramente al pasar el ratón */
+}
+
+.tarjeta-overlay-blanco h3 {
+    font-size: 1.6rem;
+    margin: 0 0 10px 0;
+    color: #000;
+}
+
+.tarjeta-overlay-blanco p {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0 0 20px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.interacciones-tarjeta-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: auto; /* Lo empuja abajo */
+}
+
+.btn-like-muro {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    font-weight: inherit;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.btn-like-muro:hover .corazon {
+    color: #d12c5b;
+}
+
+.comentarios-muro {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.separador-muro {
+    font-weight: 900;
+    color: #000;
+}
+
+.etiqueta-categoria-muro {
+    letter-spacing: 1px;
+}
+
+/* Fuerza el diseño móvil de las tarjetas a 2 columnas como en la imagen que enviaste */
+@media (max-width: 768px) {
+    .grid-tarjetas { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 30px 15px !important; 
+    }
+    .tarjeta-overlay-blanco h3 { font-size: 1.2rem; }
+    .interacciones-tarjeta-bottom { font-size: 0.65rem; gap: 4px; }
+    .tarjeta-overlay-blanco { padding: 15px 10px; }
+}
+
+/* ==========================================================
+   CORRECCIÓN LECTURA.PHP (MÓVIL Y ALINEACIÓN)
+   ========================================================== */
+.layout-dos-columnas-lectura {
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Evita que palabras largas rompan el contenedor */
+    width: 100%;
+    padding: 0 15px; 
+}
+
+.columna-contenido {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Corta por lo sano cualquier desbordamiento fantasma */
+}
+
+/* Texto alineado a la izquierda */
+.texto-lectura p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: left !important; /* Modificado */
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .columna-contenido {
+        padding: 20px 15px; /* Menos padding lateral en móvil para dar más espacio al texto */
+    }
+}
+
+/* ==========================================================
+   BOTONES STICKY LECTURA.PHP
+   ========================================================== */
+.contenedor-stickys-lectura {
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.btn-sticky-lectura {
+    background-color: var(--purpuraOscuro);
+    color: var(--purpuraMasClaro);
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.btn-sticky-lectura:hover {
+    transform: translateY(-3px);
+}
+
+.btn-sticky-lectura svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Oculta "Ir a comentarios" en Desktop */
+@media (min-width: 984px) {
+    #btnStickyComentarios {
+        display: none;
+    }
+}

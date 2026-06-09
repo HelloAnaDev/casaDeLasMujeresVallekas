@@ -30,7 +30,7 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
     <title>Casa de las mujeres Vallekas</title>
     <meta name="description" content="La Casa de las Mujeres de Vallekas es un espacio de encuentro, apoyo mutuo y resistencia feminista en el barrio de Vallecas.">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css?v=4.6">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style2.css?v=4.6">
     <!---------------------------------- VERSION AQUÍ ------------------------------------>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
