@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fecha = $_POST['fecha'] ?? date('Y-m-d');
     $descripcion = $_POST['descripcion'] ?? '';
     $categoria = $_POST['categoria'] ?? 'LA CASA';
+    $es_borrador = (isset($_POST['accion']) && $_POST['accion'] === 'borrador') ? 1 : 0;
     
     $id_admin = $_SESSION['idAdmin'];
 
@@ -43,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $pdo->beginTransaction();
 
-        $sql = "INSERT INTO memorias (titulo, fecha, descripcion, id_admin, categoria) VALUES (:t, :f, :d, :a, :c)";
+        $sql = "INSERT INTO memorias (titulo, fecha, descripcion, id_admin, categoria, es_borrador) VALUES (:t, :f, :d, :a, :c, :b)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['t' => $titulo, 'f' => $fecha, 'd' => $descripcion, 'a' => $id_admin, 'c' => $categoria]);
+        $stmt->execute(['t' => $titulo, 'f' => $fecha, 'd' => $descripcion, 'a' => $id_admin, 'c' => $categoria, 'b' => $es_borrador]);
         
         $idMemoria = $pdo->lastInsertId();
 

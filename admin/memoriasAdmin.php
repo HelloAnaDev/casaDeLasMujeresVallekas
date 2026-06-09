@@ -16,7 +16,7 @@ include 'sidebarHeader.php';
 $buscar = $_GET['buscar'] ?? '';
 
 $sql = "SELECT 
-            m.idMemoria, m.titulo, m.fecha, 
+            m.idMemoria, m.titulo, m.fecha, m.es_borrador, 
             a.nombre AS nombre_creadora,
             (SELECT rutaImagen FROM imagenes_memorias im WHERE im.idMemoria = m.idMemoria LIMIT 1) as foto_principal
         FROM memorias m
@@ -26,7 +26,7 @@ if (!empty($buscar)) {
     $sql .= " WHERE m.titulo LIKE :busq OR YEAR(m.fecha) LIKE :busq";
 }
 
-$sql .= " ORDER BY m.fecha DESC";
+$sql .= " ORDER BY m.es_borrador DESC, m.fecha DESC";
 
 $stmt = $pdo->prepare($sql);
 if (!empty($buscar)) {
@@ -73,8 +73,20 @@ $memorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (count($memorias) === 0) {
             echo "<p style='text-align:center; color:#666;'>Aún no hay memorias publicadas.</p>";
         } else {
+            $impresoBorradores = false;
+            $impresoPublicadas = false;
+
             foreach ($memorias as $memoria) {
-                
+                // Renderizado de titulares externos según el bloque correspondiente
+                if ($memoria['es_borrador'] == 1 && !$impresoBorradores) {
+                    echo "<h3 class='titular-bloque-admin'>Tienes un borrador en curso:</h3>";
+                    $impresoBorradores = true;
+                }
+                if ($memoria['es_borrador'] == 0 && !$impresoPublicadas) {
+                    echo "<h3 class='titular-bloque-admin'>Memorias ya publicadas:</h3>";
+                    $impresoPublicadas = true;
+                }
+
                 $fechaFormateada = date('d-m-Y', strtotime($memoria['fecha']));
                 
                 $autora = $memoria['nombre_creadora'] ?? 'Casa de las Mujeres Vallekas';
@@ -83,8 +95,8 @@ $memorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 ?>
                 
-                <article class="filaMemoria">
-                    <div class="bloqueImagen">
+                <article class="filaMemoria <?php if ($memoria['es_borrador'] == 1) { echo 'tarjeta-borrador'; } ?>">
+                       <div class="bloqueImagen">
                         <img src="<?= htmlspecialchars($rutaImagen) ?>" alt="Miniatura de <?= htmlspecialchars($memoria['titulo']) ?>">
                     </div>
                     

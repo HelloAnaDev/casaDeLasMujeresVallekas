@@ -50,8 +50,11 @@ include 'sidebarHeader.php';
             </div>
 
             <div class="accionesForm">
-                <button type="submit" class="btnGuardar">
+                <button type="submit" name="accion" value="publicar" class="btnGuardar">
                     <i class='bx bx-save'></i> Publicar Memoria
+                </button>
+                <button type="submit" name="accion" value="borrador" class="btnGuardar btnGuardarBorrador">
+                    <i class='bx bx-edit'></i> Guardar como borrador
                 </button>
             </div>
 

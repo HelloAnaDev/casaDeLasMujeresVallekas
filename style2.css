@@ -3795,3 +3795,50 @@ p {
         font-size: 1.6rem;
     }
 }
+
+/* ==========================================================================
+   ESTILOS DE BORRADORES COMPARTIDOS (ADMIN)
+   ========================================================================== */
+.filaMemoria.tarjeta-borrador {
+    opacity: 0.95; 
+    border: 2px dashed var(--purpuraOscuro) !important; 
+    background-color: #ebdce8 !important; /* Morado pastel corporativo más notable */
+    box-shadow: 0 4px 10px rgba(66, 37, 75, 0.05);
+}
+
+/* Titulares divisores externos para separar los bloques de las listas */
+.titular-bloque-admin {
+    color: var(--purpuraOscuro);
+    font-size: 1.25rem;
+    margin: 35px 0 15px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    width: 100%;
+    border-left: 4px solid var(--purpuraOscuro);
+    padding-left: 10px;
+}
+
+/* Alineación horizontal perfecta para evitar botones descentrados */
+.accionesForm {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+/* Botón "Guardar como borrador" en morado claro corporativo */
+.btnGuardarBorrador {
+    background-color: var(--purpuraClaro) !important;
+    color: var(--purpuraOscuro) !important;
+    border: 2px solid var(--purpuraMedio) !important;
+    transition: all 0.2s ease;
+}
+
+.btnGuardarBorrador:hover {
+    background-color: var(--purpuraMedio) !important;
+    box-shadow: 0 4px 12px rgba(196, 177, 202, 0.3);
+}

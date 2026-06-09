@@ -14,6 +14,7 @@ try {
                 GROUP_CONCAT(i.rutaImagen) AS galeria_fotos
             FROM memorias m
             LEFT JOIN imagenes_memorias i ON m.idMemoria = i.idMemoria
+            WHERE m.es_borrador = 0
             GROUP BY m.idMemoria
             ORDER BY m.fecha DESC";
             

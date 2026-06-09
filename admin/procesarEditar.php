@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = $_POST['titulo'] ?? '';
     $fecha = $_POST['fecha'] ?? '';
     $descripcion = $_POST['descripcion'] ?? '';
+    $es_borrador = (isset($_POST['accion']) && $_POST['accion'] === 'borrador') ? 1 : 0;
 
 if (!$idMemoria) {
         header("Location: memoriasAdmin.php");
@@ -40,12 +41,13 @@ if (!$idMemoria) {
     try {
         $pdo->beginTransaction();
 
-        $sql = "UPDATE memorias SET titulo = :t, fecha = :f, descripcion = :d WHERE idMemoria = :id";
+        $sql = "UPDATE memorias SET titulo = :t, fecha = :f, descripcion = :d, es_borrador = :b WHERE idMemoria = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             't' => $titulo,
             'f' => $fecha,
             'd' => $descripcion,
+            'b' => $es_borrador,
             'id' => $idMemoria
         ]);
 
