@@ -1999,44 +1999,58 @@ p {
 }
 
 /* --- Parche Anti-Scroll Horizontal (Lectura en Móviles) --- */
+/* 1. Bloqueo estricto a nivel raíz (Obligatorio para Safari/Chrome móvil) */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 @media (max-width: 768px) {
     .fondo-lectura {
-        overflow-x: hidden ;
-        max-width: 100vw ;
+        overflow-x: hidden !important;
+        max-width: 100% !important; /* CORRECCIÓN: 100% evita que cuente la barra de scroll invisible */
     }
 
     .columna-contenido, 
     .tablon-comentarios-sticky {
-        padding: 20px ; 
-        width: 100% ;
-        box-sizing: border-box ;
+        padding: 20px !important; 
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .layout-dos-columnas-lectura {
-        padding: 0 15px ;
-        gap: 20px ;
-        width: 100% ;
-        box-sizing: border-box ;
+        padding: 0 15px !important;
+        gap: 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .hero-lectura-contenido {
-        padding: 20px 15px ;
-        width: 90% ;
-        box-sizing: border-box ;
+        padding: 20px 15px !important;
+        width: 90% !important;
+        box-sizing: border-box !important;
     }
 
     .hero-lectura-contenido h1 {
-        font-size: 1.6rem ;
-        word-wrap: break-word ;
-        overflow-wrap: break-word ;
+        font-size: 1.6rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 
     .texto-lectura p, 
     .tarjeta-comentario p,
     .tarjeta-comentario h4 {
-        word-wrap: break-word ;
-        overflow-wrap: break-word ;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
         hyphens: auto;
+    }
+
+    /* 2. Blindaje extra: Evita que los inputs del formulario rompan la caja hacia la derecha */
+    .formulario-comentarios input,
+    .formulario-comentarios textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 }
 /* ==========================================================================
