@@ -1746,7 +1746,7 @@ p {
     letter-spacing: 1px;
 }
 
-/* Vista Móvil y Tablet del Muro (Blindada contra Scroll Horizontal) */
+/* Vista Móvil y Tablet del Muro  */
 @media (max-width: 768px) {
     .cabeceraMuro {
         padding: 0 15px;
@@ -1985,8 +1985,62 @@ p {
     .interacciones-tarjeta-bottom { font-size: 0.75rem; gap: 10px; white-space: nowrap; }
     .tarjeta-overlay-blanco { padding: 15px 10px; }
 }
+/* --- Responsive --- */
+@media (max-width: 983px) {
+    .layout-dos-columnas-lectura {
+        grid-template-columns: 1fr; /* Pasa a 1 columna en móviles */
+    }
+    .tablon-comentarios-sticky {
+        position: static; /* Quita el sticky en móviles */
+    }
+    .lista-comentarios {
+        max-height: 400px;
+    }
+}
+
+/* --- Parche Anti-Scroll Horizontal (Lectura en Móviles) --- */
+@media (max-width: 768px) {
+    .fondo-lectura {
+        overflow-x: hidden ;
+        max-width: 100vw ;
+    }
+
+    .columna-contenido, 
+    .tablon-comentarios-sticky {
+        padding: 20px ; 
+        width: 100% ;
+        box-sizing: border-box ;
+    }
+
+    .layout-dos-columnas-lectura {
+        padding: 0 15px ;
+        gap: 20px ;
+        width: 100% ;
+        box-sizing: border-box ;
+    }
+
+    .hero-lectura-contenido {
+        padding: 20px 15px ;
+        width: 90% ;
+        box-sizing: border-box ;
+    }
+
+    .hero-lectura-contenido h1 {
+        font-size: 1.6rem ;
+        word-wrap: break-word ;
+        overflow-wrap: break-word ;
+    }
+
+    .texto-lectura p, 
+    .tarjeta-comentario p,
+    .tarjeta-comentario h4 {
+        word-wrap: break-word ;
+        overflow-wrap: break-word ;
+        hyphens: auto;
+    }
+}
 /* ==========================================================================
-   NUEVA TIRA INFORMATIVA DE LIKE (ESTILO CINTA POLICIAL DE LADO A LADO)
+   NUEVA TIRA INFORMATIVA DE LIKE 
    ========================================================================== */
 .tira-like-informativa {
     background-color: var(--purpuraMasClaro);
