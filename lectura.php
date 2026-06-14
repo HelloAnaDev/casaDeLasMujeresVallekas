@@ -11,11 +11,19 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $idMemoria = $_GET['id'];
 
 try {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+
     // 1. Obtener datos de la publicación
     $sql = "SELECT m.*, GROUP_CONCAT(i.rutaImagen) AS galeria 
             FROM memorias m 
             LEFT JOIN imagenes_memorias i ON m.idMemoria = i.idMemoria 
             WHERE m.idMemoria = ?";
+            
+    // Si NO es una administradora, le prohibimos ver borradores ocultos
+    if (!isset($_SESSION['idAdmin'])) {
+        $sql .= " AND m.es_borrador = 0";
+    }
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$idMemoria]);
     $noticia = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -86,7 +94,12 @@ try {
             </div>
 
             <div class="texto-lectura">
-                <p><?= nl2br(htmlspecialchars($noticia['descripcion'])) ?></p>
+                <?php
+                    $textoSeguro = htmlspecialchars($noticia['descripcion']);
+                    // Expresión regular que detecta enlaces (http o https) y los envuelve en una etiqueta <a>
+                    $textoConEnlaces = preg_replace('!(https?://[-a-zA-Zа-яА-Я0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" target="_blank" rel="noopener noreferrer" class="enlace-memoria">$1</a>', $textoSeguro);
+                ?>
+                <p><?= nl2br($textoConEnlaces) ?></p>
             </div>
 
             <div class="tira-like-informativa">

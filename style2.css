@@ -2053,6 +2053,18 @@ html, body {
         box-sizing: border-box !important;
     }
 }
+
+/* Estilo para los enlaces automáticos en las memorias, en edición */
+.enlace-memoria {
+    color: var(--purpuraOscuro);
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.enlace-memoria:hover {
+    color: #000;
+}
+
 /* ==========================================================================
    NUEVA TIRA INFORMATIVA DE LIKE 
    ========================================================================== */
