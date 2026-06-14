@@ -48,23 +48,7 @@ include 'header.php';
         <input type="email" id="email" name="email" required>
             
         <label for="contrasena">Contraseña</label>
-        <div style="position: relative;">
-            <input type="password" id="contrasena" name="contrasena" required style="width: 100%; padding-right: 80px; box-sizing: border-box;">
-            <button type="button" id="btnTogglePsw" style="position: absolute; right: 10px; top: 12px; background: none; border: none; cursor: pointer; color: var(--purpuraOscuro); font-weight: bold; font-family: 'Poppins', sans-serif; font-size: 0.85rem;">Mostrar</button>
-        </div>
-
-        <script>
-        document.getElementById('btnTogglePsw').addEventListener('click', function() {
-            const input = document.getElementById('contrasena');
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.textContent = 'Ocultar';
-            } else {
-                input.type = 'password';
-                this.textContent = 'Mostrar';
-            }
-        });
-        </script>
+        <input type="password" id="contrasena" name="contrasena" required>
 
         <div class="contenedorEnlaceReset">
             <a href="solicitar_reset.php" class="linkOlvido">¿Has olvidado tu contraseña?</a>

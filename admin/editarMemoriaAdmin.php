@@ -76,12 +76,18 @@ if (!$memoria) { die("Memoria no encontrada"); }
 </div>
 
             <div class="accionesForm">
-                <button type="submit" name="accion" value="publicar" class="btnGuardar">
-                    <i class='bx bx-save'></i> <?php echo (isset($memoria['es_borrador']) && $memoria['es_borrador'] == 1) ? 'Guardar y Publicar' : 'Guardar cambios'; ?>
-                </button>
-                <button type="submit" name="accion" value="borrador" class="btnGuardar btnGuardarBorrador">
-                    <i class='bx bx-edit'></i> Guardar como borrador / Despublicar
-                </button>
+                <?php if (isset($memoria['es_borrador']) && $memoria['es_borrador'] == 1): ?>
+                    <button type="submit" name="accion" value="publicar" class="btnGuardar">
+                        <i class='bx bx-save'></i> Guardar y Publicar
+                    </button>
+                    <button type="submit" name="accion" value="borrador" class="btnGuardar btnGuardarBorrador">
+                        <i class='bx bx-edit'></i> Guardar como borrador
+                    </button>
+                <?php else: ?>
+                    <button type="submit" name="accion" value="publicar" class="btnGuardar">
+                        <i class='bx bx-save'></i> Guardar cambios
+                    </button>
+                <?php endif; ?>
             </div>
         </form>
     </section>

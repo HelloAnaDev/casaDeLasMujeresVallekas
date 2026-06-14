@@ -65,19 +65,6 @@ include 'sidebarHeader.php';
 <div class="contenedorContadorAdmin">
     <p class="textoIntro">Este área está dedicado a la actualización del contador público de días libres de feminicidios. Si ha tenido lugar un asesinato por violencia de género, escribe los siguientes datos sobre la víctima y pulsa el botón "visibilizar" para reiniciar el contador y denunciar esta situación que sufrimos diariamente las mujeres.</p>
 
-    <?php 
-        $stmtUltima = $pdo->query("SELECT nombre, tipo_victima, fecha_registro FROM registro_feminicidios ORDER BY fecha_registro DESC LIMIT 1");
-        $ultimaV = $stmtUltima->fetch();
-        if ($ultimaV): 
-            $nombreV = !empty($ultimaV['nombre']) ? htmlspecialchars($ultimaV['nombre']) : 'Anónima';
-            $tipoV = $ultimaV['tipo_victima'] === 'menor' ? 'menor de edad' : 'mayor de edad';
-            $fechaV = date('d/m/Y', strtotime($ultimaV['fecha_registro']));
-        ?>
-            <p style="text-align: justify; margin-bottom: 30px; font-size: 1.05rem; color: #555555;">
-                Recuerda, la última víctima registrada en nuestro contador es <strong><?= $nombreV ?></strong> (<strong><?= $tipoV ?></strong>). Este feminicidio se produjo el <strong><?= $fechaV ?></strong>. Si venías a escribir sobre ella, ya lo ha actualizado una de tus compañeras; no es necesario volver a actualizar aún.
-            </p>
-        <?php endif; ?>
-
     <?php if ($mensajeExito): ?>
         <div class="alerta exito"><?php echo htmlspecialchars($mensajeExito); ?></div>
     <?php endif; ?>
@@ -152,7 +139,7 @@ include 'sidebarHeader.php';
                     <?php else: ?>
                         <?php foreach ($registros as $row): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($row['fecha_registro']))); ?></td>
+                            <td><?php echo htmlspecialchars($row['fecha_registro']); ?></td>
                             <td><?php echo htmlspecialchars($row['nombre'] ?? 'Anónimo / Menor'); ?></td>
                             <td><?php echo htmlspecialchars($row['tipo_victima'] ?? 'No definido'); ?></td>
                             <td>
