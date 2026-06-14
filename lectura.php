@@ -55,7 +55,7 @@ try {
     $og_title = htmlspecialchars($noticia['titulo']);
     $og_desc = htmlspecialchars(mb_substr($noticia['descripcion'], 0, 150)) . '...';
     $og_image = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/" . $fotoPrincipal;
-    
+
     
 } catch (PDOException $e) {
     die("Error cargando la lectura.");
@@ -128,6 +128,11 @@ try {
                 
                 <form id="formComentarioLectura" class="formulario-comentarios">
                     <input type="hidden" id="idMemoriaComentario" value="<?= $idMemoria ?>">
+
+                    <div class="campoOculto" aria-hidden="true">
+                        <label for="sitioWebComentario">No rellenar</label>
+                        <input type="text" id="sitioWebComentario" name="sitioWebComentario" tabindex="-1" autocomplete="off">
+                    </div>
                     
                     <label for="aliasNuevo">Nombre / Alias</label>
                     <input type="text" id="aliasNuevo" required>

@@ -220,6 +220,7 @@ if (formComentarios) {
         datosEnvio.append('nombre', alias);
         datosEnvio.append('texto', texto);
         datosEnvio.append('token', tokenDispositivo);
+        datosEnvio.append('sitioWebComentario', honeypot);
 
         fetch('enviarComentario.php', {
             method: 'POST',

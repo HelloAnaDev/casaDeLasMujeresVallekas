@@ -14,6 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $texto = strip_tags(trim($_POST['texto']));   
     $token = $_POST['token'];
 
+    $honeypot = $_POST['sitioWebComentario'] ?? '';
+    if (!empty($honeypot)) {
+        // Es un robot. Le decimos que todo ha ido bien para que nos deje en paz, pero cortamos el proceso.
+        echo json_encode(['status' => 'success', 'message' => 'Comentario enviado. Aparecerá cuando sea revisado por moderación.']);
+        exit;
+    }
+
     try {
         $pdo->beginTransaction();
 
