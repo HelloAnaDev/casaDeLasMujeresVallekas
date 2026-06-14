@@ -1,22 +1,20 @@
 <?php 
-$pagina = 'casaEnMarcha';
-$og_title = "La casa en marcha"; 
-$og_desc = "Bienvenida a nuestro diario mensual";
-$og_image = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/images/logoHorizontal.webp";
-include 'header.php'; 
+// 1. Primero cargamos la configuración y la base de datos
+require_once 'config/config.php';
 require_once 'config/db.php';
 
+// Iniciamos sesión por si necesitamos comprobar si es administradora
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    echo "<script>window.location.href='casaEnMarcha.php';</script>";
+    header("Location: casaEnMarcha.php");
     exit;
 }
 
 $idMemoria = $_GET['id'];
 
 try {
-    if (session_status() === PHP_SESSION_NONE) { session_start(); }
-
-    // 1. Obtener datos de la publicación
+    // 2. Obtener datos de la publicación
     $sql = "SELECT m.*, GROUP_CONCAT(i.rutaImagen) AS galeria 
             FROM memorias m 
             LEFT JOIN imagenes_memorias i ON m.idMemoria = i.idMemoria 
@@ -32,11 +30,11 @@ try {
     $noticia = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$noticia || empty($noticia['titulo'])) {
-        echo "<script>window.location.href='casaEnMarcha.php';</script>";
+        header("Location: casaEnMarcha.php");
         exit;
     }
 
-    // 2. Obtener comentarios aprobados
+    // 3. Obtener comentarios aprobados
     $sqlCom = "SELECT nombre, texto, fecha FROM comentarios WHERE idMemoria = ? AND estadoPublicacion = 1 ORDER BY fecha DESC";
     $stmtCom = $pdo->prepare($sqlCom);
     $stmtCom->execute([$idMemoria]);
@@ -48,18 +46,21 @@ try {
     $categoria = $noticia['categoria'] ?? 'LA CASA';
     $likes = $noticia['likes'] ?? 0;
 
-    // Pasamos las fotos a JSON para que JavaScript pueda hacer funcionar el carrusel
+    // Pasamos las fotos a JSON
     $fotosJSON = json_encode($fotos);
 
-    // Variables dinámicas para WhatsApp
+    // 4. ¡AQUÍ ESTÁ LA MAGIA DE WHATSAPP! Definimos las variables ANTES de llamar al header
     $og_title = htmlspecialchars($noticia['titulo']);
     $og_desc = htmlspecialchars(mb_substr($noticia['descripcion'], 0, 150)) . '...';
     $og_image = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/" . $fotoPrincipal;
 
-    
 } catch (PDOException $e) {
     die("Error cargando la lectura.");
 }
+
+// 5. AHORA SÍ, llamamos al header para que construya la página con las variables preparadas
+$pagina = 'casaEnMarcha';
+include 'header.php'; 
 ?>
 
 <main class="fondo-lectura">
