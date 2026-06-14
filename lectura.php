@@ -104,14 +104,14 @@ try {
         <aside class="columna-comentarios">
             <div class="tablon-comentarios-sticky">
                 
-                <form id="formComentarioLectura" class="formulario-comentarios">
-                    <input type="hidden" id="idMemoriaComentario" value="<?= $idMemoria ?>">
+                <form id="formularioComentarios" class="formulario-comentarios">
+                    <input type="hidden" id="idMemoriaActual" value="<?= $idMemoria ?>">
                     
-                    <label for="aliasNuevo">Nombre / Alias</label>
-                    <input type="text" id="aliasNuevo" required>
+                    <label for="aliasComentario">Nombre / Alias</label>
+                    <input type="text" id="aliasComentario" required>
                     
-                    <label for="textoNuevo">Comentario</label>
-                    <textarea id="textoNuevo" required></textarea>
+                    <label for="textoComentario">Comentario</label>
+                    <textarea id="textoComentario" required></textarea>
                     
                     <button type="submit" class="btn-enviar-comentario">ENVIAR</button>
                 </form>
