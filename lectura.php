@@ -118,8 +118,12 @@ include 'header.php';
             <div class="texto-lectura">
                 <?php
                     $textoSeguro = htmlspecialchars($noticia['descripcion']);
-                    // Expresión regular que detecta enlaces (http o https) y los envuelve en una etiqueta <a>
-                    $textoConEnlaces = preg_replace('!(https?://[-a-zA-Zа-яА-Я0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" target="_blank" rel="noopener noreferrer" class="enlace-memoria">$1</a>', $textoSeguro);
+                    
+                    // 1. Busca enlaces completos (con http:// o https://)
+                    $textoConEnlaces = preg_replace('/(https?:\/\/[^\s<]+)/i', '<a href="$1" target="_blank" rel="noopener noreferrer" class="enlace-memoria">$1</a>', $textoSeguro);
+                    
+                    // 2. Busca enlaces que la gente escribe solo con "www." y les añade el http:// oculto para que el click funcione
+                    $textoConEnlaces = preg_replace('/(?<!:\/\/)(www\.[^\s<]+)/i', '<a href="http://$1" target="_blank" rel="noopener noreferrer" class="enlace-memoria">$1</a>', $textoConEnlaces);
                 ?>
                 <p><?= nl2br($textoConEnlaces) ?></p>
             </div>
