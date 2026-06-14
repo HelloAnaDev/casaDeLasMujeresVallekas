@@ -72,10 +72,24 @@ include 'sidebarHeader.php';
         <div class="alerta error"><?php echo htmlspecialchars($mensajeError); ?></div>
     <?php endif; ?>
 
+    <?php
+        $stmtUltimaVictima = $pdo->query("SELECT nombre, tipo_victima, fecha_registro FROM registro_feminicidios ORDER BY fecha_registro DESC LIMIT 1");
+        $ultimaVictima = $stmtUltimaVictima->fetch(PDO::FETCH_ASSOC);
+        ?>
+        <?php if ($ultimaVictima): ?>
+            <?php 
+            // Si el nombre no existe, es nulo o está completamente vacío, por defecto será 'anónimo'
+            $nombreMostrar = (!isset($ultimaVictima['nombre']) || trim($ultimaVictima['nombre']) === '') ? 'anónimo' : htmlspecialchars($ultimaVictima['nombre']);
+            ?>
+            <p>
+                El último feminicidio registrado en nuestra web es el de <strong><?php echo $nombreMostrar; ?></strong> (<strong><?php echo $ultimaVictima['tipo_victima'] === 'mayor' ? 'mayor de edad' : 'menor de edad'; ?></strong>), ocurrido el <strong><?php echo date('d/m/Y', strtotime($ultimaVictima['fecha_registro'])); ?></strong>. Si es la mujer sobre la que ibas a escribir, otra compañera ya lo ha dejado reflejado, no es necesario que actualices nada.
+            </p>
+    <?php endif; ?>
+
     <form method="POST" action="">
         
         <div class="grupoFormulario">
-            <p class="textoInstruccion">Selecciona la fecha en la que tuvo lugar:</p>
+            <p class="textoInstruccion"><br>Selecciona la fecha en la que tuvo lugar:</p>
             <div class="inputEnLinea">
                 <label for="fecha_registro">Fecha :</label>
                 <input type="date" id="fecha_registro" name="fecha_registro" class="inputSubrayado" required>
@@ -139,7 +153,7 @@ include 'sidebarHeader.php';
                     <?php else: ?>
                         <?php foreach ($registros as $row): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($row['fecha_registro']); ?></td>
+                            <td><?php echo date('d/m/Y', strtotime($row['fecha_registro'])); ?></td>
                             <td><?php echo htmlspecialchars($row['nombre'] ?? 'Anónimo / Menor'); ?></td>
                             <td><?php echo htmlspecialchars($row['tipo_victima'] ?? 'No definido'); ?></td>
                             <td>

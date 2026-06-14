@@ -209,6 +209,9 @@ if (formComentarios) {
         const alias = document.getElementById('aliasComentario').value;
         const texto = document.getElementById('textoComentario').value;
         const tokenDispositivo = obtenerUUID();
+        
+        // ¡Aquí está la corrección del Punto 8! Capturamos el honeypot de forma segura.
+        const honeypot = document.getElementById('sitioWebComentario') ? document.getElementById('sitioWebComentario').value : '';
 
         if (!idMemoria || idMemoria === "") {
             alert("Error: No se ha seleccionado ninguna memoria para comentar.");
@@ -220,7 +223,7 @@ if (formComentarios) {
         datosEnvio.append('nombre', alias);
         datosEnvio.append('texto', texto);
         datosEnvio.append('token', tokenDispositivo);
-        datosEnvio.append('sitioWebComentario', honeypot);
+        datosEnvio.append('sitioWebComentario', honeypot); // Ahora sí se enviará correctamente
 
         fetch('enviarComentario.php', {
             method: 'POST',
@@ -329,3 +332,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+//Volver arriba (en footer)
+
+const btnVolverArriba = document.getElementById('btnVolverArriba');
+if (btnVolverArriba) {
+    btnVolverArriba.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}

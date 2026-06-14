@@ -48,7 +48,12 @@ include 'header.php';
         <input type="email" id="email" name="email" required>
             
         <label for="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" name="contrasena" required>
+        <div style="position: relative; display: flex; align-items: center;">
+            <input type="password" id="contrasena" name="contrasena" required style="width: 100%; padding-right: 40px;">
+            <button type="button" id="togglePassword" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--purpuraOscuro);">
+                <i class='bx bx-show'></i>
+            </button>
+        </div>
 
         <div class="contenedorEnlaceReset">
             <a href="solicitar_reset.php" class="linkOlvido">¿Has olvidado tu contraseña?</a>
@@ -62,6 +67,19 @@ include 'header.php';
 </main>
 
 <?php include 'footer.php'; ?>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#contrasena');
+    const icon = togglePassword.querySelector('i');
+
+    togglePassword.addEventListener('click', function (e) {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        icon.classList.toggle('bx-show');
+        icon.classList.toggle('bx-hide');
+    });
+</script>
 
 </body>
 </html>
