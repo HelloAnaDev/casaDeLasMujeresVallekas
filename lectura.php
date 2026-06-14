@@ -261,6 +261,44 @@ document.addEventListener("DOMContentLoaded", function() {
         if (btnLike) btnLike.addEventListener('click', procesarLike);
         if (btnTiraLike) btnTiraLike.addEventListener('click', procesarLike);
     }
+
+// 3. LÓGICA DEL INTERRUPTOR DE FOTOS (Apilado / Swipe)
+    const toggleVista = document.getElementById('toggleVistaFotos');
+    const galeria = document.getElementById('galeriaDinamica');
+    const ayudaSwipe = document.getElementById('ayudaSwipeFotos');
+    const indicadores = document.getElementById('indicadoresSwipe');
+    
+    if (toggleVista && galeria) {
+        toggleVista.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                // Modo Apilado
+                galeria.classList.remove('modo-carrusel');
+                galeria.classList.add('modo-apilado');
+                if(ayudaSwipe) ayudaSwipe.style.display = 'none';
+                if(indicadores) indicadores.style.display = 'none';
+            } else {
+                // Modo Individual (Deslizable)
+                galeria.classList.remove('modo-apilado');
+                galeria.classList.add('modo-carrusel');
+                if(ayudaSwipe) ayudaSwipe.style.display = 'block';
+                if(indicadores) indicadores.style.display = 'block';
+            }
+        });
+
+        // Actualizar los puntitos al deslizar la foto
+        galeria.addEventListener('scroll', () => {
+            if(galeria.classList.contains('modo-carrusel') && indicadores) {
+                const scrollLeft = galeria.scrollLeft;
+                const width = galeria.offsetWidth;
+                const index = Math.round(scrollLeft / width);
+                const dots = indicadores.querySelectorAll('.punto-swipe');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('activo', i === index);
+                });
+            }
+        });
+    }
+
 });
 </script>
 </body>
