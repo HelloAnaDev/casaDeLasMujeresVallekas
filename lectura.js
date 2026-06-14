@@ -71,47 +71,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA DEL CARRUSEL MODERNO (IMAGEN ÚNICA) ---
-    // La variable listaFotos viene del PHP (json_encode)
-    if (typeof listaFotos !== 'undefined' && listaFotos.length > 0) {
-        let indiceActual = 0;
-        const totalFotos = listaFotos.length;
-        
-        const fotoCentro = document.getElementById('fotoCentroLectura');
-        const contadorTexto = document.getElementById('contadorCarruselLectura');
-        const btnAnt = document.getElementById('btnAnteriorLectura');
-        const btnSig = document.getElementById('btnSiguienteLectura');
-
-        function actualizarCarrusel() {
-            // Actualizar foto central
-            fotoCentro.src = "images/memorias/" + listaFotos[indiceActual];
-            
-            if (contadorTexto) {
-                contadorTexto.textContent = `${indiceActual + 1} / ${totalFotos}`;
+ // --- LÓGICA DEL CARRUSEL DUAL (APILADO / DESLIZABLE) ---
+    const toggleVista = document.getElementById('toggleVistaFotos');
+    const galeria = document.getElementById('galeriaDinamica');
+    const ayudaSwipe = document.getElementById('ayudaSwipeFotos');
+    const indicadores = document.getElementById('indicadoresSwipe');
+    
+    if (toggleVista && galeria) {
+        toggleVista.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                // Modo Apilado
+                galeria.classList.remove('modo-carrusel');
+                galeria.classList.add('modo-apilado');
+                ayudaSwipe.style.display = 'none';
+                if(indicadores) indicadores.style.display = 'none';
+            } else {
+                // Modo Individual (Deslizable)
+                galeria.classList.remove('modo-apilado');
+                galeria.classList.add('modo-carrusel');
+                ayudaSwipe.style.display = 'block';
+                if(indicadores) indicadores.style.display = 'block';
             }
-            
-            // Si solo hay 1 foto, ocultamos las flechas por completo
-            if (totalFotos <= 1) {
-                if(btnAnt) btnAnt.style.display = "none";
-                if(btnSig) btnSig.style.display = "none";
+        });
+
+        // Actualizar puntos al deslizar
+        galeria.addEventListener('scroll', () => {
+            if(galeria.classList.contains('modo-carrusel') && indicadores) {
+                const scrollLeft = galeria.scrollLeft;
+                const width = galeria.offsetWidth;
+                const index = Math.round(scrollLeft / width);
+                const dots = indicadores.querySelectorAll('.punto-swipe');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('activo', i === index);
+                });
             }
-        }
-
-        if(btnAnt) {
-            btnAnt.addEventListener('click', () => {
-                indiceActual = (indiceActual === 0) ? totalFotos - 1 : indiceActual - 1;
-                actualizarCarrusel();
-            });
-        }
-
-        if(btnSig) {
-            btnSig.addEventListener('click', () => {
-                indiceActual = (indiceActual === totalFotos - 1) ? 0 : indiceActual + 1;
-                actualizarCarrusel();
-            });
-        }
-
-        // Inicializar la primera foto al cargar
-        actualizarCarrusel();
+        });
     }
-});

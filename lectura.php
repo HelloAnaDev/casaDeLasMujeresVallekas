@@ -66,16 +66,28 @@ try {
         <section class="columna-contenido">
             
             <?php if (count($fotos) > 0): ?>
-            <div class="carrusel-lectura">
-                <button id="btnAnteriorLectura" class="flecha-carrusel-lectura">◀</button>
-                
-                <div class="contenedor-fotos-lectura">
-                    <img id="fotoCentroLectura" class="foto-central-lectura" src="<?= $fotoPrincipal ?>" alt="Fotografía de la actividad">
+                <div class="controles-vista-fotos">
+                    <span class="etiqueta-vista">Ver individualmente</span>
+                    <label class="switch-vista">
+                        <input type="checkbox" id="toggleVistaFotos" checked>
+                        <span class="slider-vista round"></span>
+                    </label>
+                    <span class="etiqueta-vista">Ver todas las fotos apiladas</span>
                 </div>
                 
-                <button id="btnSiguienteLectura" class="flecha-carrusel-lectura">▶</button>
-            </div>
-            <p id="contadorCarruselLectura" class="contador-carrusel">1 / <?= count($fotos) ?></p>
+                <p class="ayuda-swipe" id="ayudaSwipeFotos" style="display: none;">Desliza a los lados para ver las demás fotos</p>
+                
+                <div class="contenedor-galeria-dinamica modo-apilado" id="galeriaDinamica">
+                    <?php foreach ($fotos as $f): ?>
+                        <img class="foto-galeria" src="images/memorias/<?= $f ?>" alt="Fotografía de la actividad">
+                    <?php endforeach; ?>
+                </div>
+                
+                <div class="indicadores-swipe" id="indicadoresSwipe" style="display: none;">
+                    <?php foreach ($fotos as $idx => $f): ?>
+                        <span class="punto-swipe <?= $idx === 0 ? 'activo' : '' ?>"></span>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
             <div class="barra-interaccion">
@@ -133,7 +145,7 @@ try {
                 
             </div>
         </aside>
-        </div>
+    </div>
 </main>
 
 <?php include 'footer.php'; ?>
@@ -145,7 +157,7 @@ try {
 document.addEventListener("DOMContentLoaded", function() {
     // 1. LÓGICA DE PAGINACIÓN DE COMENTARIOS
     const comentariosDivs = document.querySelectorAll('.tarjeta-comentario');
-    const porPagina = 4; // Cambia este número si quieres más o menos por página
+    const porPagina = 4; 
     let paginaActual = 1;
     
     if (comentariosDivs.length > porPagina) {
@@ -197,8 +209,8 @@ document.addEventListener("DOMContentLoaded", function() {
         mostrarPagina(1);
     }
 
-    // 2. LÓGICA DE ME GUSTA Y LOCALSTORAGE (Botón debajo de fotos y Botón de la nueva Tira)
-    const idMemoria = document.getElementById('idMemoriaComentario') ? document.getElementById('idMemoriaComentario').value : null;
+    // 2. LÓGICA DE ME GUSTA Y LOCALSTORAGE
+    const idMemoria = document.getElementById('idMemoriaActual') ? document.getElementById('idMemoriaActual').value : null;
     const btnLike = document.getElementById('btnLikeLectura');
     const btnTiraLike = document.getElementById('btnTiraLike');
     const contadores = document.querySelectorAll('#contadorLikesLectura');
