@@ -1,5 +1,8 @@
 <?php 
 $pagina = 'casaEnMarcha';
+$og_title = "La casa en marcha"; 
+$og_desc = "Bienvenida a nuestro diario mensual";
+$og_image = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/images/logoHorizontal.webp";
 include 'header.php'; 
 require_once 'config/db.php';
 
@@ -47,6 +50,12 @@ try {
 
     // Pasamos las fotos a JSON para que JavaScript pueda hacer funcionar el carrusel
     $fotosJSON = json_encode($fotos);
+
+    // Variables dinámicas para WhatsApp
+    $og_title = htmlspecialchars($noticia['titulo']);
+    $og_desc = htmlspecialchars(mb_substr($noticia['descripcion'], 0, 150)) . '...';
+    $og_image = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/" . $fotoPrincipal;
+    
     
 } catch (PDOException $e) {
     die("Error cargando la lectura.");

@@ -29,6 +29,11 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa de las mujeres Vallekas</title>
     <meta name="description" content="La Casa de las Mujeres de Vallekas es un espacio de encuentro, apoyo mutuo y resistencia feminista en el barrio de Vallecas.">
+    <meta property="og:title" content="<?php echo $og_title ?? 'Casa de las mujeres Vallekas'; ?>">
+    <meta property="og:description" content="<?php echo $og_desc ?? 'Espacio de encuentro, apoyo mutuo y resistencia feminista.'; ?>">
+    <meta property="og:image" content="<?php echo $og_image ?? 'https://' . $_SERVER['HTTP_HOST'] . BASE_URL . '/images/logoHorizontal.webp'; ?>">
+    <meta property="og:url" content="<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+    <meta property="og:type" content="website">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style2.css?v=4.6">
     <!---------------------------------- VERSION AQUÍ ------------------------------------>
