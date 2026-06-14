@@ -328,3 +328,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Autoscroll Volver arriba , desde footer
+
+const btnVolverArriba = document.getElementById('btnVolverArriba');
+if (btnVolverArriba) {
+    btnVolverArriba.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}

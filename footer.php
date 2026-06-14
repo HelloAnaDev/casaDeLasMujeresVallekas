@@ -72,6 +72,13 @@ $ninasEsteAno = $stats['menor'] ?? 0;
                 <li><a href="https://www.instagram.com/casademujeresvk/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
                 <li><a href="https://www.facebook.com/p/Casa-de-las-Mujeres-de-Vallekas-100067144956203/?locale=es_LA" rel="noopener noreferrer" target="_blank">Facebook</a></li>
             </ul>
+            
+            <div class="salto-footer"></div>
+            
+            <span class="tituloPie">NAVEGACIÓN</span>
+            <ul>
+                <li><a href="#" id="btnVolverArriba">Subir hasta arriba</a></li>
+            </ul>
         </div>
 
         <div class="columnaEnlaces">
