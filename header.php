@@ -35,7 +35,7 @@ if ($ultimoCaso && isset($ultimoCaso['fecha_registro'])) {
     <meta property="og:url" content="<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
     <meta property="og:type" content="website">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style2.css?v=4.6">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style2.css?v=5.0">
     <!---------------------------------- VERSION AQUÍ ------------------------------------>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

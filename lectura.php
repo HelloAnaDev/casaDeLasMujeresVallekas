@@ -84,16 +84,28 @@ include 'header.php';
         <section class="columna-contenido">
             
             <?php if (count($fotos) > 0): ?>
-            <div class="carrusel-lectura">
-                <button id="btnAnteriorLectura" class="flecha-carrusel-lectura">◀</button>
-                
-                <div class="contenedor-fotos-lectura">
-                    <img id="fotoCentroLectura" class="foto-central-lectura" src="<?= $fotoPrincipal ?>" alt="Fotografía de la actividad">
+                <div class="controles-vista-fotos">
+                    <span class="etiqueta-vista">Ver individualmente</span>
+                    <label class="switch-vista">
+                        <input type="checkbox" id="toggleVistaFotos" checked>
+                        <span class="slider-vista round"></span>
+                    </label>
+                    <span class="etiqueta-vista">Ver todas las fotos apiladas</span>
                 </div>
                 
-                <button id="btnSiguienteLectura" class="flecha-carrusel-lectura">▶</button>
-            </div>
-            <p id="contadorCarruselLectura" class="contador-carrusel">1 / <?= count($fotos) ?></p>
+                <p class="ayuda-swipe" id="ayudaSwipeFotos" style="display: none;">Desliza a los lados para ver las demás fotos</p>
+                
+                <div class="contenedor-galeria-dinamica modo-apilado" id="galeriaDinamica">
+                    <?php foreach ($fotos as $f): ?>
+                        <img class="foto-galeria" src="images/memorias/<?= $f ?>" alt="Fotografía de la actividad">
+                    <?php endforeach; ?>
+                </div>
+                
+                <div class="indicadores-swipe" id="indicadoresSwipe" style="display: none;">
+                    <?php foreach ($fotos as $idx => $f): ?>
+                        <span class="punto-swipe <?= $idx === 0 ? 'activo' : '' ?>"></span>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
             <div class="barra-interaccion">
@@ -127,19 +139,19 @@ include 'header.php';
         <aside class="columna-comentarios">
             <div class="tablon-comentarios-sticky">
                 
-                <form id="formComentarioLectura" class="formulario-comentarios">
-                    <input type="hidden" id="idMemoriaComentario" value="<?= $idMemoria ?>">
+                <form id="formularioComentarios" class="formulario-comentarios">
+                    <input type="hidden" id="idMemoriaActual" value="<?= $idMemoria ?>">
 
                     <div class="campoOculto" aria-hidden="true">
                         <label for="sitioWebComentario">No rellenar</label>
                         <input type="text" id="sitioWebComentario" name="sitioWebComentario" tabindex="-1" autocomplete="off">
                     </div>
                     
-                    <label for="aliasNuevo">Nombre / Alias</label>
-                    <input type="text" id="aliasNuevo" required>
+                    <label for="aliasComentario">Nombre / Alias</label>
+                    <input type="text" id="aliasComentario" required>
                     
-                    <label for="textoNuevo">Comentario</label>
-                    <textarea id="textoNuevo" required></textarea>
+                    <label for="textoComentario">Comentario</label>
+                    <textarea id="textoComentario" required></textarea>
                     
                     <button type="submit" class="btn-enviar-comentario">ENVIAR</button>
                 </form>
@@ -161,16 +173,14 @@ include 'header.php';
                 
             </div>
         </aside>
-        </div>
+    </div>
 </main>
 
 <?php include 'footer.php'; ?>
 
 <script>
-    const listaFotos = <?= $fotosJSON ?>;
-</script>
-<script>
 document.addEventListener("DOMContentLoaded", function() {
+    
     // 1. LÓGICA DE PAGINACIÓN DE COMENTARIOS
     const comentariosDivs = document.querySelectorAll('.tarjeta-comentario');
     const porPagina = 4; // Cambia este número si quieres más o menos por página
@@ -225,8 +235,8 @@ document.addEventListener("DOMContentLoaded", function() {
         mostrarPagina(1);
     }
 
-    // 2. LÓGICA DE ME GUSTA Y LOCALSTORAGE (Botón debajo de fotos y Botón de la nueva Tira)
-    const idMemoria = document.getElementById('idMemoriaComentario') ? document.getElementById('idMemoriaComentario').value : null;
+    // 2. LÓGICA DE ME GUSTA Y LOCALSTORAGE
+    const idMemoria = document.getElementById('idMemoriaActual') ? document.getElementById('idMemoriaActual').value : null;
     const btnLike = document.getElementById('btnLikeLectura');
     const btnTiraLike = document.getElementById('btnTiraLike');
     const contadores = document.querySelectorAll('#contadorLikesLectura');
@@ -276,6 +286,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (btnLike) btnLike.addEventListener('click', procesarLike);
         if (btnTiraLike) btnTiraLike.addEventListener('click', procesarLike);
+    }
+
+    // 3. LÓGICA DEL INTERRUPTOR DE FOTOS (Apilado / Swipe)
+    const toggleVista = document.getElementById('toggleVistaFotos');
+    const galeria = document.getElementById('galeriaDinamica');
+    const ayudaSwipe = document.getElementById('ayudaSwipeFotos');
+    const indicadores = document.getElementById('indicadoresSwipe');
+    
+    if (toggleVista && galeria) {
+        toggleVista.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                // Modo Apilado
+                galeria.classList.remove('modo-carrusel');
+                galeria.classList.add('modo-apilado');
+                if(ayudaSwipe) ayudaSwipe.style.display = 'none';
+                if(indicadores) indicadores.style.display = 'none';
+            } else {
+                // Modo Individual (Deslizable)
+                galeria.classList.remove('modo-apilado');
+                galeria.classList.add('modo-carrusel');
+                if(ayudaSwipe) ayudaSwipe.style.display = 'block';
+                if(indicadores) indicadores.style.display = 'block';
+            }
+        });
+
+        // Actualizar los puntitos al deslizar la foto
+        galeria.addEventListener('scroll', () => {
+            if(galeria.classList.contains('modo-carrusel') && indicadores) {
+                const scrollLeft = galeria.scrollLeft;
+                const width = galeria.offsetWidth;
+                const index = Math.round(scrollLeft / width);
+                const dots = indicadores.querySelectorAll('.punto-swipe');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('activo', i === index);
+                });
+            }
+        });
     }
 });
 </script>
