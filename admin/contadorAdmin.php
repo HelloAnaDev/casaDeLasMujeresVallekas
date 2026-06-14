@@ -72,9 +72,9 @@ include 'sidebarHeader.php';
             $nombreV = !empty($ultimaV['nombre']) ? htmlspecialchars($ultimaV['nombre']) : 'Anónima';
             $tipoV = $ultimaV['tipo_victima'] === 'menor' ? 'menor de edad' : 'mayor de edad';
         ?>
-            <div class="alerta alerta-info" style="text-align: justify; line-height: 1.5;">
-                <strong>Recuerda:</strong> la última víctima registrada en nuestro contador es <strong><?= $nombreV ?></strong> (<?= $tipoV ?>). Si venías a escribir sobre ella, ya lo ha actualizado una de tus compañeras; no es necesario volver a actualizar aún.
-            </div>
+            <p style="text-align: justify; margin-bottom: 30px; font-size: 1.05rem; color: #555555;">
+                Recuerda, la última víctima registrada en nuestro contador es <strong><?= $nombreV ?></strong> (<strong><?= $tipoV ?></strong>). Si venías a escribir sobre ella, ya lo ha actualizado una de tus compañeras; no es necesario volver a actualizar aún.
+            </p>
         <?php endif; ?>
 
     <?php if ($mensajeExito): ?>
