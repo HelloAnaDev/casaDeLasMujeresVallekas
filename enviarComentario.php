@@ -77,15 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->CharSet = 'UTF-8';
             $mail->Subject = "Nuevo comentario de $nombre para moderar";
             
-            // DETECTOR INTELIGENTE DE URL
-            $base = rtrim(BASE_URL, '/');
-            if (strpos($base, 'http') === 0) {
-                // Si BASE_URL ya tiene https:// (en producción)
-                $enlaceModeracion = $base . "/admin/comentariosAdmin.php";
-            } else {
-                // Si BASE_URL es solo una carpeta (en local)
-                $enlaceModeracion = "https://" . $_SERVER['HTTP_HOST'] . $base . "/admin/comentariosAdmin.php";
-            }
+            $enlaceModeracion = rtrim(BASE_URL, '/') . "/admin/comentariosAdmin.php";
             
             $mail->Body = "
                 <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
