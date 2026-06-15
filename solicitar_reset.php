@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firma = hash_hmac('sha256', $payload, SECRET_KEY . $admin['password']);
             $token = base64_encode($payload . '|' . $firma);
 
-            $enlaceRecuperacion = BASE_URL . "reset_password.php?token=" . urlencode($token);
+            $enlaceRecuperacion = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/reset_password.php?token=" . urlencode($token);
 
             $mail = new PHPMailer(true);
             try {
