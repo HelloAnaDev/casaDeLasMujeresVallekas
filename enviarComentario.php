@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->CharSet = 'UTF-8';
             $mail->Subject = "Nuevo comentario de $nombre para moderar";
             
-            $enlaceModeracion = PUBLIC_URL . '/admin/comentariosAdmin.php';
+            $enlaceModeracion = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/admin/comentariosAdmin.php";
             
             $mail->Body = "
                 <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
