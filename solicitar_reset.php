@@ -26,7 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firma = hash_hmac('sha256', $payload, SECRET_KEY . $admin['password']);
             $token = base64_encode($payload . '|' . $firma);
 
-            $enlaceRecuperacion = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/reset_password.php?token=" . urlencode($token);
+            // DETECTOR INTELIGENTE DE URL
+            $base = rtrim(BASE_URL, '/');
+            if (strpos($base, 'http') === 0) {
+                // Si BASE_URL ya tiene https:// (en producción)
+                $enlaceRecuperacion = $base . "/reset_password.php?token=" . urlencode($token);
+            } else {
+                // Si BASE_URL es solo una carpeta (en local)
+                $enlaceRecuperacion = "https://" . $_SERVER['HTTP_HOST'] . $base . "/reset_password.php?token=" . urlencode($token);
+            }
 
             $mail = new PHPMailer(true);
             try {

@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->Port       = SMTP_PORT;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             
-            $mail->setFrom(SMTP_FROM, SMTP_NAME); // Declarado 1 sola vez
-            $mail->addAddress(SMTP_USER);         // Declarado 1 sola vez
+            $mail->setFrom(SMTP_FROM, SMTP_NAME); 
+            $mail->addAddress(SMTP_USER);         
             
             $sqlAdmins = "SELECT email FROM administradoras";
             $stmtAdmins = $pdo->query($sqlAdmins);
@@ -77,7 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->CharSet = 'UTF-8';
             $mail->Subject = "Nuevo comentario de $nombre para moderar";
             
-            $enlaceModeracion = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/admin/comentariosAdmin.php";
+            // DETECTOR INTELIGENTE DE URL
+            $base = rtrim(BASE_URL, '/');
+            if (strpos($base, 'http') === 0) {
+                // Si BASE_URL ya tiene https:// (en producción)
+                $enlaceModeracion = $base . "/admin/comentariosAdmin.php";
+            } else {
+                // Si BASE_URL es solo una carpeta (en local)
+                $enlaceModeracion = "https://" . $_SERVER['HTTP_HOST'] . $base . "/admin/comentariosAdmin.php";
+            }
             
             $mail->Body = "
                 <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
@@ -93,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p>Para aprobar o rechazar este comentario, pulsa en el botón de abajo para ir directamente al panel de gestión de comentarios:</p>
                         <br>
                         <div style='text-align: center;'>
-                            <a href='$enlaceModeracion' style='display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;'>Ir al Panel de Moderación</a>
+                            <a href='$enlaceModeracion' style='display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; background-color: #800080; color: #ffffff;'>Ir al Panel de Moderación</a>
                         </div>
                     </div>
                 </div>
