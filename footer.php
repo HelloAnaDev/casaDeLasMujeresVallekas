@@ -39,7 +39,6 @@ $ninasEsteAno = $stats['menor'] ?? 0;
         <h3>¿Por qué contamos los días?</h3>
         <p>Este contador no es una estadística, es una exigencia de vida. Las voluntarias de La Casa actualizamos este número como un acto de memoria, resistencia y visibilización.</p>
         <p>Reivindicamos que el único número aceptable es que no falte ni una más.</p>
-        <p>Sin embargo, este año ya han sido asesinadas <strong><?php echo $mujeresEsteAno; ?> mujeres</strong> y <strong><?php echo $ninasEsteAno; ?> niñas</strong> por violencia machista.</p>
         <?php 
         if ($ultimoCaso && $ultimoCaso['tipo_victima'] === 'mayor' && !empty($ultimoCaso['nombre'])): 
         ?>
