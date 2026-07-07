@@ -1,9 +1,7 @@
 <?php 
-// 1. Primero cargamos la configuración y la base de datos
 require_once 'config/config.php';
 require_once 'config/db.php';
 
-// Iniciamos sesión por si necesitamos comprobar si es administradora
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -14,13 +12,11 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $idMemoria = $_GET['id'];
 
 try {
-    // 2. Obtener datos de la publicación
     $sql = "SELECT m.*, GROUP_CONCAT(i.rutaImagen) AS galeria 
             FROM memorias m 
             LEFT JOIN imagenes_memorias i ON m.idMemoria = i.idMemoria 
             WHERE m.idMemoria = ?";
             
-    // Si NO es una administradora, le prohibimos ver borradores ocultos
     if (!isset($_SESSION['idAdmin'])) {
         $sql .= " AND m.es_borrador = 0";
     }
@@ -34,22 +30,18 @@ try {
         exit;
     }
 
-    // 3. Obtener comentarios aprobados
     $sqlCom = "SELECT nombre, texto, fecha FROM comentarios WHERE idMemoria = ? AND estadoPublicacion = 1 ORDER BY fecha DESC";
     $stmtCom = $pdo->prepare($sqlCom);
     $stmtCom->execute([$idMemoria]);
     $comentarios = $stmtCom->fetchAll(PDO::FETCH_ASSOC);
 
-    // Preparar imágenes
     $fotos = $noticia['galeria'] ? explode(',', $noticia['galeria']) : [];
     $fotoPrincipal = count($fotos) > 0 ? "images/memorias/" . $fotos[0] : "images/paisaje.png";
     $categoria = $noticia['categoria'] ?? 'LA CASA';
     $likes = $noticia['likes'] ?? 0;
 
-    // Pasamos las fotos a JSON
     $fotosJSON = json_encode($fotos);
 
-    // 4. ¡AQUÍ ESTÁ LA MAGIA DE WHATSAPP! Definimos las variables ANTES de llamar al header
     $og_title = htmlspecialchars($noticia['titulo']);
     $og_desc = htmlspecialchars(mb_substr($noticia['descripcion'], 0, 150)) . '...';
     $og_image = "https://" . $_SERVER['HTTP_HOST'] . BASE_URL . "/" . $fotoPrincipal;
@@ -58,7 +50,6 @@ try {
     die("Error cargando la lectura.");
 }
 
-// 5. AHORA SÍ, llamamos al header para que construya la página con las variables preparadas
 $pagina = 'casaEnMarcha';
 include 'header.php'; 
 ?>
@@ -113,30 +104,39 @@ include 'header.php';
                     <svg viewBox="0 0 24 24" class="icono-corazon-lectura"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                     <span id="contadorLikesLectura"><?= $likes ?></span> me gusta
                 </button>
+                <button class="btn-compartir-icono" id="btnCompartirLectura" aria-label="Compartir esta entrada">
+                    <svg viewBox="0 0 24 24" class="icono-avion-barra"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                </button>
             </div>
 
             <div class="texto-lectura">
                 <?php
                     $textoSeguro = htmlspecialchars($noticia['descripcion']);
-                    
-                    // 1. Busca enlaces completos (con http:// o https://)
                     $textoConEnlaces = preg_replace('/(https?:\/\/[^\s<]+)/i', '<a href="$1" target="_blank" rel="noopener noreferrer" class="enlace-memoria">$1</a>', $textoSeguro);
-                    
-                    // 2. Busca enlaces que la gente escribe solo con "www." y les añade el http:// oculto para que el click funcione
                     $textoConEnlaces = preg_replace('/(?<!:\/\/)(www\.[^\s<]+)/i', '<a href="http://$1" target="_blank" rel="noopener noreferrer" class="enlace-memoria">$1</a>', $textoConEnlaces);
                 ?>
                 <p><?= nl2br($textoConEnlaces) ?></p>
             </div>
 
             <div class="tira-like-informativa">
-                <span class="texto-tira-desktop">¿Te ha gustado esta publicación?<br>Para señalar que te ha gustado, haz clic en este corazón</span>
-                <span class="texto-tira-movil">¿Te ha gustado esta publicación?<br>Para señalar que te ha gustado, da un toque a este corazón</span>
-                
-                <button class="btn-tira-like" id="btnTiraLike" aria-label="Dar me gusta">
-                    <svg viewBox="0 0 24 24" class="icono-corazon-tira">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                </button>
+                <div class="bloque-tira">
+                    <span class="texto-tira-desktop">¿Te ha gustado esta publicación?<br>Para señalar que te ha gustado, haz clic en este corazón</span>
+                    <span class="texto-tira-movil">¿Te ha gustado esta publicación?<br>Da un toque a este corazón</span>
+                    <button class="btn-tira-like" id="btnTiraLike" aria-label="Dar me gusta">
+                        <svg viewBox="0 0 24 24" class="icono-corazon-tira">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="bloque-tira">
+                    <span class="texto-tira-desktop">¿Quieres compartir por WhatsApp esta entrada con tus compañeras?<br>Haz clic en este avión</span>
+                    <span class="texto-tira-movil">¿Quieres compartir por WhatsApp esta entrada con tus compañeras?<br>Toca este avión</span>
+                    <button class="btn-tira-compartir" id="btnTiraCompartir" aria-label="Compartir esta entrada">
+                        <svg viewBox="0 0 24 24" class="icono-avion-tira">
+                            <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // 1. LÓGICA DE PAGINACIÓN DE COMENTARIOS
     const comentariosDivs = document.querySelectorAll('.tarjeta-comentario');
-    const porPagina = 4; // Cambia este número si quieres más o menos por página
+    const porPagina = 4;
     let paginaActual = 1;
     
     if (comentariosDivs.length > porPagina) {
@@ -290,9 +290,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (btnLike) btnLike.addEventListener('click', procesarLike);
         if (btnTiraLike) btnTiraLike.addEventListener('click', procesarLike);
+
+        // 3. LÓGICA BOTONES COMPARTIR
+        const tituloEntrada = <?= json_encode($noticia['titulo']) ?>;
+        const textoCompartir = `Una compañera piensa que te va a interesar "${tituloEntrada}" del blog de Casa de las Mujeres Vallekas, ¡Entra a verlo, disfruta, comenta y comparte!`;
+        const urlCompartir = window.location.href;
+
+        function accionCompartir() {
+            const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(textoCompartir + ' ' + urlCompartir)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        const btnCompartirBarra = document.getElementById('btnCompartirLectura');
+        const btnCompartirTira = document.getElementById('btnTiraCompartir');
+        if (btnCompartirBarra) btnCompartirBarra.addEventListener('click', accionCompartir);
+        if (btnCompartirTira) btnCompartirTira.addEventListener('click', accionCompartir);
     }
 
-    // 3. LÓGICA DEL INTERRUPTOR DE FOTOS (Apilado / Swipe)
+    // 4. LÓGICA DEL INTERRUPTOR DE FOTOS (Apilado / Swipe)
     const toggleVista = document.getElementById('toggleVistaFotos');
     const galeria = document.getElementById('galeriaDinamica');
     const ayudaSwipe = document.getElementById('ayudaSwipeFotos');
@@ -301,13 +316,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if (toggleVista && galeria) {
         toggleVista.addEventListener('change', (e) => {
             if (e.target.checked) {
-                // Modo Apilado
                 galeria.classList.remove('modo-carrusel');
                 galeria.classList.add('modo-apilado');
                 if(ayudaSwipe) ayudaSwipe.style.display = 'none';
                 if(indicadores) indicadores.style.display = 'none';
             } else {
-                // Modo Individual (Deslizable)
                 galeria.classList.remove('modo-apilado');
                 galeria.classList.add('modo-carrusel');
                 if(ayudaSwipe) ayudaSwipe.style.display = 'block';
@@ -315,7 +328,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        // Actualizar los puntitos al deslizar la foto
         galeria.addEventListener('scroll', () => {
             if(galeria.classList.contains('modo-carrusel') && indicadores) {
                 const scrollLeft = galeria.scrollLeft;

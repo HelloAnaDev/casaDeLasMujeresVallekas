@@ -2004,32 +2004,46 @@ input:checked + .slider-vista:before {
    NUEVA TIRA INFORMATIVA DE LIKE 
    ========================================================================== */
 .tira-like-informativa {
-    background-color: var(--purpuraMasClaro);
-    color: var(--purpuraOscuro);
-
-    margin: 40px -40px 20px -40px; /* Rompe el padding interno de la caja blanca para tocar los bordes exactos */
-    padding: 15px 40px;
+    margin: 40px -40px 20px -40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column;
+    gap: 6px;
     font-weight: 500;
     font-size: 1.05rem;
+    color: var(--purpuraOscuro);
+}
+
+.bloque-tira {
+    background-color: var(--purpuraMasClaro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+    padding: 20px 40px;
+    width: 100%;
+}
+
+.separador-tira {
+    display: none;
 }
 
 .texto-tira-desktop {
     display: inline;
+    text-align: center;
 }
 
 .texto-tira-movil {
     display: none;
+    text-align: center;
 }
 
 /* Círculo blanco interactivo */
 .btn-tira-like {
     background-color: #ffffff;
-    border: 2px solid #d12c5b; /* Borde rojo por defecto */
-    border-radius: 50% !important; /* Fuerza círculo perfecto */
+    border: 2px solid #d12c5b;
+    border-radius: 50% !important;
     width: 44px;
     height: 44px;
     display: inline-flex;
@@ -2048,33 +2062,77 @@ input:checked + .slider-vista:before {
 .icono-corazon-tira {
     width: 22px;
     height: 22px;
-    fill: transparent; /* Corazón vacío inicialmente */
-    stroke: #d12c5b; /* Borde rojo */
+    fill: transparent;
+    stroke: #d12c5b;
     stroke-width: 2px;
     transition: all 0.25s ease;
 }
 
-/* ESTADO ACTIVO: Relleno rojo total al hacer clic */
 .btn-tira-like.like-activo .icono-corazon-tira {
     fill: #d12c5b !important;
 }
 
+.btn-tira-compartir {
+    background-color: #ffffff;
+    border: 2px solid var(--purpuraOscuro);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-tira-compartir:hover {
+    transform: scale(1.1);
+}
+
+.icono-avion-tira {
+    width: 20px;
+    height: 20px;
+    stroke: var(--purpuraOscuro);
+}
+
 /* ADAPTACIÓN RESPONSIVE DE LA TIRA */
-@media (max-width: 983px) {
-    .tira-like-informativa {
-        margin: 30px -15px 15px -15px; /* Ajuste milimétrico para el padding reducido de móviles */
-        padding: 15px 20px;
-        flex-direction: column; /* Apila el texto sobre el círculo si la pantalla es muy estrecha */
-        text-align: center;
-        gap: 10px;
-        font-size: 0.95rem;
-    }
-    .texto-tira-desktop {
-        display: none;
-    }
-    .texto-tira-movil {
-        display: inline;
-    }
+.barra-interaccion {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-compartir-icono {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    color: var(--purpuraOscuro);
+    transition: transform 0.2s ease;
+}
+
+.btn-compartir-icono:hover {
+    transform: scale(1.15);
+}
+
+.icono-avion-barra {
+    width: 26px;
+    height: 26px;
+}
+
+.btn-like-lectura:hover .icono-corazon-lectura {
+    fill: #d12c5b;
+    stroke: #d12c5b;
+    transform: scale(1.15);
 }
 /* ==========================================================================
    LECTURA.PHP (CORRECCIONES MÓVIL Y BOTONES STICKY)
@@ -2243,6 +2301,54 @@ input:checked + .slider-vista:before {
     border-bottom: 1px solid #eee;
     padding: 15px 0;
     margin: 30px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-compartir-lectura {
+    background: none;
+    border: 2px solid var(--purpuraOscuro);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--purpuraOscuro);
+    font-family: inherit;
+    font-weight: 600;
+    padding: 8px 18px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-compartir-lectura:hover {
+    background-color: var(--purpuraOscuro);
+    color: #ffffff;
+}
+
+.icono-avion {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.texto-compartir-movil {
+    display: none;
+}
+
+.texto-compartir-desktop {
+    display: inline;
+}
+
+@media (max-width: 983px) {
+    .texto-compartir-desktop {
+        display: none;
+    }
+    .texto-compartir-movil {
+        display: inline;
+    }
 }
 
 .btn-like-lectura {
@@ -2273,16 +2379,39 @@ input:checked + .slider-vista:before {
     transform: scale(1.15);
 }
 
-
-
+/* 1. Liberamos la altura de los contenedores padres para que abracen todo el contenido */
+.columna-comentarios,
 .tablon-comentarios-sticky {
+    height: auto !important;
+    min-height: 100%;
+    overflow: visible !important;
+}
+
+/* 2. Devolvemos la paginación al flujo del documento para que no flote sobre nada */
+.paginacion-comentarios {
+    position: static !important;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 2rem !important; /* Separación limpia con el último comentario */
+    padding-bottom: 2rem;
+}
+
+/* 3. Aseguramos que la tarjeta de Andrea (y las demás) no tengan alturas fijas */
+.tarjeta-comentario {
+    height: auto !important;
+    overflow: visible !important;
+}
+
+/* .tablon-comentarios-sticky {
     position: sticky;
     top: 100px; 
     background-color: white;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
+} */
 
 .formulario-comentarios {
     display: flex;
@@ -2337,13 +2466,7 @@ input:checked + .slider-vista:before {
 }
 
 /* Estilos para la nueva paginación */
-.paginacion-comentarios {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-}
+
 .btn-paginacion {
     background: var(--purpuraMasClaro);
     color: var(--purpuraOscuro);
@@ -2414,7 +2537,6 @@ input:checked + .slider-vista:before {
         display: none;
     }
 }
-
 @media (max-width: 983px) {
     .layout-dos-columnas-lectura {
         grid-template-columns: 1fr; 
@@ -2423,7 +2545,22 @@ input:checked + .slider-vista:before {
         position: static; 
     }
     .lista-comentarios {
-        max-height: 400px;
+        height: auto; 
+    }
+    .tira-like-informativa {
+        margin: 30px -15px 15px -15px;
+        gap: 6px;
+        font-size: 0.95rem;
+    }
+    .bloque-tira {
+        padding: 15px 20px;
+    }
+    .texto-tira-desktop {
+        display: none;
+    }
+    .texto-tira-movil {
+        display: inline;
+        text-align: center;
     }
 }
 
