@@ -129,14 +129,14 @@ include 'header.php';
                     </button>
                 </div>
                 <div class="bloque-tira">
-                    <span class="texto-tira-desktop">¿Quieres compartir por WhatsApp esta entrada con tus compañeras?<br>Haz clic en este avión</span>
-                    <span class="texto-tira-movil">¿Quieres compartir por WhatsApp esta entrada con tus compañeras?<br>Toca este avión</span>
-                    <button class="btn-tira-compartir" id="btnTiraCompartir" aria-label="Compartir esta entrada">
-                        <svg viewBox="0 0 24 24" class="icono-avion-tira">
-                            <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        </svg>
-                    </button>
-                </div>
+                <span class="texto-tira-desktop">¿Quieres compartir por WhatsApp esta entrada con tus compañeras?<br>Haz clic en este avión</span>
+                <span class="texto-tira-movil">¿Quieres compartir por WhatsApp esta entrada con tus compañeras?<br>Toca este avión</span>
+                <!-- Corrección: El id ahora coincide exactamente con el document.getElementById del JS -->
+                <button class="btn-tira-compartir" id="btnTiraCompartir" aria-label="Compartir">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icono-avion-tira" aria-hidden="true">
+                        <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </button>
             </div>
         </section>
 
@@ -297,8 +297,18 @@ document.addEventListener("DOMContentLoaded", function() {
         const urlCompartir = window.location.href;
 
         function accionCompartir() {
-            const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(textoCompartir + ' ' + urlCompartir)}`;
-            window.open(urlWhatsApp, '_blank');
+            const textoCodificado = encodeURIComponent(textoCompartir + ' ' + urlCompartir);
+            
+            // Detectamos si el dispositivo es móvil mediante el User Agent
+            const esMovil = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            if (esMovil) {
+                // En móviles: Forzamos la apertura directa de la app nativa sin pasar por el navegador
+                window.location.href = `whatsapp://send?text=${textoCodificado}`;
+            } else {
+                // En escritorio: Abrimos la API web en una pestaña nueva como fallback seguro
+                window.open(`https://wa.me/?text=${textoCodificado}`, '_blank');
+            }
         }
 
         const btnCompartirBarra = document.getElementById('btnCompartirLectura');

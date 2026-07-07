@@ -2087,14 +2087,11 @@ input:checked + .slider-vista:before {
     flex-shrink: 0;
 }
 
-.btn-tira-compartir:hover {
-    transform: scale(1.1);
-}
-
 .icono-avion-tira {
     width: 20px;
     height: 20px;
     stroke: var(--purpuraOscuro);
+    transform: translate(-1px, 1px);
 }
 
 /* ADAPTACIÓN RESPONSIVE DE LA TIRA */
@@ -2120,19 +2117,9 @@ input:checked + .slider-vista:before {
     transition: transform 0.2s ease;
 }
 
-.btn-compartir-icono:hover {
-    transform: scale(1.15);
-}
-
 .icono-avion-barra {
     width: 26px;
     height: 26px;
-}
-
-.btn-like-lectura:hover .icono-corazon-lectura {
-    fill: #d12c5b;
-    stroke: #d12c5b;
-    transform: scale(1.15);
 }
 /* ==========================================================================
    LECTURA.PHP (CORRECCIONES MÓVIL Y BOTONES STICKY)
@@ -2323,11 +2310,6 @@ input:checked + .slider-vista:before {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-compartir-lectura:hover {
-    background-color: var(--purpuraOscuro);
-    color: #ffffff;
-}
-
 .icono-avion {
     width: 22px;
     height: 22px;
@@ -2379,6 +2361,30 @@ input:checked + .slider-vista:before {
     transform: scale(1.15);
 }
 
+/* ==========================================================================
+   EFECTOS HOVER AISLADOS (Prevención de Sticky Hover en táctiles)
+   ========================================================================== */
+@media (hover: hover) {
+    .btn-tira-compartir:hover {
+        transform: scale(1.1);
+    }
+    
+    .btn-compartir-icono:hover {
+        transform: scale(1.15);
+    }
+    
+    .btn-like-lectura:hover .icono-corazon-lectura {
+        fill: #d12c5b;
+        stroke: #d12c5b;
+        transform: scale(1.15);
+    }
+
+    .btn-compartir-lectura:hover {
+        background-color: var(--purpuraOscuro);
+        color: #ffffff;
+    }
+}
+
 /* 1. Liberamos la altura de los contenedores padres para que abracen todo el contenido */
 .columna-comentarios,
 .tablon-comentarios-sticky {
@@ -2403,15 +2409,6 @@ input:checked + .slider-vista:before {
     height: auto !important;
     overflow: visible !important;
 }
-
-/* .tablon-comentarios-sticky {
-    position: sticky;
-    top: 100px; 
-    background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-} */
 
 .formulario-comentarios {
     display: flex;
