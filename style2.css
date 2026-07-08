@@ -927,6 +927,11 @@ body.modo-luto > * {
     text-align: center;
 }
 
+#textoCentrado{
+ text-align: center;
+ padding: 0 15%;
+}
+
 @media (max-width: 768px){
 
     .casaMarchaGrid{
@@ -1019,7 +1024,7 @@ body.modo-luto > * {
 @media (max-width: 768px){
 
     .tituloSeccion{
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
 }
