@@ -3637,6 +3637,99 @@ input:checked + .slider-vista:before {
     background-color: #c9302c;
 }
 
+/* =========================================
+   DISEÑO DE TARJETAS RESPONSIVAS PARA TABLA
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* Forzamos a la tabla y sus elementos a comportarse como bloques apilables */
+  .tablaRegistros,
+  .tablaRegistros thead,
+  .tablaRegistros tbody,
+  .tablaRegistros th,
+  .tablaRegistros td,
+  .tablaRegistros tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* Ocultamos la cabecera original del flujo visual por accesibilidad */
+  .tablaRegistros thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  /* Diseño de la tarjeta individual (cada fila se vuelve una tarjeta) */
+  .tablaRegistros tr {
+    background-color: var(--purpuraMasClaro, #f0e9f4);
+    border: 1px solid var(--purpuraMedio, #c4b1ca);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Evitamos que la tarjeta de 'No hay registros' se rompa */
+  .tablaRegistros tr td[colspan="4"] {
+    text-align: center !important;
+    padding: 1rem 0;
+    border: none;
+  }
+  .tablaRegistros tr td[colspan="4"]::before {
+    display: none;
+  }
+
+  /* Estructura en paralelo (Label a la izquierda, Dato a la derecha) */
+  .tablaRegistros td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    text-align: right;
+    border-bottom: 1px solid #e2d7e5;
+  }
+
+  /* Quitamos el borde inferior al último dato antes del botón */
+  .tablaRegistros td:nth-last-child(2) {
+    border-bottom: none;
+  }
+
+  /* Inyección automática del texto del atributo data-label */
+  .tablaRegistros td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--purpuraOscuro, #42254b);
+    text-align: left;
+    flex-basis: 50%;
+  }
+
+  /* Contenedor del botón de borrar */
+  .tablaRegistros td:last-child {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--purpuraMedio, #c4b1ca);
+    justify-content: center;
+  }
+
+  /* Ocultamos el prefijo 'Acción' para centrar el botón */
+  .tablaRegistros td:last-child::before {
+    display: none; 
+  }
+  
+  /* El formulario y el botón ocupan todo el ancho disponible para facilitar la pulsación */
+  .tablaRegistros td:last-child form,
+  .tablaRegistros .btnBorrarRegistro {
+    width: 100%;
+  }
+
+  .tablaRegistros .btnBorrarRegistro {
+    padding: 12px;
+    font-size: 1rem;
+    display: block;
+  }
+}
 /* PERFIL ADMIN */
 .contenedorPerfilAdmin {
     max-width: 800px;

@@ -153,10 +153,10 @@ include 'sidebarHeader.php';
                     <?php else: ?>
                         <?php foreach ($registros as $row): ?>
                         <tr>
-                            <td><?php echo date('d/m/Y', strtotime($row['fecha_registro'])); ?></td>
-                            <td><?php echo htmlspecialchars($row['nombre'] ?? 'Anónimo / Menor'); ?></td>
-                            <td><?php echo htmlspecialchars($row['tipo_victima'] ?? 'No definido'); ?></td>
-                            <td>
+                            <td data-label="Fecha caso"><?php echo date('d/m/Y', strtotime($row['fecha_registro'])); ?></td>
+                            <td data-label="Nombre"><?php echo htmlspecialchars($row['nombre'] ?? 'Anónimo / Menor'); ?></td>
+                            <td data-label="Tipo"><?php echo htmlspecialchars($row['tipo_victima'] ?? 'No definido'); ?></td>
+                            <td data-label="Acción">
                                 <form method="POST" action="" onsubmit="return confirm('¿Borrar registro?');" style="margin: 0;">
                                     <input type="hidden" name="borrar_id" value="<?php echo $row['id']; ?>">
                                     <button type="submit" class="btnBorrarRegistro">Borrar</button>
