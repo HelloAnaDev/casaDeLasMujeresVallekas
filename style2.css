@@ -1019,11 +1019,25 @@ body.modo-luto > * {
 @media (max-width: 768px){
 
     .tituloSeccion{
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
 }
+.textoMovil{
+    display: none;
+}
 
+@media (max-width: 768px){
+
+    .textoDesktop{
+        display: none;
+    }
+
+    .textoMovil{
+        display: inline;
+    }
+
+}
 /* QUIENES SOMOS */
 /* VALORES Y ESTADISTICAS */
 .contenedorValores {

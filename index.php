@@ -66,9 +66,11 @@ include 'header.php';
     </div>
 </div>
 <div class="contenedorBoton">
-<a href="https://helloanadev.alwaysdata.net/casaEnMarcha.php" class="btnAccederCasa">
-    Entra aquí a la Casa en marcha para conocerlo todo
-</a></div>
+    <a href="https://helloanadev.alwaysdata.net/casaEnMarcha.php" class="btnAccederCasa">
+        <span class="textoDesktop">Entra aquí a la Casa en marcha para conocerlo todo</span>
+        <span class="textoMovil">La Casa en marcha</span>
+    </a>
+</div>
 <!-- SECCIÓN CALENDARIO -->
 <h2 class="tituloSeccion">Calendario</h2>
 
