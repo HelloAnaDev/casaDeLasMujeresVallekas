@@ -39,7 +39,7 @@ include 'header.php';
 </div>
 
 <!-- SECCIÓN CONOCER Y PARTICIPAR EN LA CASA EN MARCHA -->
- <<h2 class="titulo-pincel">La Casa en marcha</h2>
+ <<h2 class="tituloSeccion">La Casa está en marcha</h2>
 
   <div class="tarjetaInformacion">
     <p> <strong>¡Estamos en marcha!</strong> <span class="subrayado">Conoce qué hacemos</span> en la casa, de qué hablamos, qué nos importa... Estas invitada a nuestro blog dónde contamos tanto nuestras actividades y actos más representativos cómo los que pueden pasar más desapercibidos pero sabemos qué importan, y que por eso, queremos dejarlo en nuestra página para tenerlo siempre presente. En este espacio <span class="subrayado">puedes leernos</span>, <span class="subrayado">comentar qué opinas</span>, dar <span class="subrayado">"me gusta"</span> y <span class="subrayado">compartir</span> las entradas que quieras con otras compañeras tuyas que quizás no nos conzcan. ¡Entra a echar un ojo!</p>
@@ -70,7 +70,7 @@ include 'header.php';
     Entra aquí a la Casa en marcha para conocerlo todo
 </a></div>
 <!-- SECCIÓN CALENDARIO -->
-<h2>Calendario</h2>
+<h2 class="tituloSeccion">Calendario</h2>
 
  <div class="tarjetaInformacion">
     <p>Nuestro calendario subraya los aniversarios e hitos históricos protagonizados por mujeres que, pese a su relevancia, han sido invisibilizados. ¡Echa un vistazo y recupera nuestra historia!</p>

@@ -1016,7 +1016,13 @@ body.modo-luto > * {
     .flecha-carrusel.prev::before { content: '\276E'; }
     .flecha-carrusel.next::before { content: '\276F'; }
 }
+@media (max-width: 768px){
 
+    .tituloSeccion{
+        font-size: 2.5rem;
+    }
+
+}
 
 /* QUIENES SOMOS */
 /* VALORES Y ESTADISTICAS */
