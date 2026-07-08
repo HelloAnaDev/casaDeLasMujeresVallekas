@@ -342,3 +342,23 @@ if (btnVolverArriba) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
+//sUBRAYADO EN LA CASA EN MARCHA, INDEX
+
+const destacados = document.querySelectorAll('.subrayado');
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+
+        }
+
+    });
+
+});
+
+destacados.forEach(el=>observer.observe(el));

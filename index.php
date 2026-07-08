@@ -39,12 +39,36 @@ include 'header.php';
 </div>
 
 <!-- SECCIÓN CONOCER Y PARTICIPAR EN LA CASA EN MARCHA -->
- <h2>La Casa en marcha</h2>
+ <<h2 class="titulo-pincel">La Casa en marcha</h2>
 
   <div class="tarjetaInformacion">
-    <p><strong>¡Estamos en marcha!</strong> Conoce qué hacemos en la casa, de qué hablamos, qué nos importa... Estas invitada a nuestro blog dónde contamos tanto nuestras actividades y actos más representativos cómo los que pueden pasar más desapercibidos pero sabemos qué importan, y que por eso, queremos dejarlo en nuestra página para tenerlo siempre presente. En este espacio puedes leernos, comentar qué opinas, dar "me gusta" y compartir las entradas que quieras con otras compañeras tuyas que quizás no nos conzcan. ¡Entra a echar un ojo!</p>
-    <p>Además, como la casa somos <strong>todas</strong>, estaremos encantadas de recibir escritos tuyos relacionados con el feminismo, las mujeres o cualquier otro contenido que consideres importante de compartir con todas. Si tienes algo que decir, escríbenos con tu texto, aporta tus imágenes, y el contenido será visible para todas.</p>
- </div> 
+    <p> <strong>¡Estamos en marcha!</strong> <span class="subrayado">Conoce qué hacemos</span> en la casa, de qué hablamos, qué nos importa... Estas invitada a nuestro blog dónde contamos tanto nuestras actividades y actos más representativos cómo los que pueden pasar más desapercibidos pero sabemos qué importan, y que por eso, queremos dejarlo en nuestra página para tenerlo siempre presente. En este espacio <span class="subrayado">puedes leernos</span>, <span class="subrayado">comentar qué opinas</span>, dar <span class="subrayado">"me gusta"</span> y <span class="subrayado">compartir</span> las entradas que quieras con otras compañeras tuyas que quizás no nos conzcan. ¡Entra a echar un ojo!</p>
+
+    <p>Además, <span class="subrayado">envíanos</span> entradas <span class="subrayado">escritas por ti</span> relacionadas con el feminismo, las mujeres o cualquier otro contenido que consideres importante de compartir con todas. Incluso, <span class="subrayado">si tienes la idea</span> pero prefieres seguir <span class="subrayado">como lectora</span>, dínoslo e investigaremos para crear una entrada que sea de tu interés, ¡y del de muchas más seguro!.</p> 
+    <p>Si tienes algo que decir o que te gustaría leer aquí en <a id="enlaceIndex" href="https://helloanadev.alwaysdata.net/casaEnMarcha.php"> La casa en Marcha</a>, escríbenos por <a id="enlaceIndex"
+    href="mailto:casademujeresvk@gmail.com">email</a> con tu idea o tu texto, aporta tus imágenes si quieres, y el contenido una vez moderado por nuestras administradoras será visible para todas. <span class="subrayado"> Porque la casa,</span> <span class="subrayado">la construimos todas.</span></p>
+    </div>
+    <div class="casaMarchaGrid">
+
+    <div class="casaMarchaItem">
+        <img src="images/casaEnMarchaIndex/icono1.webp" alt="">
+        <p><strong>Conoce</strong></p><p>qué hacemos en la Casa, nuestras movilizaciones, actividades, pensamientos....</p>
+    </div>
+
+    <div class="casaMarchaItem">
+        <img src="images/casaEnMarchaIndex/icono2.webp" alt="">
+        <p><strong>Participa</strong></p><p>Lee, comenta con tus ideas y experiencias, y comparte.</p>
+    </div>
+
+    <div class="casaMarchaItem">
+        <img src="images/casaEnMarchaIndex/icono3.webp" alt="">
+        <p><strong>Construimos</strong></p><p>Un espacio abierto para todas, escribe tu aportación o qué te gustaría leer.</p>
+    </div>
+</div>
+<div class="contenedorBoton">
+<a href="https://helloanadev.alwaysdata.net/casaEnMarcha.php" class="btnAccederCasa">
+    Entra aquí a la Casa en marcha para conocerlo todo
+</a></div>
 <!-- SECCIÓN CALENDARIO -->
 <h2>Calendario</h2>
 

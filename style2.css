@@ -796,6 +796,158 @@ body.modo-luto > * {
     width: auto;
 }
 
+.subrayado{
+    position:relative;
+    display:inline-block;
+    font-weight:700;
+}
+
+.subrayado::after{
+    content:"";
+    position:absolute;
+
+    left:0;
+    bottom:2px;
+
+    width:100%;
+    height:9px;
+
+    background:var(--purpuraMedio);
+
+    z-index:-1;
+
+    border-radius:20px;
+
+    transform:rotate(-1deg);
+}
+
+.subrayado::after{
+
+    content:"";
+    position:absolute;
+
+    left:-2%;
+    width:104%;
+
+    bottom:3px;
+
+    height:8px;
+
+    background:linear-gradient(
+        to right,
+        transparent 0%,
+        #c4b1ca 5%,
+        #d3c7d6 25%,
+        #c4b1ca 55%,
+        #c4b1ca 100%
+    );
+
+    border-radius:50px;
+
+    transform:rotate(-1.2deg);
+}
+
+.subrayado::after{
+
+    width:0;
+
+    transition:.6s ease;
+}
+
+.subrayado.visible::after{
+
+    width:104%;
+}
+
+#enlaceIndex {
+    color: var(--purpuraOscuro);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.subrayado{
+    white-space: nowrap;
+}
+.casaMarchaGrid{
+    width: min(900px, 92%);
+    margin: 55px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    align-items: start;
+}
+
+.casaMarchaItem{
+    text-align: center;
+}
+
+.casaMarchaItem img{
+    width: 100%;
+    max-width: 110px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 18px;
+}
+
+.casaMarchaItem p{
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.casaMarchaItem strong{
+    display: block;
+    margin-bottom: 6px;
+    color: var(--purpuraOscuro);
+    font-size: 1.1rem;
+}
+
+.btnAccederCasa {
+    display: inline-block;
+    width: fit-content;
+    margin: 10px auto 0;
+    background-color: var(--purpuraOscuro);
+    color: var(--purpuraMasClaro);
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: all .3s ease;
+}
+.btnAccederCasa:hover {
+    color: var(--purpuraMasClaro);
+    text-decoration: none;
+    transform: scale(1.05);
+    box-shadow: 5px 5px 16px rgba(36, 26, 34, 0.5);
+}
+
+.contenedorBoton{
+    text-align: center;
+}
+
+@media (max-width: 768px){
+
+    .casaMarchaGrid{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .casaMarchaItem img{
+        max-width: 70px;
+    }
+
+    .casaMarchaItem p{
+        font-size: 0.85rem;
+    }
+
+    .casaMarchaItem strong{
+        font-size: 0.95rem;
+    }
+
+}
+
 @media (max-width: 983px) {
     .contenedor-carrusel-hacemos {
         position: relative;
@@ -865,6 +1017,8 @@ body.modo-luto > * {
     .flecha-carrusel.next::before { content: '\276F'; }
 }
 
+
+/* QUIENES SOMOS */
 /* VALORES Y ESTADISTICAS */
 .contenedorValores {
     display: flex;
