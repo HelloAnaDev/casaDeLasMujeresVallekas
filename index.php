@@ -38,7 +38,15 @@ include 'header.php';
     </div>
 </div>
 
-<h2 id="tituloDeCalendario" >Calendario</h2>
+<!-- SECCIÓN CONOCER Y PARTICIPAR EN LA CASA EN MARCHA -->
+ <h2>La Casa en marcha</h2>
+
+  <div class="tarjetaInformacion">
+    <p><strong>¡Estamos en marcha!</strong> Conoce qué hacemos en la casa, de qué hablamos, qué nos importa... Estas invitada a nuestro blog dónde contamos tanto nuestras actividades y actos más representativos cómo los que pueden pasar más desapercibidos pero sabemos qué importan, y que por eso, queremos dejarlo en nuestra página para tenerlo siempre presente. En este espacio puedes leernos, comentar qué opinas, dar "me gusta" y compartir las entradas que quieras con otras compañeras tuyas que quizás no nos conzcan. ¡Entra a echar un ojo!</p>
+    <p>Además, como la casa somos <strong>todas</strong>, estaremos encantadas de recibir escritos tuyos relacionados con el feminismo, las mujeres o cualquier otro contenido que consideres importante de compartir con todas. Si tienes algo que decir, escríbenos con tu texto, aporta tus imágenes, y el contenido será visible para todas.</p>
+ </div> 
+<!-- SECCIÓN CALENDARIO -->
+<h2>Calendario</h2>
 
  <div class="tarjetaInformacion">
     <p>Nuestro calendario subraya los aniversarios e hitos históricos protagonizados por mujeres que, pese a su relevancia, han sido invisibilizados. ¡Echa un vistazo y recupera nuestra historia!</p>
